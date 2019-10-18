@@ -19,6 +19,8 @@ public class MyMoodsActivity extends AppCompatActivity {
 
     @SerializedName("name")
     TextView userInfo;
+    ConnectApi connectApi;
+    TextView emotion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +28,27 @@ public class MyMoodsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_moods);
 
         userInfo = findViewById(R.id.username);
+        emotion = findViewById(R.id.emotion);
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        UsersConnectApi usersFromApi = retrofit.create(UsersConnectApi.class);
+        connectApi = retrofit.create(ConnectApi.class);
 
-        Call<List<User>> call = usersFromApi.getUsers();
+
+        // Get Users from API
+        getUsersCall();
+
+        // Moods Here
+        getMoodsCall();
+    }
+
+    private void getUsersCall() {
+
+        Call<List<User>> call = connectApi.getUsers();
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
@@ -43,7 +57,7 @@ public class MyMoodsActivity extends AppCompatActivity {
                     return;
                 }
 
-    /*================== users fetched here ===========================*/
+                /*============= users fetched here ===============*/
                 List<User> users = response.body();
                 for(User user : users){
                     String content = "";
@@ -52,7 +66,7 @@ public class MyMoodsActivity extends AppCompatActivity {
                     content += "Email: " + user.getEmail() + "\n";
                     content += "Team: " + user.getTeam() + "\n\n";
 
-                    userInfo.append(content);
+                    userInfo.setText(content);
                 }
 
             }
@@ -62,6 +76,39 @@ public class MyMoodsActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void getMoodsCall() {
+
+        Call<List<Mood>> call = connectApi.getMoods();
+        call.enqueue(new Callback<List<Mood>>() {
+            @Override
+            public void onResponse(Call<List<Mood>> call, Response<List<Mood>> response) {
+                if(!response.isSuccessful()){
+                    emotion.setText("result: " + response.code());
+                    return;
+                }
+
+                /*============= users fetched here ===============*/
+                List<Mood> moods = response.body();
+                for(Mood mood : moods){
+                    String content = "";
+                    content += "ID: " + mood.getUserId() + "\n";
+                    content += "Name: " + mood.getEmotion() + "\n";
+                    content += "Email: " + mood.getDate() + "\n\n";
+
+                    emotion.setText(content);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Mood>> call, Throwable t) {
+
+            }
+        });
+
     }
 
 

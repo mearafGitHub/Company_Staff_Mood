@@ -9,6 +9,17 @@ class User {
     private String gender;
     private String mood;
 
+    User(){}
+
+    public User(String username, String email, String id, String team, String gender, String mood) {
+        this.username = username;
+        this.email = email;
+        this.id = id;
+        this.team = team;
+        this.gender = gender;
+        this.mood = mood;
+    }
+
     public String getUsername() {
         return username;
     }
