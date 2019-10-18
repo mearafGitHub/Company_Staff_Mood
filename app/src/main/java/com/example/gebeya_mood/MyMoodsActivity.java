@@ -18,26 +18,42 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MyMoodsActivity extends AppCompatActivity {
 
     @SerializedName("name")
-    TextView username;
+    TextView userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_moods);
 
-        username = findViewById(R.id.username);
+        userInfo = findViewById(R.id.username);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        UsersFromApi usersFromApi = retrofit.create(UsersFromApi.class);
+        UsersConnectApi usersFromApi = retrofit.create(UsersConnectApi.class);
 
         Call<List<User>> call = usersFromApi.getUsers();
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if(!response.isSuccessful()){
+                    userInfo.setText("result: " + response.code());
+                    return;
+                }
+
+    /*================== users fetched here ===========================*/
+                List<User> users = response.body();
+                for(User user : users){
+                    String content = "";
+                    content += "ID: " + user.getId() + "\n";
+                    content += "Name: " + user.getUsername() + "\n";
+                    content += "Email: " + user.getEmail() + "\n";
+                    content += "Team: " + user.getTeam() + "\n\n";
+
+                    userInfo.append(content);
+                }
 
             }
 

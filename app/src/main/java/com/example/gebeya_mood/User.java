@@ -4,7 +4,7 @@ class User {
 
     private String username;
     private String email;
-    private int id;
+    private String id;
     private String team;
     private String gender;
     private String mood;
@@ -25,11 +25,11 @@ class User {
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
