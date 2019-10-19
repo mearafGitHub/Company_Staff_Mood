@@ -32,7 +32,7 @@ public class MyMoodsActivity extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_moods);
 
-        userInfo = findViewById(R.id.username);
+        userInfo = findViewById(R.id.my_user_name);
         team = findViewById(R.id.teamText);
         Spinner filterMood = findViewById(R.id.mood_filter);
 
@@ -85,12 +85,12 @@ public class MyMoodsActivity extends AppCompatActivity implements AdapterView.On
                 List<User> users = response.body();
                 for(User user : users){
                     String content = "";
-                    content += "ID: " + user.getId() + "\n";
+                  //  content += "ID: " + user.getId() + "\n";
                     content += "Name: " + user.getUsername() + "\n";
-                    content += "Email: " + user.getEmail() + "\n";
-                    content += "Team: " + user.getTeam() + "\n\n";
+                   // content += "Email: " + user.getEmail() + "\n";
+                  //  content += "Team: " + user.getTeam() + "\n\n";
 
-                    userInfo.setText(content);
+                    userInfo.append(content);
                 }
             }
 

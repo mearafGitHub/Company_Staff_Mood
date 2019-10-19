@@ -24,7 +24,7 @@
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/my_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -72,9 +72,9 @@
             <Spinner
                 android:id="@+id/mood_filter"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="All"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
+                android:text="All"
                 android:visibility="visible" />
 
         </LinearLayout>

@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Gebeya Mood</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Sign In</string>
     <string name="title_activity_home">Gebeya Today</string>
     <string name="title_activity_mood_prompt">Mood</string>
-    <string name="title_activity_my_moods">My Moods Log</string>
+    <string name="title_activity_my_moods">My Logs</string>
+    <string name="admin_title">Admin</string>
     <string-array name="date_filter">
         <item>All</item>
         <item>Day</item>
@@ -11,6 +12,17 @@
         <item>Month</item>
         <item>Year</item>
     </string-array>
+
+    <string-array name="team_filter">
+        <item>Managers</item>
+        <item>Android Devs</item>
+        <item>Back-end Devs</item>
+        <item>Front-end Devs</item>
+        <item>Trainers Devs</item>
+        <item>Consultants</item>
+    </string-array>
+
+
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sing_up_short">Sign Up</string>
@@ -25,6 +37,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
+
 
 
 

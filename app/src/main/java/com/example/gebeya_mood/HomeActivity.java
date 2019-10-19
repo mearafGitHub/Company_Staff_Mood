@@ -43,14 +43,12 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mood_promt_menu, menu);
         getMenuInflater().inflate(R.menu.my_moods_menu, menu);
+        getMenuInflater().inflate(R.menu.admin_data_set, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -65,6 +63,10 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.my_mood_history:
                 Intent intentMoods = new Intent(HomeActivity.this, MyMoodsActivity.class);
                 startActivity(intentMoods);
+                return true;
+            case R.id.adminDataSetIcon:
+                Intent intentAdminView = new Intent(HomeActivity.this, AdminActivity.class);
+                startActivity(intentAdminView);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

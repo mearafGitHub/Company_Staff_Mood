@@ -17,7 +17,8 @@
             android:label="@string/title_activity_my_moods"/>
         <activity android:name=".HomeActivity"
             android:label="@string/title_activity_home"/>
-        <activity android:name=".AdminActivity" />
+        <activity android:name=".AdminActivity"
+            android:label="@string/admin_title"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MoodPromptActivity"
             android:label="@string/title_activity_mood_prompt"/>
