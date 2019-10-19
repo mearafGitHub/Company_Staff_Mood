@@ -2,39 +2,40 @@
 
 DOING:
 
-[X] 1. list cards in recycler view
-       [x] the moods on the home page
-       [x] the user mood history
+    [X]  Models and View Design
+    [X]  API connection test with POJO
+    [..] fetching and sending to API
 
- [_] 2. display dynamic values in inflated layout
+ [X] 1. list cards in recycler view
+       [x] the moods on the gebeya mood home screen
+       [x] the user mood history (mood log)
+       [x] the admin user mood review screen
+
+ [..] 2. display dynamic values in inflated layout
  	    [x] list view
  	    [x] filter views
  	    []  filter features
  	    []  the values from api
 
- [X] 3. display modal with text input
+ [..] 3. display modal with text input
  	    [x] user prompt to insert moods and/or reasons
  	    []  input post to api
 
- [] 4. store user inputs in db
-       [] inputs from sign up
-       [] inputs from mood prompt
-
- [] 5. send user input to api
-      [] login screen/db
-      [] sign up screen
+ [] 4. send user input to api
+      [] login db
+      [] sign up
       [] mood prompt screen
 
- [_] 6. how to receive api response and display in screens
+ [..] 5. how to receive api response and display in screens
       [x] home screen fetch from api interface and methods
       [x] my mood screen fetch from api interface and methods
-      []  admin view
+      [x] admin view
       []  actual data send/receive
 
- [] 7. Smooth transition between activities
+ [] 6. Smooth transition between activities
 
- [] 8. Admin Views
-      [] List of mood reports with details of the staffs
+ [..] 8. Admin Views
+      [x] List of mood reports with details of the staffs
       [] actual data send/receive
 
  [] 10. MV-VP architecture
