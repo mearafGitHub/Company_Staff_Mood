@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginLeft="9dp"
         android:background="@drawable/card_bg"
         android:clipToPadding="false"
         android:fadeScrollbars="false"
@@ -147,12 +147,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
-                android:layout_marginLeft="81dp"
+                android:layout_marginLeft="63dp"
                 >
 
                 <ImageButton
                     android:layout_width="45dp"
                     android:layout_height="45dp"
+                    android:visibility="visible"
                     android:src="@drawable/ic_perm_data_setting"
                     android:background="#0000ffff"
                     />
@@ -164,8 +165,8 @@
 
     <ImageView
         android:id="@+id/emoji"
-        android:layout_width="81dp"
-        android:layout_height="81dp"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="477dp"
