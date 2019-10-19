@@ -71,14 +71,13 @@ public class UserMoodAdapter extends RecyclerView.Adapter<UserMoodAdapter.UserMo
 
     public class UserMoodViewHolder extends RecyclerView.ViewHolder {
 
-        TextView username, date, team, emotion;
+        TextView date, team, emotion;
         ImageView emoji;
         RelativeLayout listContainer;
 
         public UserMoodViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            username = itemView.findViewById(R.id.username);
             date = itemView.findViewById(R.id.dateText);
             emoji = itemView.findViewById(R.id.emoji);
             team = itemView.findViewById(R.id.inMoodText);
