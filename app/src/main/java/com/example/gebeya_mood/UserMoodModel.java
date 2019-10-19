@@ -2,17 +2,36 @@ package com.example.gebeya_mood;
 
 public class UserMoodModel {
 
-    String userId, userName, emotion, date;
+    String userId, userName, emotion, date, team;
+    int emoji;
 
-    public UserMoodModel(String userId, String userName, String emotion, String date) {
+    public UserMoodModel(String userId, String userName, String emotion, String date, int emoji, String team) {
         this.userId = userId;
         this.userName = userName;
         this.emotion = emotion;
         this.date = date;
+        this.emoji = emoji;
+        this.team = team;
+    }
+
+    public int getEmoji() {
+        return emoji;
+    }
+
+    public void setEmoji(int emoji) {
+        this.emoji = emoji;
     }
 
     public String getUserId() {
         return userId;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
     }
 
     public void setUserId(String userId) {
