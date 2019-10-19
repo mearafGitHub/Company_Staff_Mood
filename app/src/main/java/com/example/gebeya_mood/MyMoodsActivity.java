@@ -1,6 +1,8 @@
 package com.example.gebeya_mood;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,19 +25,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyMoodsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    RecyclerView userMoodRecycler;
+    UserMoodAdapter userMoodAdapter;
+    List<UserMoodModel> userMoodItems;
+
     @SerializedName("name")
-    TextView userInfo;
+    TextView userName;
     ConnectApi connectApi;
-    TextView team;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_moods);
 
-        userInfo = findViewById(R.id.my_user_name);
-        team = findViewById(R.id.teamText);
+        userMoodRecycler = findViewById(R.id.userMoodRecycler);
+        userMoodItems = new ArrayList<>();
+
         Spinner filterMood = findViewById(R.id.mood_filter);
+
+        userName = findViewById(R.id.my_user_name);
 
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
                 this,
@@ -43,6 +53,29 @@ public class MyMoodsActivity extends AppCompatActivity implements AdapterView.On
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         filterMood.setAdapter(arrayAdapter);
         filterMood.setOnItemSelectedListener(this);
+
+        userMoodItems.add(new UserMoodModel("emotion", "date","team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+        userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
+
+        userMoodAdapter = new UserMoodAdapter(this, userMoodItems);
+        userMoodRecycler.setAdapter(userMoodAdapter);
+        userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+
+
+
+
+
+
 
         // API CONNECTION
         Retrofit retrofit = new Retrofit.Builder()
@@ -78,19 +111,19 @@ public class MyMoodsActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if(!response.isSuccessful()){
-                    userInfo.setText("result: " + response.code());
+                    //userName.setText("result: " + response.code());
                     return;
                 }
                 /*============= users fetched here ===============*/
                 List<User> users = response.body();
+
                 for(User user : users){
-                    String content = "";
+                   // String content = "";
                   //  content += "ID: " + user.getId() + "\n";
-                    content += "Name: " + user.getUsername() + "\n";
+                    //content += "Name: " + user.getUsername().indexOf(0) + "\n";
                    // content += "Email: " + user.getEmail() + "\n";
                   //  content += "Team: " + user.getTeam() + "\n\n";
-
-                    userInfo.append(content);
+                   // userName.append(content);
                 }
             }
 
@@ -107,7 +140,7 @@ public class MyMoodsActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onResponse(Call<List<Mood>> call, Response<List<Mood>> response) {
                 if(!response.isSuccessful()){
-                    team.setText("result: " + response.code());
+                    //team.setText("result: " + response.code());
                     return;
                 }
                 /*============= users fetched here ===============*/
@@ -118,7 +151,7 @@ public class MyMoodsActivity extends AppCompatActivity implements AdapterView.On
                     content += "Name: " + mood.getEmotion() + "\n";
                     content += "Email: " + mood.getDate() + "\n\n";
 
-                    team.append(content);
+                   //team.append(content);
                 }
             }
 

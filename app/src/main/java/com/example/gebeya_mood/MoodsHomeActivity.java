@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class MoodsHomeActivity extends AppCompatActivity {
     RecyclerView moodRecyclerView;
     MoodsReportAdapter moodsReportAdapter;
     List<MoodReportItemModel> moodReportItems;
@@ -57,15 +57,15 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.moodsPromptIcon:
-                Intent intentPrompt = new Intent(HomeActivity.this, MoodPromptActivity.class);
+                Intent intentPrompt = new Intent(MoodsHomeActivity.this, MoodPromptActivity.class);
                 startActivity(intentPrompt);
                 return true;
             case R.id.my_mood_history:
-                Intent intentMoods = new Intent(HomeActivity.this, MyMoodsActivity.class);
+                Intent intentMoods = new Intent(MoodsHomeActivity.this, MyMoodsActivity.class);
                 startActivity(intentMoods);
                 return true;
             case R.id.adminDataSetIcon:
-                Intent intentAdminView = new Intent(HomeActivity.this, AdminActivity.class);
+                Intent intentAdminView = new Intent(MoodsHomeActivity.this, AdminActivity.class);
                 startActivity(intentAdminView);
                 return true;
             default:

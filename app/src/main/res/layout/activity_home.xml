@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
-<!--    tools:showIn="@layout/mood_show_card"-->
+    tools:context=".MoodsHomeActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -124,7 +124,7 @@ public class MoodPromptActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.listIcon:
-                Intent intent = new Intent(MoodPromptActivity.this, HomeActivity.class);
+                Intent intent = new Intent(MoodPromptActivity.this, MoodsHomeActivity.class);
                 startActivity(intent);
                 return true;
 

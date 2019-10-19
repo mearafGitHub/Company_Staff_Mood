@@ -15,20 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class UserMoodAdapter extends RecyclerView.Adapter<UserMoodAdapter.UserMoodViewHolder> {
-        Context context;
+        Context uContext;
         List<UserMoodModel> userMoodModelList;
 
     public UserMoodAdapter(Context context, List<UserMoodModel> userMoodModelList) {
-        this.context = context;
+        this.uContext = context;
         this.userMoodModelList = userMoodModelList;
     }
 
     public Context getContext() {
-        return context;
+        return uContext;
     }
 
     public void setContext(Context context) {
-        this.context = context;
+        this.uContext = context;
     }
 
     public List<UserMoodModel> getUserMoodModelList() {
@@ -43,23 +43,19 @@ public class UserMoodAdapter extends RecyclerView.Adapter<UserMoodAdapter.UserMo
     @Override
     public UserMoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout;
-        layout = LayoutInflater.from(context).inflate(R.layout.mood_show_card, parent, false);
-
+        layout = LayoutInflater.from(uContext).inflate(R.layout.user_mood_card, parent, false);
         return new UserMoodViewHolder(layout);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserMoodViewHolder holder, int position) {
 
+        holder.emoji.setAnimation(AnimationUtils.loadAnimation(uContext, R.anim.list_fade_anim));
+       // holder.userMoodContainer.setAnimation(AnimationUtils.loadAnimation(uContext, R.anim.list_fade_anim));
 
-        holder.emoji.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
-        holder.listContainer.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
-
-        holder.team.setText(userMoodModelList.get(position).getTeam());
         holder.date.setText(userMoodModelList.get(position).getDate());
         holder.emotion.setText(userMoodModelList.get(position).getEmotion());
         holder.emoji.setImageResource(userMoodModelList.get(position).getEmoji());
-
     }
 
     @Override
@@ -73,16 +69,15 @@ public class UserMoodAdapter extends RecyclerView.Adapter<UserMoodAdapter.UserMo
 
         TextView date, team, emotion;
         ImageView emoji;
-        RelativeLayout listContainer;
+        RelativeLayout userMoodContainer;
 
         public UserMoodViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            date = itemView.findViewById(R.id.dateText);
-            emoji = itemView.findViewById(R.id.emoji);
-            team = itemView.findViewById(R.id.inMoodText);
-            listContainer = itemView.findViewById(R.id.relativeLayoutMoodsReport);
-            emotion = itemView.findViewById(R.id.happyMood);
+            date = itemView.findViewById(R.id.date_usermood);
+            emoji = itemView.findViewById(R.id.user_emoji);
+            emotion = itemView.findViewById(R.id.emotion);
+            userMoodContainer = itemView.findViewById(R.id.userMoodRelativeLayout);
         }
     }
 }

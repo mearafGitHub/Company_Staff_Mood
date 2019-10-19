@@ -51,7 +51,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/staffTeamText"
+                    android:id="@+id/admin_data_TeamName"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginLeft="16dp"
@@ -67,7 +67,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/inMoodText"
+                        android:id="@+id/admin_data_inMoodText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
@@ -77,7 +77,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/moodType"
+                        android:id="@+id/admin_data_EMOTION_text"
                         android:layout_width="wrap_content"
                         android:layout_height="27dp"
                         android:layout_marginLeft="18dp"
@@ -93,7 +93,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/totalMembers"
+                        android:id="@+id/admin_data_totalMembers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
@@ -128,7 +128,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/dateText"
+                        android:id="@+id/admin_data_mood_DATE"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:layout_marginLeft="18dp"
@@ -151,6 +151,7 @@
                 >
 
                 <ImageButton
+                    android:id="@+id/admin_DATASET_icon"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:visibility="visible"
@@ -164,7 +165,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/emoji"
+        android:id="@+id/admin_data_EMOJI"
         android:layout_width="63dp"
         android:layout_height="63dp"
         android:layout_marginStart="16dp"

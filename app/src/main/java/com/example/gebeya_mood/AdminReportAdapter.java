@@ -14,81 +14,75 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class AdminReportAdapter extends RecyclerView.Adapter<AdminReportAdapter.AdminReportViewHolder> {
+public class AdminReportAdapter extends RecyclerView.Adapter<AdminReportAdapter.AdminReportView>{
+    Context aContext;
+    List<AdminReportModel> aReports;
 
-    Context mContext;
-    List<MoodReportItemModel> mReports;
-
-    public AdminReportAdapter(Context mContext, List<MoodReportItemModel> mReports) {
-
-        this.mContext = mContext;
-        this.mReports = mReports;
+    public AdminReportAdapter(Context aContext, List<AdminReportModel> aReports) {
+        this.aContext = aContext;
+        this.aReports = aReports;
     }
 
-    public Context getmContext() {
-        return mContext;
+    public Context getaContext() {
+        return aContext;
     }
 
-    public List<MoodReportItemModel> getmReports() {
-        return mReports;
+    public void setaContext(Context aContext) {
+        this.aContext = aContext;
     }
 
-
-    public void setmContext(Context mContext) {
-        this.mContext = mContext;
+    public List<AdminReportModel> getaReports() {
+        return aReports;
     }
 
-    public void setmReports(List<MoodReportItemModel> mReports) {
-        this.mReports = mReports;
+    public void setaReports(List<AdminReportModel> aReports) {
+        this.aReports = aReports;
     }
 
     @NonNull
     @Override
-    public AdminReportViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View layout;
-        layout = LayoutInflater.from(mContext).inflate(R.layout.admin_moods_data_card, parent, false);
-        return new AdminReportViewHolder(layout);
+    public AdminReportView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view;
+        view = LayoutInflater.from(aContext).inflate(R.layout.admin_moods_data_card, parent, false);
+        return new AdminReportView(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdminReportAdapter.AdminReportViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdminReportView holder, int position) {
+        holder.moodEmoji.setAnimation(AnimationUtils.loadAnimation(aContext, R.anim.list_fade_anim));
+        holder.reportContainer.setAnimation(AnimationUtils.loadAnimation(aContext, R.anim.list_fade_anim));
 
-
-        holder.moodEmoji.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.list_fade_anim));
-        holder.reportContainer.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.list_fade_anim));
-
-        holder.staffGroupName.setText(mReports.get(position).getStaffGroupName());
-        holder.inMood.setText(mReports.get(position).getInMood());
-        holder.totalMembers.setText(mReports.get(position).getTotalMembers());
-        holder.moodType.setText(mReports.get(position).getMoodType());
-        holder.reportDate.setText(mReports.get(position).getReportDate());
-        holder.moodEmoji.setImageResource(mReports.get(position).getEmoji());
-
+        holder.reportDate.setText(aReports.get(position).getReportDate());
+        holder.staffGroupName.setText(aReports.get(position).getStaffGroupName());
+        holder.totalMembers.setText(aReports.get(position).getTotalMembers());
+        holder.moodEmoji.setImageResource(aReports.get(position).getEmoji());
+        holder.inMood.setText(aReports.get(position).getInMood());
+       // holder.dataSetIcon.setImageResource(aReports.get(position).getDataset());
     }
 
     @Override
     public int getItemCount() {
-        return mReports.size();
+        return 0;
     }
 
-
-
-    public class AdminReportViewHolder extends RecyclerView.ViewHolder {
+    public class AdminReportView extends RecyclerView.ViewHolder{
 
         public RelativeLayout reportContainer;
         TextView staffGroupName,totalMembers, moodType, inMood, reportDate;
-        ImageView moodEmoji;
-
-        public AdminReportViewHolder(@NonNull View itemView) {
+        ImageView moodEmoji, dataSetIcon;
+        public AdminReportView(@NonNull View itemView) {
             super(itemView);
 
-            staffGroupName = itemView.findViewById(R.id.staffTeamText);
-            totalMembers = itemView.findViewById(R.id.totalMembers);
-            moodType = itemView.findViewById(R.id.moodType);
-            inMood = itemView.findViewById(R.id.inMoodText);
-            moodEmoji = itemView.findViewById(R.id.emoji);
-            reportDate = itemView.findViewById(R.id.dateText);
-            reportContainer = itemView.findViewById(R.id.relativeLayoutMoodsReport);
+        staffGroupName = itemView.findViewById(R.id.admin_data_TeamName);
+        totalMembers = itemView.findViewById(R.id.admin_data_totalMembers);
+        moodType = itemView.findViewById(R.id.admin_data_EMOTION_text);
+        inMood = itemView.findViewById(R.id.admin_data_inMoodText);
+        moodEmoji = itemView.findViewById(R.id.admin_data_EMOJI);
+        reportDate = itemView.findViewById(R.id.admin_data_mood_DATE);
+        reportContainer = itemView.findViewById(R.id.relativeLayoutAdmin);
+        //dataSetIcon = itemView.findViewById(R.id.admin_DATASET_icon);
+
         }
     }
+
 }

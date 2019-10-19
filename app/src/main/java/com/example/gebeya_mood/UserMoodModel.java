@@ -14,6 +14,14 @@ public class UserMoodModel {
         this.team = team;
     }
 
+    public UserMoodModel(String emotion, String date, String team, int emoji) {
+        this.emotion = emotion;
+        this.date = date;
+        this.team = team;
+        this.emoji = emoji;
+    }
+
+
     public int getEmoji() {
         return emoji;
     }
