@@ -16,13 +16,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginLeft="3dp"
         android:background="@drawable/card_bg"
         android:clipToPadding="false"
         android:fadeScrollbars="false"
         android:paddingLeft="3dp"
-        android:paddingRight="10dp"
+        android:paddingRight="3dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="31dp"
-            android:layout_marginLeft="31dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="start"
             android:orientation="vertical">
@@ -52,7 +53,7 @@
                     android:id="@+id/staffTeamText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="18dp"
                     android:text="Stuff Group"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18dp" />
@@ -93,7 +94,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
+                        android:layout_marginLeft="2dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -110,7 +111,7 @@
                             android:id="@+id/moodType"
                             android:layout_width="wrap_content"
                             android:layout_height="23dp"
-                            android:layout_marginLeft="12dp"
+                            android:layout_marginLeft="9dp"
                             android:text=" Happy"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
@@ -125,7 +126,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="3dp"
                 android:orientation="horizontal">
 
 
@@ -133,16 +135,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_supervised_user_circle" />
+
                 <TextView
                     android:id="@+id/totalMembers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
                     android:layout_marginRight="10dp"
                     android:text="12 "
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16dp"
 
-                    android:layout_marginLeft="12dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
 
@@ -157,10 +160,10 @@
         android:id="@+id/emoji"
         android:layout_width="63dp"
         android:layout_height="63dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
         android:layout_marginEnd="477dp"
-        android:layout_marginRight="477dp"
+        android:layout_marginRight="481dp"
         android:contentDescription="Emoji"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"

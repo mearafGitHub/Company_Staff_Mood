@@ -7,13 +7,47 @@
     android:layout_height="match_parent"
     tools:context=".moodhome.MoodsHomeActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        android:showDividers="end"
+        android:id="@+id/linearfilter"
+        android:soundEffectsEnabled="true"
+        android:layout_marginBottom="9dp"
+        android:background="@color/colorBackgroundAccent"
+        >
+
+
+        <ImageView
+            android:id="@+id/dateIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/ic_date_range" />
+
+        <Spinner
+            android:id="@+id/mood_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:text="All"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/linearfilter"
+        android:layout_marginLeft="7dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="3dp"
         />

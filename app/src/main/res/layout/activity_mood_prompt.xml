@@ -25,26 +25,28 @@
 
         <TextView
             android:id="@+id/promptTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="23dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="10dp"
+            android:shadowColor="@color/colorPrimaryFront"
             android:textColor="@color/colorPrimary"
             android:text="Hi!   How are you feeling today?"
             />
 
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:paddingLeft="9dp"
             android:layout_marginVertical="20dp"
             android:layout_gravity="center"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:background="@color/colorBackgroundLight"
             >
 
             <ImageButton
