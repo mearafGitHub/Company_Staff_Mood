@@ -37,5 +37,5 @@ DOING:
  [..] 8. Admin Views
       [x] List of mood reports with details of the staffs
       [] actual data send/receive
-
+ [] 9. Notification and i++ when user submits a mood
  [] 10. MV-VP architecture

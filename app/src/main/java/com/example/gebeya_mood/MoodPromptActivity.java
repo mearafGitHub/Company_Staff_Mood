@@ -116,6 +116,7 @@ public class MoodPromptActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mood_list, menu);
+        getMenuInflater().inflate(R.menu.my_moods_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -127,7 +128,10 @@ public class MoodPromptActivity extends AppCompatActivity {
                 Intent intent = new Intent(MoodPromptActivity.this, MoodsHomeActivity.class);
                 startActivity(intent);
                 return true;
-
+            case R.id.my_mood_history:
+                Intent intentMoods = new Intent(MoodPromptActivity.this, MyMoodsActivity.class);
+                startActivity(intentMoods);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
