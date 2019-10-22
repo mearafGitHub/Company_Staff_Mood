@@ -1,11 +1,13 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.admin;
+
+import com.example.gebeya_mood.R;
 
 public class AdminReportModel {
 
         String staffGroupName, moodType, reportDate;
         String inMood, totalMembers;
         int emoji;
-        int dataset=R.id.adminDataSetIcon;
+        int dataset= R.id.adminDataSetIcon;
 
 
         public AdminReportModel(String stuffGroupName, String moodType, String inMood, String totalMembers, String reportDate, int emoji) {

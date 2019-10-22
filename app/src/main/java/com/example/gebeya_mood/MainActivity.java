@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.gebeya_mood.ui.login.LoginActivity;
+import com.example.gebeya_mood.signup.SignUpActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

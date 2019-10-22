@@ -1,6 +1,5 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.mymoods;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +11,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gebeya_mood.ConnectApi;
+import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.moods.Mood;
+import com.example.gebeya_mood.data.users.User;
+import com.example.gebeya_mood.data.users.UserMoodAdapter;
+import com.example.gebeya_mood.data.users.UserMoodModel;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -23,11 +29,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MyMoodsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
-    RecyclerView userMoodRecycler;
-    UserMoodAdapter userMoodAdapter;
-    List<UserMoodModel> userMoodItems;
+    public RecyclerView userMoodRecycler;
+    public UserMoodAdapter userMoodAdapter;
+    public List<UserMoodModel> userMoodItems;
 
     @SerializedName("name")
     TextView userName;
@@ -35,7 +41,7 @@ public class MyMoodsActivity extends AppCompatActivity implements AdapterView.On
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_moods);
 

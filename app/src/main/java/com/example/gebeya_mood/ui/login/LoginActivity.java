@@ -10,7 +10,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,10 +22,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gebeya_mood.MoodPromptActivity;
+import com.example.gebeya_mood.moods.MoodPromptActivity;
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.framework.base.BaseActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private LoginViewModel loginViewModel;
     private Button login;

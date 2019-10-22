@@ -1,9 +1,9 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.moods;
 
-class Mood {
+public class Mood {
     String emotion, date, userId;
 
-    Mood(){}
+    public Mood(){}
 
     public Mood(String emotion, String date, String userId) {
         this.emotion = emotion;

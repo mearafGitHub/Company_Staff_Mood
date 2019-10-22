@@ -1,15 +1,15 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.data.users;
 
-class User {
+public class  User {
 
-    private String username;
-    private String email;
-    private String id;
-    private String team;
-    private String gender;
-    private String mood;
+    public String username;
+    public String email;
+    public String id;
+    public String team;
+    public String gender;
+    public String mood;
 
-    User(){}
+   public User(){}
 
     public User(String username, String email, String id, String team, String gender, String mood) {
         this.username = username;

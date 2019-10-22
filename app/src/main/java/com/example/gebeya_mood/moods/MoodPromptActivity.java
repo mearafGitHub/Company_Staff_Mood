@@ -1,7 +1,6 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.moods;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,8 +12,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.moodhome.MoodsHomeActivity;
+import com.example.gebeya_mood.mymoods.MyMoodsActivity;
 
-public class MoodPromptActivity extends AppCompatActivity {
+
+public class MoodPromptActivity extends BaseActivity {
 
     //@BindView(R.id.happyMood)
     private ImageButton happyMood;
@@ -40,7 +44,7 @@ public class MoodPromptActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood_prompt);
 

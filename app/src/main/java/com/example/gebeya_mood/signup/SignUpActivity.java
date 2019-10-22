@@ -1,4 +1,4 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,15 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.ui.login.LoginActivity;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends BaseActivity {
 
 
     private Button signup;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 

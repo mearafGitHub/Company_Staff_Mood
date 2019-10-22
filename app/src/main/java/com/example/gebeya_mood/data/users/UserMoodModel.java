@@ -1,4 +1,4 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.data.users;
 
 public class UserMoodModel {
 

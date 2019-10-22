@@ -1,7 +1,6 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.moodhome;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,16 +9,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.gebeya_mood.moods.MoodPromptActivity;
+import com.example.gebeya_mood.mymoods.MyMoodsActivity;
+import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.admin.AdminActivity;
+import com.example.gebeya_mood.framework.base.BaseActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoodsHomeActivity extends AppCompatActivity {
+public class MoodsHomeActivity extends BaseActivity {
     RecyclerView moodRecyclerView;
     MoodsReportAdapter moodsReportAdapter;
     List<MoodReportItemModel> moodReportItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 

@@ -1,5 +1,8 @@
 package com.example.gebeya_mood;
 
+import com.example.gebeya_mood.moods.Mood;
+import com.example.gebeya_mood.data.users.User;
+
 import java.util.List;
 
 import retrofit2.Call;
