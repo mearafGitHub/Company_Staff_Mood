@@ -46,8 +46,6 @@ public class MoodsHomeActivity extends BaseActivity {
     }
 
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mood_promt_menu, menu);

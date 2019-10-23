@@ -11,133 +11,113 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/relativeLayoutMoodsReport"
+        android:id="@+id/relativeLayoutADMINReport"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="3dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginLeft="9dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginLeft="3dp"
         android:background="@drawable/card_bg"
         android:clipToPadding="false"
         android:fadeScrollbars="false"
         android:paddingLeft="3dp"
-        android:paddingRight="10dp"
+        android:paddingRight="3dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/emoji"
-        app:layout_constraintTop_toTopOf="@id/emoji"
+        app:layout_constraintStart_toStartOf="@id/admin_data_EMOJI"
+        app:layout_constraintTop_toTopOf="@id/admin_data_EMOJI"
         app:layout_constraintVertical_bias="0.0">
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="56dp"
+            android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:gravity="start">
+            android:gravity="start"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="21dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="start"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/admin_data_TeamName"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
                     android:text="Stuff Group"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/timeIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_marginLeft="21dp"
+                    android:src="@drawable/ic_schedule" />
+
+                <TextView
+                    android:id="@+id/admin_data_mood_DATE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center_vertical"
+                    android:text="mood date"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:orientation="horizontal">
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/admin_data_inMoodText"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="11"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:layout_marginLeft="2dp"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/admin_data_EMOTION_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="27dp"
-                        android:layout_marginLeft="18dp"
-                        android:text=" Happy"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18dp" />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/admin_data_inMoodText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="11"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/admin_data_totalMembers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="12 "
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="27dp"
-                        android:text="Members: "
-                        android:layout_marginLeft="18dp"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18dp" />
+                        <TextView
+                            android:id="@+id/admin_data_EMOTION_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="9dp"
+                            android:text=" Happy"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16dp" />
 
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/timeIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|center_horizontal"
-                        android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_schedule"
-                        />
-
-                    <TextView
-                        android:id="@+id/admin_data_mood_DATE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="7dp"
-                        android:gravity="center_vertical"
-                        android:text="mood date"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18dp" />
-
+                    </LinearLayout>
                 </LinearLayout>
 
 
@@ -145,20 +125,40 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="21dp"
-                android:layout_marginLeft="63dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
                 >
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_supervised_user_circle" />
+
+                <TextView
+                    android:id="@+id/admin_data_totalMembers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="10dp"
+                    android:text="12 "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/admin_DATASET_icon"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:visibility="visible"
-                    android:src="@drawable/ic_perm_data_setting"
-                    android:background="#0000ffff"
-                    />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="49dp"
+                    android:src="@drawable/purple_data_set_icon" />
+
+
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -168,10 +168,10 @@
         android:id="@+id/admin_data_EMOJI"
         android:layout_width="63dp"
         android:layout_height="63dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
         android:layout_marginEnd="477dp"
-        android:layout_marginRight="477dp"
+        android:layout_marginRight="481dp"
         android:contentDescription="Emoji"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"

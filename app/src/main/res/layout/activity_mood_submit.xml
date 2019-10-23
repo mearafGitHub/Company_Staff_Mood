@@ -8,6 +8,7 @@
     tools:context=".moods.MoodSubmit"
     android:padding="18dp"
     android:orientation="vertical"
+    android:id="@+id/modalLayout"
     >
 
     <LinearLayout
@@ -20,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="What is it?"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryFront"
             android:textSize="21dp"
             android:layout_marginRight="100dp"/>
 
@@ -53,16 +54,68 @@
 
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Do want to tell us ?"
-        android:id="@+id/modalMoodReason"
-        android:height="54dp"
-        android:layout_marginTop="63dp"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal|center_vertical"
-        />
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_marginTop="18dp">
+
+       <com.airbnb.lottie.LottieAnimationView
+           android:layout_margin="8dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
+           android:scaleType="centerCrop"
+           app:lottie_autoPlay="true"
+           app:lottie_loop="true"
+           app:lottie_rawRes="@raw/haha" />
+
+       <com.airbnb.lottie.LottieAnimationView
+           android:layout_margin="8dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
+           android:scaleType="centerCrop"
+           app:lottie_autoPlay="true"
+           app:lottie_loop="true"
+           app:lottie_rawRes="@raw/sad" />
+
+       <com.airbnb.lottie.LottieAnimationView
+           android:layout_margin="8dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
+           android:scaleType="centerCrop"
+           app:lottie_autoPlay="true"
+           app:lottie_loop="true"
+           app:lottie_rawRes="@raw/wow" />
+
+       <com.airbnb.lottie.LottieAnimationView
+           android:layout_margin="8dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
+           android:scaleType="centerCrop"
+           app:lottie_autoPlay="true"
+           app:lottie_loop="true"
+           app:lottie_rawRes="@raw/angry" />
+
+
+       <com.airbnb.lottie.LottieAnimationView
+           android:layout_margin="8dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
+           android:scaleType="centerCrop"
+           app:lottie_autoPlay="true"
+           app:lottie_loop="true"
+           app:lottie_rawRes="@raw/meh" />
+
+
+       <com.airbnb.lottie.LottieAnimationView
+           android:layout_margin="8dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
+           android:scaleType="centerCrop"
+           app:lottie_autoPlay="true"
+           app:lottie_loop="true"
+           app:lottie_rawRes="@raw/haha" />
+   </LinearLayout>
 
 
     <LinearLayout
@@ -70,6 +123,7 @@
         android:layout_height="85dp"
         android:layout_gravity="center_horizontal"
         android:baselineAligned="true"
+        android:layout_marginTop="9dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -78,11 +132,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|left"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="12dp"
             android:background="#00000000"
             android:text="Go"
             android:textColor="@color/colorAccent"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:elevation="9dp"
+            />
 
         <Button
             android:id="@+id/skipModalButton"
@@ -90,9 +146,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|right"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="12dp"
             android:background="#00000000"
             android:text="Skip"
+            android:elevation="9dp"
             android:textColor="@color/colorAccent"
             android:textSize="18dp" />
 

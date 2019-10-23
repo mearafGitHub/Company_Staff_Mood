@@ -15,8 +15,9 @@
         android:showDividers="end"
         android:id="@+id/linearfilter"
         android:soundEffectsEnabled="true"
-        android:layout_marginBottom="9dp"
-        android:background="@color/colorBackgroundAccent"
+        android:layout_marginBottom="3dp"
+        android:background="@color/colorBackgroundLight"
+        android:elevation="18dp"
         >
 
 
@@ -42,6 +43,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:elevation="9dp"
         android:id="@+id/homeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

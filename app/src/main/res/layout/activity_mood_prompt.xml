@@ -28,13 +28,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="23dp"
+            android:elevation="18dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="10dp"
             android:shadowColor="@color/colorPrimaryFront"
             android:textColor="@color/colorPrimary"
-            android:text="Hi!   How are you feeling today?"
+            android:text="Hi! How are you feeling today?"
             />
 
 
@@ -46,7 +47,7 @@
             android:layout_gravity="center"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="@color/colorBackgroundLight"
+            android:elevation="18dp"
             >
 
             <ImageButton
@@ -56,11 +57,11 @@
                 android:layout_marginRight="5dp"
                 android:src="@drawable/ic_emoticon_happy"
                 android:background="@android:color/transparent"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="0dp"
                 />
 
             <ImageButton
-                android:id="@+id/whateverMood"
+                android:id="@+id/neutral"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:src="@drawable/ic_emoticon_neutral"

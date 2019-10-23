@@ -8,13 +8,14 @@
     android:layout_alignParentTop="false"
     android:background="#ffffff"
     android:clipToPadding="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:elevation="9dp">
 
     <RelativeLayout
         android:id="@+id/relativeLayoutMoodsReport"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="18dp"
         android:layout_marginLeft="18dp"
@@ -24,6 +25,7 @@
         android:paddingLeft="3dp"
         android:paddingRight="10dp"
         android:paddingBottom="8dp"
+        android:elevation="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -111,5 +113,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_emoticon_excited"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat"
+        android:elevation="9dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

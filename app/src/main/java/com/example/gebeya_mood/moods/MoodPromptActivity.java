@@ -3,13 +3,17 @@ package com.example.gebeya_mood.moods;
 import androidx.annotation.NonNull;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.gebeya_mood.R;
@@ -29,7 +33,7 @@ public class MoodPromptActivity extends BaseActivity {
    // @BindView(R.id.angryMood)
     private ImageButton angryMood;
   //  @BindView(R.id.whateverMood)
-    private ImageButton whateverMood;
+    private ImageButton neutralMood;
 
     private ImageButton coolMood;
 
@@ -52,35 +56,69 @@ public class MoodPromptActivity extends BaseActivity {
         sadMood = findViewById(R.id.sadMood);
         mehMood = findViewById(R.id.mehMood);
         angryMood = findViewById(R.id.disappointedMood);
-        whateverMood = findViewById(R.id.whateverMood);
+        neutralMood = findViewById(R.id.neutral);
         coolMood = findViewById(R.id.coolMood);
         excitedMood = findViewById(R.id.excitedMood);
 
         happyMood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodDialogAlert();
+                Toast.makeText(MoodPromptActivity.this, "Glad you are Happy.", Toast.LENGTH_LONG).show();
+                moodDialogAlert("happyMood");
             }
         });
 
-        //happyMood.setOnClickListener(v -> Toast.makeText(MoodPromptActivity.this, "Glad you are Happy.", Toast.LENGTH_LONG).show());
 
-        sadMood.setOnClickListener(v -> Toast.makeText(MoodPromptActivity.this, "Sorry you are Sad.", Toast.LENGTH_LONG).show());
+        sadMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MoodPromptActivity.this, "Sorry you are Sad.", Toast.LENGTH_LONG).show();
+                moodDialogAlert("sadMood");
+            }
+        });
 
-        mehMood.setOnClickListener(v -> Toast.makeText(MoodPromptActivity.this, "Oh, you are bord.", Toast.LENGTH_LONG).show());
+        mehMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MoodPromptActivity.this, "Oh, you are bord?", Toast.LENGTH_LONG).show();
+                moodDialogAlert("mehMood");
+            }
+        });
 
-        angryMood.setOnClickListener(v -> Toast.makeText(MoodPromptActivity.this, "Angry? What's it?", Toast.LENGTH_LONG).show());
+        angryMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MoodPromptActivity.this, "Angry? What's it?", Toast.LENGTH_LONG).show();
+                moodDialogAlert("angryMood");
+            }
+        });
 
-        whateverMood.setOnClickListener(v -> Toast.makeText(MoodPromptActivity.this, "Just normal", Toast.LENGTH_LONG).show());
+        neutralMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MoodPromptActivity.this, "Just normal", Toast.LENGTH_LONG).show();
+                moodDialogAlert("neutral");
+            }
+        });
 
-        excitedMood.setOnClickListener(v -> Toast.makeText(MoodPromptActivity.this, "Glad you're excited.", Toast.LENGTH_LONG).show());
+        excitedMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MoodPromptActivity.this, "Glad you're excited.", Toast.LENGTH_LONG).show();
+                moodDialogAlert("excitedMood");
+            }
+        });
 
-        coolMood.setOnClickListener(v -> Toast.makeText(MoodPromptActivity.this, "Wow, you feel cool.", Toast.LENGTH_LONG).show());
-
+        coolMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MoodPromptActivity.this, "Aha! Feeling cool.", Toast.LENGTH_LONG).show();
+                moodDialogAlert("coolMood");
+            }
+        });
     }
 
-
-    public void moodDialogAlert(){
+    public void moodDialogAlert(String mood){
         why = new Dialog(MoodPromptActivity.this);
         why.setContentView(R.layout.activity_mood_submit);
         why.setTitle("What is it?");
@@ -92,6 +130,12 @@ public class MoodPromptActivity extends BaseActivity {
         go.setEnabled(true);
         skip.setEnabled(true);
         cancel.setEnabled(true);
+
+        //LayoutInflater inflater= (LayoutInflater) getApplicationContext().getSystemService(this.LAYOUT_INFLATER_SERVICE);
+       //View view = inflater.inflate(R.layout.happy_anim, null);
+
+        //LinearLayout container =  findViewById(R.id.modalLayout);
+       // container.addView(view, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         go.setOnClickListener(new View.OnClickListener() {
             @Override

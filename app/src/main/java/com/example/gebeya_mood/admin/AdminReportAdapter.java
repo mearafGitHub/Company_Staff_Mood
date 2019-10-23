@@ -59,7 +59,7 @@ public class AdminReportAdapter extends RecyclerView.Adapter<AdminReportAdapter.
         holder.totalMembers.setText(aReports.get(position).getTotalMembers());
         holder.moodEmoji.setImageResource(aReports.get(position).getEmoji());
         holder.inMood.setText(aReports.get(position).getInMood());
-       // holder.dataSetIcon.setImageResource(aReports.get(position).getDataset());
+        holder.dataSetIcon.setImageResource(aReports.get(position).getDataset());
     }
 
     @Override
@@ -81,8 +81,8 @@ public class AdminReportAdapter extends RecyclerView.Adapter<AdminReportAdapter.
         inMood = itemView.findViewById(R.id.admin_data_inMoodText);
         moodEmoji = itemView.findViewById(R.id.admin_data_EMOJI);
         reportDate = itemView.findViewById(R.id.admin_data_mood_DATE);
-        reportContainer = itemView.findViewById(R.id.relativeLayoutAdmin);
-        //dataSetIcon = itemView.findViewById(R.id.admin_DATASET_icon);
+        reportContainer = itemView.findViewById(R.id.relativeLayoutADMINReport);
+        dataSetIcon = itemView.findViewById(R.id.admin_DATASET_icon);
 
         }
     }
