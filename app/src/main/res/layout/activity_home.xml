@@ -28,7 +28,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="9dp"
             android:layout_marginRight="3dp"
-            android:src="@drawable/ic_date_range" />
+            app:srcCompat="@drawable/ic_date_range" />
 
         <Spinner
             android:id="@+id/mood_filter"

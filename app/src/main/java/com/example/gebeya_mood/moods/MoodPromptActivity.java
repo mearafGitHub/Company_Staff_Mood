@@ -131,7 +131,7 @@ public class MoodPromptActivity extends BaseActivity {
         skip.setEnabled(true);
         cancel.setEnabled(true);
 
-        //LayoutInflater inflater= (LayoutInflater) getApplicationContext().getSystemService(this.LAYOUT_INFLATER_SERVICE);
+        //LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(this.LAYOUT_INFLATER_SERVICE);
        //View view = inflater.inflate(R.layout.happy_anim, null);
 
         //LinearLayout container =  findViewById(R.id.modalLayout);

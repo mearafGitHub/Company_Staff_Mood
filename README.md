@@ -4,7 +4,8 @@ DOING:
 
     [X]  Models and View Design
     [X]  API connection test with POJO
-    [..] fetching and sending to API
+    [...] Working with DTO and DAO for API Communication
+    [...] fetching and sending to API
 
  [X] 1. list cards in recycler view
        [x] the moods on the gebeya mood home screen
