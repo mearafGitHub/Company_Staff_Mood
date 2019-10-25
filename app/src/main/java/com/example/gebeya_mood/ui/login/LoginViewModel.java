@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.example.gebeya_mood.data.LoginRepository;
-import com.example.gebeya_mood.data.Result;
+import com.example.gebeya_mood.data.users.LoginRepository;
+import com.example.gebeya_mood.data.users.Result;
 import com.example.gebeya_mood.data.model.LoggedInUser;
 import com.example.gebeya_mood.R;
 

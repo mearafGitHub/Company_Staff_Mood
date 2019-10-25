@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.example.gebeya_mood.data.LoginDataSource;
-import com.example.gebeya_mood.data.LoginRepository;
+import com.example.gebeya_mood.data.users.LoginDataSource;
+import com.example.gebeya_mood.data.users.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

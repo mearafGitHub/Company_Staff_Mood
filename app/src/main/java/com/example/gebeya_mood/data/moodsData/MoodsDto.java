@@ -1,14 +1,28 @@
-package com.example.gebeya_mood.moods;
+package com.example.gebeya_mood.data.moodsData;
 
-public class Mood {
-    String emotion, date, userId;
+import com.google.gson.annotations.Expose;
 
-    public Mood(){}
+public class MoodsDto {
 
-    public Mood(String emotion, String date, String userId) {
-        this.emotion = emotion;
-        this.date = date;
-        this.userId = userId;
+    @Expose
+    private String emotion;
+
+    @Expose
+    private String moodId;
+
+    @Expose
+    private String date;
+
+    @Expose
+    private String userId;
+
+
+    public String getMoodId() {
+        return moodId;
+    }
+
+    public void setMoodId(String moodId) {
+        this.moodId = moodId;
     }
 
     public String getEmotion() {

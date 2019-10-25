@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.example.gebeya_mood.ConnectApi;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
-import com.example.gebeya_mood.moods.Mood;
+import com.example.gebeya_mood.data.moodsData.Mood;
 import com.example.gebeya_mood.data.users.User;
 import com.example.gebeya_mood.data.users.UserMoodAdapter;
 import com.example.gebeya_mood.data.users.UserMoodModel;

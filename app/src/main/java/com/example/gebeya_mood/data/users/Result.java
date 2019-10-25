@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.data;
+package com.example.gebeya_mood.data.users;
 
 /**
  * A generic class that holds a result success w/ data or an error exception.

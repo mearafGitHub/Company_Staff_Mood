@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.data;
+package com.example.gebeya_mood.data.users;
 
 import com.example.gebeya_mood.data.model.LoggedInUser;
 
