@@ -60,7 +60,7 @@ public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemS
         filterMood.setAdapter(arrayAdapter);
         filterMood.setOnItemSelectedListener(this);
 
-        userMoodItems.add(new UserMoodModel("emotion", "date","team name", R.drawable.ic_emoticon_happy));
+      /*  userMoodItems.add(new UserMoodModel("emotion", "date","team name", R.drawable.ic_emoticon_happy));
         userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
         userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
         userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
@@ -69,19 +69,10 @@ public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemS
         userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
         userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
         userMoodItems.add(new UserMoodModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-
+*/
         userMoodAdapter = new UserMoodAdapter(this, userMoodItems);
         userMoodRecycler.setAdapter(userMoodAdapter);
         userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));
-
-
-
-
-
-
-
-
-
 
         // API CONNECTION
         Retrofit retrofit = new Retrofit.Builder()
@@ -92,10 +83,10 @@ public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemS
         connectApi = retrofit.create(ConnectApi.class);
 
         // Get Users from API
-        getUsersCall();
+     /*   getUsersCall();
 
         // Moods Here
-        getMoodsCall();
+        getMoodsCall();*/
     }
 
     @Override
@@ -110,61 +101,6 @@ public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemS
 
     }
 
-    private void getUsersCall() {
 
-        Call<List<User>> call = connectApi.getUsers();
-        call.enqueue(new Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                if(!response.isSuccessful()){
-                    //userName.setText("result: " + response.code());
-                    return;
-                }
-                /*============= users fetched here ===============*/
-                List<User> users = response.body();
-
-                for(User user : users){
-                   // String content = "";
-                  //  content += "ID: " + user.getId() + "\n";
-                    //content += "Name: " + user.getUsername().indexOf(0) + "\n";
-                   // content += "Email: " + user.getEmail() + "\n";
-                  //  content += "Team: " + user.getTeam() + "\n\n";
-                   // userName.append(content);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-            }
-        });
-    }
-
-    private void getMoodsCall() {
-
-        Call<List<Mood>> call = connectApi.getMoods();
-        call.enqueue(new Callback<List<Mood>>() {
-            @Override
-            public void onResponse(Call<List<Mood>> call, Response<List<Mood>> response) {
-                if(!response.isSuccessful()){
-                    //team.setText("result: " + response.code());
-                    return;
-                }
-                /*============= users fetched here ===============*/
-                List<Mood> moods = response.body();
-                for(Mood mood : moods){
-                    String content = "";
-                    content += "ID: " + mood.getUserId() + "\n";
-                    content += "Name: " + mood.getEmotion() + "\n";
-                    content += "Email: " + mood.getDate() + "\n\n";
-
-                   //team.append(content);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Mood>> call, Throwable t) {
-            }
-        });
-    }
 
 }
