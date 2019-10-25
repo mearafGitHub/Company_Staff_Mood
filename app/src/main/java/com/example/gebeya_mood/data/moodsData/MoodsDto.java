@@ -16,6 +16,17 @@ public class MoodsDto {
     @Expose
     private String userId;
 
+    @Expose
+    private String reason;
+
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
     public String getMoodId() {
         return moodId;
