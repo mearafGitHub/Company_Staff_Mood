@@ -1,6 +1,4 @@
-package com.example.gebeya_mood.moods;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.gebeya_mood.moodPrompt;
 
 import android.os.Bundle;
 

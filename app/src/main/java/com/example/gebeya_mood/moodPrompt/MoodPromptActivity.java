@@ -1,19 +1,15 @@
-package com.example.gebeya_mood.moods;
+package com.example.gebeya_mood.moodPrompt;
 
 import androidx.annotation.NonNull;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.gebeya_mood.R;

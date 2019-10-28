@@ -12,7 +12,7 @@
         android:roundIcon="@drawable/gebeya_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".moods.MoodSubmit"></activity>
+        <activity android:name=".moodPrompt.MoodSubmit"></activity>
         <activity android:name=".mymoods.MyMoodsActivity"
             android:label="@string/title_activity_my_moods"/>
         <activity android:name=".moodhome.MoodsHomeActivity"
@@ -20,7 +20,7 @@
         <activity android:name=".admin.AdminActivity"
             android:label="@string/admin_title"/>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".moods.MoodPromptActivity"
+        <activity android:name=".moodPrompt.MoodPromptActivity"
             android:label="@string/title_activity_mood_prompt"/>
         <activity android:name=".MainActivity">
             <intent-filter>

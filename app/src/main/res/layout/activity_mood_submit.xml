@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".moods.MoodSubmit"
+    tools:context=".moodPrompt.MoodSubmit"
     android:padding="18dp"
     android:orientation="vertical"
     android:id="@+id/modalLayout"
@@ -23,7 +23,9 @@
             android:text="Any reason?"
             android:textColor="@color/colorPrimaryFront"
             android:textSize="27dp"
-            android:layout_marginRight="100dp"/>
+            android:layout_marginRight="100dp"
+            android:elevation="18dp"
+            />
 
 
         <ImageButton
@@ -64,7 +66,7 @@
             android:scaleType="centerCrop"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/money" />
+            app:lottie_rawRes="@raw/tenor" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="85dp"

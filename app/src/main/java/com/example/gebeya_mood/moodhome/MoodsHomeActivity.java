@@ -1,6 +1,7 @@
 package com.example.gebeya_mood.moodhome;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,7 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.gebeya_mood.moods.MoodPromptActivity;
+import com.example.gebeya_mood.data.moodsData.Mood;
+import com.example.gebeya_mood.moodPrompt.MoodPromptActivity;
 import com.example.gebeya_mood.mymoods.MyMoodsActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.admin.AdminActivity;
@@ -18,30 +20,38 @@ import com.example.gebeya_mood.framework.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoodsHomeActivity extends BaseActivity {
-    RecyclerView moodRecyclerView;
-    MoodsReportAdapter moodsReportAdapter;
-    List<MoodReportItemModel> moodReportItems;
+import butterknife.ButterKnife;
 
+public class MoodsHomeActivity extends BaseActivity {
+    private RecyclerView moodRecyclerView;
+    private MoodsAdapter moodsAdapter;
+    private MoodViewModel moodViewModel;
+    private List<Mood> moods;
+
+    //moodRecyclerView = findViewById(R.id.homeRecyclerView);
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
 
-        moodRecyclerView = findViewById(R.id.homeRecyclerView);
-        moodReportItems = new ArrayList<>();
-
-        moodReportItems.add(new MoodReportItemModel("Managers Team", "Tired", "4", "5", "Oct 18, 2019",R.drawable.ic_emoticon_confused));
-        moodReportItems.add(new MoodReportItemModel("Android Developers", "Cool", "6", "7", "Oct 18, 2019",R.drawable.ic_emoticon_cool));
-        moodReportItems.add(new MoodReportItemModel("Trainers Team", "Normal", "5", "9", "Oct 18, 2019",R.drawable.ic_emoticon_neutral));
-        moodReportItems.add(new MoodReportItemModel("Human Resource", "Unhappy", "2", "3", "Oct 18, 2019",R.drawable.ic_emoticon_sad));
-        moodReportItems.add(new MoodReportItemModel("Back-End Developers", "Excited", "9", "11", "Oct 18, 2019",R.drawable.ic_emoticon_excited));
-        moodReportItems.add(new MoodReportItemModel("Front-End Developers", "Well!", "3", "4", "Oct 18, 2019",R.drawable.ic_emoticon_happy));
-        moodReportItems.add(new MoodReportItemModel("Consultants Team", "Cool", "3", "4", "Oct 18, 2019",R.drawable.ic_emoticon_cool));
+        moods = new ArrayList<>();
+        moodViewModel = new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())
+                .create(MoodViewModel.class);
 
 
-        moodsReportAdapter = new MoodsReportAdapter(this, moodReportItems);
-        moodRecyclerView.setAdapter(moodsReportAdapter);
+      /*  moodReportItems.add(new MoodViewModel("Managers Team", "Tired", "4", "5", "Oct 18, 2019",R.drawable.ic_emoticon_confused));
+        moodReportItems.add(new MoodViewModel("Android Developers", "Cool", "6", "7", "Oct 18, 2019",R.drawable.ic_emoticon_cool));
+        moodReportItems.add(new MoodViewModel("Trainers Team", "Normal", "5", "9", "Oct 18, 2019",R.drawable.ic_emoticon_neutral));
+        moodReportItems.add(new MoodViewModel("Human Resource", "Unhappy", "2", "3", "Oct 18, 2019",R.drawable.ic_emoticon_sad));
+        moodReportItems.add(new MoodViewModel("Back-End Developers", "Excited", "9", "11", "Oct 18, 2019",R.drawable.ic_emoticon_excited));
+        moodReportItems.add(new MoodViewModel("Front-End Developers", "Well!", "3", "4", "Oct 18, 2019",R.drawable.ic_emoticon_happy));
+        moodReportItems.add(new MoodViewModel("Consultants Team", "Cool", "3", "4", "Oct 18, 2019",R.drawable.ic_emoticon_cool));
+
+*/
+        moodsAdapter = new MoodsAdapter(this, moods );
+        moodRecyclerView.setAdapter(moodsAdapter);
         moodRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 

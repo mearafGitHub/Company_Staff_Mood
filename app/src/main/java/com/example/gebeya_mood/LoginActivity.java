@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.gebeya_mood.moods.MoodPromptActivity;
+import com.example.gebeya_mood.moodPrompt.MoodPromptActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
