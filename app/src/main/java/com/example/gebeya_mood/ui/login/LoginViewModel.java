@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.example.gebeya_mood.data.users.LoginRepository;
-import com.example.gebeya_mood.data.users.Result;
-import com.example.gebeya_mood.data.model.LoggedInUser;
+import com.example.gebeya_mood.repo.users.LoginRepository;
+import com.example.gebeya_mood.repo.users.Result;
+import com.example.gebeya_mood.models.LoggedInUser;
 import com.example.gebeya_mood.R;
 
 public class LoginViewModel extends ViewModel {

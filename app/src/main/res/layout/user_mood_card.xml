@@ -73,7 +73,7 @@
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_marginRight="4dp"
                     android:layout_marginLeft="40dp"
-                    android:src="@drawable/ic_schedule" />
+                    app:srcCompat="@drawable/ic_schedule" />
 
                     <TextView
                         android:id="@+id/date_usermood"

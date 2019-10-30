@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".moodPrompt.MoodPromptActivity">
+    tools:context=".views.MoodPromptActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                 android:layout_width="52dp"
                 android:layout_height="45dp"
                 android:layout_marginRight="5dp"
-                android:src="@drawable/ic_emoticon_happy"
+                app:srcCompat="@drawable/ic_emoticon_happy"
                 android:background="@android:color/transparent"
                 android:layout_marginLeft="0dp"
                 />
@@ -64,7 +64,7 @@
                 android:id="@+id/neutral"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/ic_emoticon_neutral"
+                app:srcCompat="@drawable/ic_emoticon_neutral"
                 android:background="@android:color/transparent"
                 />
 
@@ -75,14 +75,14 @@
                 android:layout_height="45dp"
                 android:layout_marginRight="5dp"
                 android:layout_toLeftOf="@id/happyMood"
-                android:src="@drawable/ic_emoticon_sad"
+                app:srcCompat="@drawable/ic_emoticon_sad"
                 />
 
             <ImageButton
                 android:id="@+id/mehMood"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/ic_emoticon_confused"
+                app:srcCompat="@drawable/ic_emoticon_confused"
                 android:layout_marginRight="5dp"
                 android:background="@android:color/transparent"
                 />
@@ -91,7 +91,7 @@
                 android:id="@+id/disappointedMood"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/ic_emoticon_angry"
+                app:srcCompat="@drawable/ic_emoticon_angry"
                 android:layout_marginRight="5dp"
                 android:background="@android:color/transparent"
                 />
@@ -102,7 +102,7 @@
                 android:layout_height="45dp"
                 android:layout_marginRight="5dp"
                 android:layout_toLeftOf="@id/disappointedMood"
-                android:src="@drawable/ic_emoticon_excited"
+                app:srcCompat="@drawable/ic_emoticon_excited"
                 android:background="@android:color/transparent"
                 />
 
@@ -112,7 +112,7 @@
                 android:layout_height="45dp"
                 android:layout_marginRight="5dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_emoticon_cool" />
+                app:srcCompat="@drawable/ic_emoticon_cool" />
 
         </LinearLayout>
 

@@ -13,7 +13,9 @@ import com.example.gebeya_mood.framework.util.Util;
  * Base Activity to contain and hold most of the code that we would like to reuse from app to app.
  * This includes things such as logging messages and showing toast messages.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
+
+    public abstract void onMoodClick(int position);
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

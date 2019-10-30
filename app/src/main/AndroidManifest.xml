@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/gebeya_logo"
@@ -12,16 +11,21 @@
         android:roundIcon="@drawable/gebeya_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".moodPrompt.MoodSubmit"></activity>
-        <activity android:name=".mymoods.MyMoodsActivity"
-            android:label="@string/title_activity_my_moods"/>
-        <activity android:name=".moodhome.MoodsHomeActivity"
-            android:label="@string/title_activity_home"/>
-        <activity android:name=".admin.AdminActivity"
-            android:label="@string/admin_title"/>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".moodPrompt.MoodPromptActivity"
-            android:label="@string/title_activity_mood_prompt"/>
+        <activity android:name=".views.TeamDetailActivity"></activity>
+        <activity android:name=".views.MoodSubmitActivity" />
+        <activity
+            android:name=".views.MyMoodsActivity"
+            android:label="@string/title_activity_my_moods" />
+        <activity
+            android:name=".views.MoodsHomeActivity"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".views.AdminActivity"
+            android:label="@string/admin_title" />
+        <activity android:name=".views.LoginActivity" />
+        <activity
+            android:name=".views.MoodPromptActivity"
+            android:label="@string/title_activity_mood_prompt" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,8 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup.SignUpActivity"
-            android:label="@string/action_sing_up_short"/>
+        <activity
+            android:name=".views.SignUpActivity"
+            android:label="@string/action_sing_up_short" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
