@@ -15,7 +15,6 @@ import com.example.gebeya_mood.framework.util.Util;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    public abstract void onMoodClick(int position);
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

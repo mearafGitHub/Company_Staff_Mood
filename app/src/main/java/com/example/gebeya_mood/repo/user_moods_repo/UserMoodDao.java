@@ -5,23 +5,21 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.gebeya_mood.models.Mood;
+import com.example.gebeya_mood.models.UserMood;
 
 import java.util.List;
 
 @Dao
 public interface UserMoodDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addMoods(List<Mood> moods);
+    void addMoods(List<UserMood> userMoods);
 
-    @Query("SELECT * FROM moods")
-    List<Mood> getAll();
+    @Query("SELECT * FROM UserMood")
+    List<UserMood> getAll();
 
-    @Query("SELECT * FROM moods WHERE userId = :userId")
-    Mood getOne(String userId);
+    @Query("SELECT * FROM UserMood WHERE userId = :userId")
+    UserMood getOneUserMood(String userId);
 
-    @Query("SELECT * FROM moods WHERE moodId = :moodId")
-    Mood getOneMood(String moodId);
 
 
 

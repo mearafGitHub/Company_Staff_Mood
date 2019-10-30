@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gebeya_mood.R;
-import com.example.gebeya_mood.models.Mood;
+import com.example.gebeya_mood.models.UserMood;
 import com.example.gebeya_mood.views.UserMoodViewHolder;
 
 import java.util.ArrayList;
@@ -18,10 +18,10 @@ import java.util.List;
 public class UserMoodsAdapter extends RecyclerView.Adapter<UserMoodViewHolder> {
 
     Context context;
-    List<Mood> moodsList;
+    List<UserMood> moodsList;
     LayoutInflater inflater;
 
-    public UserMoodsAdapter(Context context, List<Mood> moodsList) {
+    public UserMoodsAdapter(Context context, List<UserMood> moodsList) {
 
         this.context = context;
         moodsList = new ArrayList<>(moodsList);
@@ -31,18 +31,18 @@ public class UserMoodsAdapter extends RecyclerView.Adapter<UserMoodViewHolder> {
     @NonNull
     @Override
     public UserMoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View viewItem = inflater.inflate(R.layout.mood_show_card, parent, false);
+        View viewItem = inflater.inflate(R.layout.user_mood_item_card, parent, false);
         return new UserMoodViewHolder(viewItem);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserMoodViewHolder holder, int position) {
-        Mood mood = moodsList.get(position);
-        holder.moodType.setText(mood.emotion);
-        holder.staffGroupName.setText(mood.userTeam);
-        holder.inMood.setText(mood.reason);
-        holder.reportDate.setText(mood.date);
-        holder.totalMembers.setText(mood.totalTeam);
+        UserMood userMood = moodsList.get(position);
+        holder.Username.setText(userMood.Username);
+        holder.team_name.setText(userMood.team_name);
+        holder.user_emotion.setText(userMood.user_emotion);
+        holder.user_mood_date.setText(userMood.date);
+       // holder.user_EMOJI.setText(userMood.user_EMOJI);
 
     }
 

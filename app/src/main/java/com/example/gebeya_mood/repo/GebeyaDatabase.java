@@ -1,17 +1,20 @@
 package com.example.gebeya_mood.repo;
 
 import androidx.room.Database;
+import androidx.room.Entity;
 import androidx.room.RoomDatabase;
 
+import com.example.gebeya_mood.models.UserMood;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
-import com.example.gebeya_mood.models.Mood;
 
 
 @Database(
-    entities = { Mood.class},
+    entities = { UserMood.class},
     version = 1
 )
+
+@Entity(tableName = "UserMood")
 public abstract class GebeyaDatabase extends RoomDatabase {
 
-    public abstract UserMoodDao moodDao();
+    public abstract UserMoodDao UserMood();
 }

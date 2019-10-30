@@ -16,34 +16,30 @@ import butterknife.ButterKnife;
 public class UserMoodViewHolder extends RecyclerView.ViewHolder {
     public RelativeLayout reportContainer;
 
-    @BindView(R.id.staffTeamText)
-    public TextView staffGroupName;
+    @BindView(R.id.Username)
+    public TextView Username;
 
-    @BindView(R.id.totalMembers)
-    public TextView totalMembers;
+    @BindView(R.id.team_name)
+    public TextView team_name;
 
-    @BindView(R.id.moodType)
-    public TextView moodType;
+    @BindView(R.id.user_emotion)
+    public TextView user_emotion;
 
-    @BindView(R.id.inMoodText)
-    public TextView inMood;
+    @BindView(R.id.user_mood_date)
+    public TextView user_mood_date;
 
-    @BindView(R.id.dateText)
-    public TextView reportDate;
-
-    @BindView(R.id.emoji)
-    public ImageView moodEmoji;
+    @BindView(R.id.user_EMOJI)
+    public ImageView user_EMOJI;
 
     public UserMoodViewHolder(@NonNull View itemView) {
         super(itemView);
 
         ButterKnife.bind(this,itemView);
-        staffGroupName = itemView.findViewById(R.id.staffTeamText);
-        totalMembers = itemView.findViewById(R.id.totalMembers);
-        moodType = itemView.findViewById(R.id.moodType);
-        inMood = itemView.findViewById(R.id.inMoodText);
-        moodEmoji = itemView.findViewById(R.id.emoji);
-        reportDate = itemView.findViewById(R.id.dateText);
+        Username = itemView.findViewById(R.id.Username);
+        team_name = itemView.findViewById(R.id.team_name);
+        user_emotion = itemView.findViewById(R.id.user_emotion);
+        user_mood_date = itemView.findViewById(R.id.user_mood_date);
+        user_EMOJI = itemView.findViewById(R.id.user_EMOJI);
         reportContainer = itemView.findViewById(R.id.relativeLayoutMoodsReport);
         }
 }

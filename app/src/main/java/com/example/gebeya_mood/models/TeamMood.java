@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.PrimaryKey;
 
-public class Team {
+public class TeamMood {
 
     @PrimaryKey
     @NonNull

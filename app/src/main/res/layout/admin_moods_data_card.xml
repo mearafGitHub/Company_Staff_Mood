@@ -73,7 +73,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
                     android:gravity="center_vertical"
-                    android:text="mood date"
+                    android:text="userMood date"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12dp" />
             </LinearLayout>

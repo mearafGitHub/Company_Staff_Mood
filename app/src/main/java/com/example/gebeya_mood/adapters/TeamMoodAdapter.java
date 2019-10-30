@@ -46,7 +46,7 @@ public class TeamMoodAdapter extends RecyclerView.Adapter<TeamMoodAdapter.UserMo
     @Override
     public UserMoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout;
-        layout = LayoutInflater.from(uContext).inflate(R.layout.user_mood_card, parent, false);
+        layout = LayoutInflater.from(uContext).inflate(R.layout.less_item_card, parent, false);
         return new UserMoodViewHolder(layout);
     }
 

@@ -8,9 +8,9 @@ DOING:
     [...] fetching and sending to API
 
  [X] 1. list cards in recycler view
-       [x] the moods on the gebeya mood home screen
-       [x] the user mood history (mood log)
-       [x] the admin user mood review screen
+       [x] the userMoods on the gebeya userMood home screen
+       [x] the user userMood history (userMood log)
+       [x] the admin user userMood review screen
 
  [..] 2. display dynamic values in inflated layout
  	    [x] list view
@@ -19,24 +19,24 @@ DOING:
  	    [...]  the values from api
 
  [..] 3. display modal with text input
- 	    [x] user prompt to insert moods and/or reasons
+ 	    [x] user prompt to insert userMoods and/or reasons
  	    [...]  input post to api
 
  [] 4. send user input to api
       [] login db
       [] sign up
-      [] mood prompt screen
+      [] userMood prompt screen
 
  [..] 5. how to receive api response and display in screens
       [x] home screen fetch from api interface and methods
-      [x] my mood screen fetch from api interface and methods
+      [x] my userMood screen fetch from api interface and methods
       [x] admin view
       [...]  actual data send/receive
 
  [] 6. Smooth transition between activities
 
  [..] 8. Admin Views
-      [x] List of mood reports with details of the staffs
+      [x] List of userMood reports with details of the staffs
       [] actual data send/receive
- [] 9. Notification and i++ when user submits a mood
+ [] 9. Notification and i++ when user submits a userMood
  [X] 10. MV-VP architecture

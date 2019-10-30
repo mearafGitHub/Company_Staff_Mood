@@ -1,34 +1,34 @@
 package com.example.gebeya_mood.repo.user_moods_repo;
 
-import com.example.gebeya_mood.models.Mood;
+import com.example.gebeya_mood.models.UserMood;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserMoodTransformer {
 
-    public static Mood DtoToMood(UserMoodsDto userMoodsDto){
+    public static UserMood DtoToMood(UserMoodsDto userMoodsDto){
 
-        Mood mood = new Mood();
-        mood.moodId = userMoodsDto.getMoodId();
-        mood.userId = userMoodsDto.getUserId();
-        mood.date = userMoodsDto.getDate();
-        mood.emotion = userMoodsDto.getEmotion();
-        mood.reason = userMoodsDto.getReason();
+        UserMood userMood = new UserMood();
+        userMood.userId = userMoodsDto.getUserId();
+        userMood.user_emotion = userMoodsDto.getMoodId();
+        userMood.userId = userMoodsDto.getUserId();
+        userMood.date = userMoodsDto.getDate();
+        userMood.reason = userMoodsDto.getReason();
 
-        return mood;
+        return userMood;
     }
 
 
-    public static List<Mood> ListDtoToMood(List<UserMoodsDto> listMoosDto){
+    public static List<UserMood> ListDtoToMood(List<UserMoodsDto> listMoosDto){
 
-        List<Mood> moods = new ArrayList<Mood>();
+        List<UserMood> userMoods = new ArrayList<UserMood>();
 
         for(UserMoodsDto userMoodsDto : listMoosDto){
 
-            moods.add(DtoToMood(userMoodsDto));
+            userMoods.add(DtoToMood(userMoodsDto));
         }
 
-        return moods;
+        return userMoods;
     }
 }

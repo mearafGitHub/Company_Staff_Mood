@@ -18,7 +18,7 @@ public class TeamDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_team_detail);
 
         Intent intent = getIntent();
-        TeamMoodViewModel teamMoodViewModel = intent.getParcelableExtra("Team Mood Detais");
+        TeamMoodViewModel teamMoodViewModel = intent.getParcelableExtra("TeamMood UserMood Detais");
 
         int emoji = teamMoodViewModel.getEmoji();
         String teamName = teamMoodViewModel.getTeamName();
@@ -26,10 +26,12 @@ public class TeamDetailActivity extends AppCompatActivity {
         String teamTotal = teamMoodViewModel.getTeamTotal();
         String date = teamMoodViewModel.getDate();
 
-        ImageView imageView = findViewById(R.id.admin_uesr_EMOJI);
+        ImageView imageView = findViewById(R.id.team_emojiTD);
         imageView.setImageResource(emoji);
 
-       /* TextView username = findViewById(R.id.admin_data_Username);
+       /*
+       // the following in the each user detail activity(when the admin wants to see more about each user in the team detail)
+       TextView username = findViewById(R.id.admin_data_Username);
         username.setText(teamName);*/
 
       /*  TextView totalteam = findViewById(R.id.admin_data_totalMembers);

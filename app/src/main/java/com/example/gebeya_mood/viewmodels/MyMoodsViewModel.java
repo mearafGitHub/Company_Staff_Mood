@@ -1,45 +1,46 @@
+
 package com.example.gebeya_mood.viewmodels;
 
-import android.app.Application;
+        import android.app.Application;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.MutableLiveData;
+        import androidx.annotation.NonNull;
+        import androidx.lifecycle.AndroidViewModel;
+        import androidx.lifecycle.MutableLiveData;
 
-import com.example.gebeya_mood.models.UserMood;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodTransformer;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodsDto;
+        import com.example.gebeya_mood.models.UserMood;
+        import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
+        import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
+        import com.example.gebeya_mood.repo.user_moods_repo.UserMoodTransformer;
+        import com.example.gebeya_mood.repo.user_moods_repo.UserMoodsDto;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
+        import retrofit2.Call;
+        import retrofit2.Callback;
+        import retrofit2.Response;
+        import retrofit2.Retrofit;
 
-public class UserMoodViewModel extends AndroidViewModel {
+public class MyMoodsViewModel extends AndroidViewModel {
     public Retrofit retrofit;
     public UserMoodDao dao;
     public MutableLiveData<List<UserMood>> moods;
 
 
-    public UserMoodViewModel(@NonNull Application application) {
+    public MyMoodsViewModel(@NonNull Application application) {
         super(application);
 
    /*   retrofit = ((Application) application).getRetrofit();
         dao = ((Application) application).getDb().moodDao();*/
         moods = new MutableLiveData<>(new ArrayList<>());
 
-        //loadUserMoods();
+        //loadUserMoods(string, string);
     }
 
-    private void loadUserMoods(){
+    private void loadUserMoods(String userId, String user_team){
         List<UserMood> moodsDb = dao.getAll();
         if (moodsDb.isEmpty()){
-            userMoodsFromApi();
+           // MyMoodsFromApi();
         }
         else{
             moods.setValue(moodsDb);
@@ -47,7 +48,7 @@ public class UserMoodViewModel extends AndroidViewModel {
 
     }
 
-    private void userMoodsFromApi(){
+    private void MyMoodsFromApi(String userId, String user_team){
 
         UserMoodApiService userMoodApiService = retrofit.create(UserMoodApiService.class);
         userMoodApiService.getMoods().enqueue(new Callback<List<UserMoodsDto>>() {

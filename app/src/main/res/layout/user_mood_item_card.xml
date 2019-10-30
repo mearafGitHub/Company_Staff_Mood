@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="false"
-    android:background="#ffffff"
+    android:background="@color/colorFrontAccent"
     android:clipToPadding="true"
-    android:orientation="vertical"
-    android:textSize="16dp"
-    >
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:elevation="9dp"
-        android:id="@+id/relativeLayoutMoodsReport"
+        android:id="@+id/uesr_moodTD_relativelayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="9dp"
         android:background="@drawable/card_bg"
         android:clipToPadding="false"
         android:fadeScrollbars="false"
@@ -29,9 +27,9 @@
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/emoji"
-        app:layout_constraintTop_toTopOf="@id/emoji"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="@id/user_EMOJI"
+        app:layout_constraintTop_toTopOf="@id/user_EMOJI"
         app:layout_constraintVertical_bias="0.0">
 
 
@@ -53,11 +51,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/staffTeamText"
+                    android:id="@+id/Username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
-                    android:text="Stuff Group"
+                    android:text="User Name"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18dp" />
 
@@ -66,17 +64,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|center_horizontal"
-                    android:layout_marginLeft="21dp"
-                    android:src="@drawable/ic_schedule" />
+                    android:layout_marginLeft="36dp"
+                    app:srcCompat="@drawable/ic_schedule" />
 
                 <TextView
-                    android:id="@+id/dateText"
+                    android:id="@+id/user_mood_date"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
                     android:gravity="center_vertical"
-                    android:text="mood date"
+                    android:text="userMood date"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -95,27 +93,18 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="51dp"
+                        android:layout_height="34dp"
                         android:layout_marginLeft="2dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/inMoodText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:text="11"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/moodType"
+                            android:id="@+id/user_emotion"
                             android:layout_width="wrap_content"
                             android:layout_height="23dp"
-                            android:layout_marginLeft="9dp"
-                            android:text=" Happy"
+                            android:layout_marginLeft="3dp"
+                            android:text="Happy"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -128,7 +117,8 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="3dp"
                 android:orientation="horizontal">
@@ -137,15 +127,15 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_supervised_user_circle" />
+                    app:srcCompat="@drawable/ic_supervised_user_circle" />
 
                 <TextView
-                    android:id="@+id/totalMembers"
+                    android:id="@+id/team_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="10dp"
-                    android:text="12 "
+                    android:text="Team Name"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -159,8 +149,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/emoji"
-        android:elevation="9dp"
+        android:id="@+id/user_EMOJI"
         android:layout_width="63dp"
         android:layout_height="63dp"
         android:layout_marginStart="14dp"

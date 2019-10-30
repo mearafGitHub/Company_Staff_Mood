@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
+public class UserMoodsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     public RecyclerView userMoodRecycler;
     public TeamMoodAdapter teamMoodAdapter;
@@ -28,7 +28,6 @@ public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemS
 
     @SerializedName("name")
     TextView userName;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,16 +50,6 @@ public class MyMoodsActivity extends BaseActivity implements AdapterView.OnItemS
         filterMood.setOnItemSelectedListener(this);
 
 
-      /*  userMoodItems.add(new TeamMoodViewModel("emotion", "date","team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-        userMoodItems.add(new TeamMoodViewModel("emotion", "date", "team name", R.drawable.ic_emoticon_happy));
-*/
         teamMoodAdapter = new TeamMoodAdapter(this, userMoodItems);
         userMoodRecycler.setAdapter(teamMoodAdapter);
         userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));

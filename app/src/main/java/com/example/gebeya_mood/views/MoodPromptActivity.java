@@ -167,11 +167,11 @@ public class MoodPromptActivity extends BaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.listIcon:
-                Intent intent = new Intent(MoodPromptActivity.this, MoodsHomeActivity.class);
+                Intent intent = new Intent(MoodPromptActivity.this, GebeyaAllTeamMoodsActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.my_mood_history:
-                Intent intentMoods = new Intent(MoodPromptActivity.this, MyMoodsActivity.class);
+                Intent intentMoods = new Intent(MoodPromptActivity.this, UserMoodsActivity.class);
                 startActivity(intentMoods);
                 return true;
             default:

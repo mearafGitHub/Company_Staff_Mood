@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="false"
-    android:background="#ffffff"
+    android:background="@color/colorBackgroundAccent"
     android:clipToPadding="true"
     android:orientation="vertical"
     android:elevation="9dp">
@@ -82,7 +82,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="7dp"
                         android:gravity="center_vertical"
-                        android:text="mood date"
+                        android:text="userMood date"
                         android:textColor="@color/colorPrimary"
                         android:textSize="14dp" />
 
