@@ -4,7 +4,7 @@ DOING:
 
     [X]  Models and View Design
     [X]  API connection test with POJO
-    [...] Working with DTO and DAO for API Communication
+    [X] Working with DTO and DAO for API Communication
     [...] fetching and sending to API
 
  [X] 1. list cards in recycler view
@@ -15,12 +15,12 @@ DOING:
  [..] 2. display dynamic values in inflated layout
  	    [x] list view
  	    [x] filter views
- 	    []  filter features
- 	    []  the values from api
+ 	    [...]  filter features
+ 	    [...]  the values from api
 
  [..] 3. display modal with text input
  	    [x] user prompt to insert moods and/or reasons
- 	    []  input post to api
+ 	    [...]  input post to api
 
  [] 4. send user input to api
       [] login db
@@ -31,7 +31,7 @@ DOING:
       [x] home screen fetch from api interface and methods
       [x] my mood screen fetch from api interface and methods
       [x] admin view
-      []  actual data send/receive
+      [...]  actual data send/receive
 
  [] 6. Smooth transition between activities
 
@@ -39,4 +39,4 @@ DOING:
       [x] List of mood reports with details of the staffs
       [] actual data send/receive
  [] 9. Notification and i++ when user submits a mood
- [] 10. MV-VP architecture
+ [X] 10. MV-VP architecture
