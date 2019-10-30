@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/home_nav"
+    android:icon="@drawable/ic_home_action"
+    android:title="@string/home_action" />
+
+<item
+    android:id="@+id/info_nav"
+    android:icon="@drawable/ic_info"
+    android:title="@string/info_action" />
+
+<item
+    android:id="@+id/my_moods_nav"
+    android:icon="@drawable/ic_history"
+    android:title="@string/my_moods_action" />
+
+</menu>

@@ -3,7 +3,10 @@ package com.example.gebeya_mood.views;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,20 +14,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gebeya_mood.BottomNavHelper;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.adapters.TeamMoodAdapter;
+import com.example.gebeya_mood.viewmodels.MyMoodsViewModel;
 import com.example.gebeya_mood.viewmodels.TeamMoodViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserMoodsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-
+   public static final int activityNum = 1;
     public RecyclerView userMoodRecycler;
     public TeamMoodAdapter teamMoodAdapter;
     public List<TeamMoodViewModel> userMoodItems;
+    private Context context;
 
     @SerializedName("name")
     TextView userName;
@@ -36,6 +43,7 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
 
         userMoodRecycler = findViewById(R.id.userMoodRecycler);
         userMoodItems = new ArrayList<>();
+        setBottomNavView();
 
         Spinner filterMood = findViewById(R.id.mood_filter);
 
@@ -53,6 +61,8 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
         teamMoodAdapter = new TeamMoodAdapter(this, userMoodItems);
         userMoodRecycler.setAdapter(teamMoodAdapter);
         userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        setBottomNavView();
 
         // TODO: API CONNECTION
 
@@ -77,6 +87,13 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
 
     }
 
-
+public void setBottomNavView(){
+    BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+    BottomNavHelper.setupBottomNavView(bottomNav);
+    BottomNavHelper.enableNav(context, bottomNav);
+    Menu menu = bottomNav.getMenu();
+    MenuItem menuItem = menu.getItem(activityNum);
+    menuItem.setChecked(true);
+}
 
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundAccent"
     tools:context=".views.MoodPromptActivity">
 
     <LinearLayout
@@ -116,6 +117,22 @@
 
         </LinearLayout>
 
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="186dp"
+            android:paddingTop="9dp"
+            android:paddingBottom="12dp"
+            android:background="@color/colorFrontAccent"
+            app:menu="@menu/bottom_nav"
+            android:layout_gravity="bottom"
+            android:id="@+id/bottom_nav"
+            >
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
     </LinearLayout>
+
 
 </LinearLayout>

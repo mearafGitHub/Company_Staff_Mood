@@ -26,7 +26,8 @@
         <activity android:name=".views.MoodSubmitActivity" />
         <activity
             android:name=".views.UserMoodsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_my_moods"
+            />
         <activity
             android:name=".views.GebeyaAllTeamMoodsActivity"
             android:label="@string/title_activity_home" />
@@ -37,6 +38,7 @@
         <activity
             android:name=".views.MoodPromptActivity"
             android:label="@string/title_activity_mood_prompt" />
+
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             >

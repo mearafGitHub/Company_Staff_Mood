@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -9,13 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimaryFront"
-    tools:context=".views.SignUpActivity">
+    android:background="@color/colorPrimary"
+    tools:context=".views.SignUpActivity"
+    android:orientation="vertical"
+    >
 
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|center_horizontal"
+        android:text="Sign Up"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="27dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
@@ -24,52 +39,46 @@
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColorHint="@color/colorBackgroundAccent"
+       />
 
 
     <EditText
-        android:id="@+id/usernameTD"
-        android:layout_width="0dp"
+        android:id="@+id/screenname"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
         android:gravity="center_horizontal"
         android:hint="@string/prompt_username"
         android:inputType="text"
         android:selectAllOnFocus="true"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/email" />
+        android:textColorHint="@color/colorBackgroundAccent"
+        />
+
 
     <EditText
         android:id="@+id/gender"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:hint="@string/prompt_gender"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/usernameTD" />
+        android:textColorHint="@color/colorBackgroundAccent"
+        />
+
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
         android:gravity="center_horizontal"
         android:hint="@string/prompt_password"
@@ -77,18 +86,16 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
-        android:textColorHighlight="#FFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
+        android:textColorHighlight="@color/colorBackgroundAccent"
+        android:textColorHint="@color/colorBackgroundAccent"
+        />
 
     <EditText
         android:id="@+id/confirm_password"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
         android:gravity="center_horizontal"
         android:hint="@string/prompt_confirm_password"
@@ -96,51 +103,43 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
-        android:textColorHighlight="#FFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        android:textColorHighlight="@color/colorBackgroundAccent"
+        android:textColorHint="@color/colorBackgroundAccent"
+   />
+
+
+    <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="64dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/password"
+            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            android:outlineAmbientShadowColor="#FFA500"/>
+
 
     <Button
         android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="48dp"
-        android:layout_marginVertical="63dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginLeft="121dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="18dp"
         android:background="#FF8C00"
         android:enabled="true"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:text="@string/action_sing_up_short"
-        android:textColor="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.231"
-        app:layout_editor_absoluteX="@dimen/cardview_default_elevation"
-        app:layout_goneMarginTop="20dp"
+        android:textColor="#FFFFFF"
         tools:text="Sign Up" />
-
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        android:outlineAmbientShadowColor="#FFA500"/>
 
     <ImageView
         android:id="@+id/gebeya_logo"
@@ -151,8 +150,9 @@
         android:maxHeight="200dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/gebeya_logo_light_trasparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_editor_absoluteX="@dimen/cardview_default_elevation"
         tools:layout_editor_absoluteX="16dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

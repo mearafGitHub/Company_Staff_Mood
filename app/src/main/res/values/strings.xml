@@ -21,8 +21,9 @@
         <item>Trainers</item>
         <item>Consultants</item>
     </string-array>
-
-
+    <string name="info_action">Info</string>
+    <string name="home_action">Home</string>
+    <string name="my_moods_action">My Moods</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sing_up_short">Sign Up</string>

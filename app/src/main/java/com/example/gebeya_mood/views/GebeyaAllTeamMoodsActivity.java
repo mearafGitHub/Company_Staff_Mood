@@ -5,16 +5,19 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.gebeya_mood.BottomNavHelper;
 import com.example.gebeya_mood.models.UserMood;
 import com.example.gebeya_mood.viewmodels.UserMoodViewModel;
 import com.example.gebeya_mood.adapters.UserMoodsAdapter;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +29,15 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
     private UserMoodsAdapter userMoodsAdapter;
     private UserMoodViewModel userMoodViewModel;
     private List<UserMood> userMoods;
+    private Context context;
+    public static final int activityNum = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gebeya_all_team_mood);
         ButterKnife.bind(this);
+        setBottomNavView();
 
         userMoods = new ArrayList<>();
         userMoodViewModel = new ViewModelProvider
@@ -77,5 +83,15 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+
+    public void setBottomNavView(){
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+        BottomNavHelper.setupBottomNavView(bottomNav);
+        BottomNavHelper.enableNav(context, bottomNav);
+        Menu menu = bottomNav.getMenu();
+        MenuItem menuItem = menu.getItem(activityNum);
+        menuItem.setChecked(true);
     }
 }

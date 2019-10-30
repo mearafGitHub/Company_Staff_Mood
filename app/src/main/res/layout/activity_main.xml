@@ -5,32 +5,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9400D3"
+    android:background="@color/colorPrimaryGebeya"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:src="@drawable/gebeya_logo_light_trasparent"
-        tools:ignore="MissingConstraints" />
 
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:orientation="vertical"
         >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:src="@drawable/gebeya_logo_light_trasparent"
+            tools:ignore="MissingConstraints" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:elevation="18dp"
-            android:gravity="center_vertical"
             android:orientation="horizontal"
 
             >
