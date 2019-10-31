@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:gravity="center|center_horizontal"
         android:text="Sign Up"
+        android:layout_marginTop="12dp"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="27dp"
@@ -72,7 +73,6 @@
         android:textColorHint="@color/colorBackgroundAccent"
         />
 
-
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
@@ -90,6 +90,7 @@
         android:textColorHint="@color/colorBackgroundAccent"
         />
 
+
     <EditText
         android:id="@+id/confirm_password"
         android:layout_width="match_parent"
@@ -105,8 +106,7 @@
         android:selectAllOnFocus="true"
         android:textColorHighlight="@color/colorBackgroundAccent"
         android:textColorHint="@color/colorBackgroundAccent"
-   />
-
+        />
 
     <ProgressBar
             android:id="@+id/loading"
@@ -128,29 +128,29 @@
 
     <Button
         android:id="@+id/signUp"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="121dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="36dp"
         android:layout_marginTop="36dp"
-        android:layout_marginRight="18dp"
-        android:background="#FF8C00"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/round_button"
         android:enabled="true"
         android:gravity="center"
         android:text="@string/action_sing_up_short"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorPrimaryGebeya"
         tools:text="Sign Up" />
 
     <ImageView
         android:id="@+id/gebeya_logo"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
         android:foregroundGravity="center"
         android:maxWidth="200dp"
         android:maxHeight="200dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginTop="80dp"
         android:src="@drawable/gebeya_logo_light_trasparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_editor_absoluteX="@dimen/cardview_default_elevation"

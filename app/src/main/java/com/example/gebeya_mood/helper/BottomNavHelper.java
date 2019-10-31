@@ -1,4 +1,4 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.helper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,17 +6,13 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 
+import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.views.AdminActivity;
 import com.example.gebeya_mood.views.GebeyaAllTeamMoodsActivity;
 import com.example.gebeya_mood.views.UserMoodsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavHelper {
-
-/*public static void setupBottomNavView(BottomNavigationView bottomNavView)
-{
-    bottomNavView.enableAnimation(false);
-}*/
 
 public static void enableNav(final Context context, BottomNavigationView view){
 
@@ -37,7 +33,7 @@ public static void enableNav(final Context context, BottomNavigationView view){
                         context.startActivity(intentM);
                         return true;
                 }
-                return true;
+                return false;
             }
         });
     }

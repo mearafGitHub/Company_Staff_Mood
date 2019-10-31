@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundLight"
+    tools:context=".views.OAuthActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/chat_anim"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:scaleType="centerCrop"
+            app:lottie_rawRes="@raw/chad_the_chatbot"
+            tools:layout_editor_absoluteX="91dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="Hi, there. We're signing up."
+            android:textColor="@color/colorPrimaryGebeya"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text=" Which one is better?"
+            android:textColor="@color/colorPrimaryGebeya"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            />
+
+
+
+        <Button
+            android:id="@+id/googleSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="63dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:elevation="42dp"
+            android:background="@drawable/red_round_button"
+            android:tooltipText="Sing up with Google account"
+            android:text="With Google account"
+            android:textColor="#ffffff"
+            android:textSize="18dp"/>
+        <Button
+            android:id="@+id/gebeyaSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="36dp"
+            android:elevation="42dp"
+            android:background="@drawable/purple_round_button"
+            android:tooltipText="Sing Up with Gebeya"
+            android:text="Sing Up with Gebeya"
+            android:textColor="#ffffff"
+            android:textSize="18dp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,17 @@
 package com.example.gebeya_mood.views;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,7 +24,8 @@ import com.example.gebeya_mood.viewmodels.TeamMoodViewModel;
 import java.util.List;
 
 public class AdminActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, AdminViewHolder.OnTeamMoodListener {
-
+    Context context;
+    int activityNum = 2;
     RecyclerView adminRecyclerView;
     AdminViewAdapter adminAdapter;
     List<TeamMoodViewModel> teamMoodViewModelList;
@@ -65,13 +64,12 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
 
     // Recycler
 
-    private void initRecycler(){
+    private void initRecycler() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         adminRecyclerView.setLayoutManager(linearLayoutManager);
         adminAdapter = new AdminViewAdapter(this, teamMoodViewModelList);
         adminRecyclerView.setAdapter(adminAdapter);
     }
-
 
 
     @Override
@@ -95,9 +93,9 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.adminLisIcon:
-                Intent intentAdminView = new Intent(AdminActivity.this, AdminActivity.class);
+                Intent intentAdminView = new Intent(AdminActivity.this, GebeyaAllTeamMoodsActivity.class);
                 startActivity(intentAdminView);
                 return true;
             default:

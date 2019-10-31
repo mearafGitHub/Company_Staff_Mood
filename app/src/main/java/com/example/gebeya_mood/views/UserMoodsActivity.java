@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,13 +12,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gebeya_mood.BottomNavHelper;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.adapters.TeamMoodAdapter;
-import com.example.gebeya_mood.viewmodels.MyMoodsViewModel;
 import com.example.gebeya_mood.viewmodels.TeamMoodViewModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -43,7 +38,7 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
 
         userMoodRecycler = findViewById(R.id.userMoodRecycler);
         userMoodItems = new ArrayList<>();
-        setBottomNavView();
+
 
         Spinner filterMood = findViewById(R.id.mood_filter);
 
@@ -62,9 +57,8 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
         userMoodRecycler.setAdapter(teamMoodAdapter);
         userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        setBottomNavView();
 
-        // TODO: API CONNECTION
+        // TODO: API CONNECTION USERMOOD-VIEWMODEL
 
         // TODO: Get User from LOCAL DB / API
         /*   getUsersCall();
@@ -87,13 +81,6 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
 
     }
 
-public void setBottomNavView(){
-    BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
-    BottomNavHelper.setupBottomNavView(bottomNav);
-    BottomNavHelper.enableNav(context, bottomNav);
-    Menu menu = bottomNav.getMenu();
-    MenuItem menuItem = menu.getItem(activityNum);
-    menuItem.setChecked(true);
-}
+
 
 }

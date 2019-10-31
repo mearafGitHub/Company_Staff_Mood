@@ -26,27 +26,27 @@
 
     <Button
         android:id="@+id/GoButton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorBackgroundAccent"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="27dp"
+        android:background="@drawable/round_button"
         android:text="Let's Go"
+        android:elevation="27dp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tab" />
+        app:layout_constraintStart_toEndOf="@+id/tab"
+        android:backgroundTint="@color/colorBackgroundAccent"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab"
         android:layout_width="100dp"
-        android:layout_height="9dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="18dp"
         android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/GoButton"
@@ -54,7 +54,8 @@
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorAccent"
         app:tabIndicatorFullWidth="false"
-        app:tabIndicatorHeight="2dp"
+        app:tabIndicatorHeight="9dp"
+        app:tabIndicator="@drawable/indicator"
         app:tabPaddingStart="3dp">
 
 

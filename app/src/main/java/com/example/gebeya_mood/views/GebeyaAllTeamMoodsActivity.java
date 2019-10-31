@@ -2,7 +2,6 @@ package com.example.gebeya_mood.views;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -11,13 +10,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.gebeya_mood.BottomNavHelper;
 import com.example.gebeya_mood.models.UserMood;
 import com.example.gebeya_mood.viewmodels.UserMoodViewModel;
 import com.example.gebeya_mood.adapters.UserMoodsAdapter;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +34,15 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gebeya_all_team_mood);
         ButterKnife.bind(this);
-        setBottomNavView();
+       // setBottomNavView();
 
         userMoods = new ArrayList<>();
         userMoodViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
                 .create(UserMoodViewModel.class);
 
-  /*      userMoods.add(new UserMood("Managers TeamMood", "Tired", "4", "5", "Oct 18, 2019",R.drawable.ic_emoticon_confused));
-        userMoods.add(new UserMood("Android Developers", "Cool", "6", "7", "Oct 18, 2019",R.drawable.ic_emoticon_cool));
-        userMoods.add(new UserMood("Trainers TeamMood", "Normal", "5", "9", "Oct 18, 2019",R.drawable.ic_emoticon_neutral));
-  */
+        // USER MOOD ADAPTER AND MODEL VIEW TO POPULATE DATA HERE
+
        /* userMoodsAdapter = new UserMoodsAdapter(this, userMoods);
         moodRecyclerView.setAdapter(userMoodsAdapter);
         moodRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
@@ -85,13 +80,4 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
 
     }
 
-
-    public void setBottomNavView(){
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
-        BottomNavHelper.setupBottomNavView(bottomNav);
-        BottomNavHelper.enableNav(context, bottomNav);
-        Menu menu = bottomNav.getMenu();
-        MenuItem menuItem = menu.getItem(activityNum);
-        menuItem.setChecked(true);
-    }
 }

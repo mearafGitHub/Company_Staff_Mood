@@ -8,20 +8,16 @@ public class TeamMood {
 
     @PrimaryKey
     @NonNull
-    public String mood;
+    public String teamId;
 
     @NonNull
     public String emotion;
 
     @NonNull
-    public String teamId;
-
-    @NonNull
     public String teamName;
 
     @NonNull
-    public String teamTotal;
-
+    public String teamTotal; // total number of members
 
     @NonNull
     @ColumnInfo(name = "created_at")

@@ -17,7 +17,7 @@ public interface UserMoodDao {
     @Query("SELECT * FROM UserMood")
     List<UserMood> getAll();
 
-    @Query("SELECT * FROM UserMood WHERE userId = :userId")
+  //  @Query("SELECT * FROM UserMood WHERE userId = :userId")
     UserMood getOneUserMood(String userId);
 
 

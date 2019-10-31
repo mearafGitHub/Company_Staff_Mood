@@ -3,6 +3,7 @@
     package="com.example.gebeya_mood">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
@@ -11,23 +12,22 @@
         android:roundIcon="@drawable/gebeya_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GebeyaIntro"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-
+        <activity android:name=".views.OAuthActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".GebeyaIntro"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".views.TeamDetailActivity" />
         <activity android:name=".views.MoodSubmitActivity" />
         <activity
             android:name=".views.UserMoodsActivity"
-            android:label="@string/title_activity_my_moods"
-            />
+            android:label="@string/title_activity_my_moods" />
         <activity
             android:name=".views.GebeyaAllTeamMoodsActivity"
             android:label="@string/title_activity_home" />
@@ -37,13 +37,10 @@
         <activity android:name=".views.LoginActivity" />
         <activity
             android:name=".views.MoodPromptActivity"
-            android:label="@string/title_activity_mood_prompt" />
-
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".views.SignUpActivity"
             android:theme="@style/AppTheme.NoActionBar" />
