@@ -16,20 +16,22 @@ public interface UserApiService {
     @FormUrlEncoded
     @POST("users")
     Call<UserDto> signUp(
-            @Field("email") String email,
-            @Field("username") String username,
-            @Field("gender") String gender,
-            @Field("team") String team,
-            @Field("password") String password
+            @Field("username")String username,
+            @Field("email")String email,
+            @Field("password")String password,
+            @Field("type")String team,
+            @Field("sex")String gender
     );
 
+    @FormUrlEncoded
     @POST("users/login")
-    Call<UserDto> logIn();
+    Call<UserDto> logIn(
+            @Field("email")String email,
+            @Field("password")String password
+    );
 
     @POST("users/profile")
     Call<UserDto> userMoodPost();
-
-
 
     @GET("moods")
     Call<List<UserDto>> getMoods();

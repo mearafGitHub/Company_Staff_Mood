@@ -129,4 +129,35 @@ public class UserViewModel extends AndroidViewModel {
 
         return res;
     }
+
+    public Response<UserDto> logIn(String email, String password){
+
+        Call<UserDto> callSignUp = UserViewModel.getInstance()
+                .getUserService()
+                .logIn(email, password);
+
+        callSignUp.enqueue(new Callback<UserDto>() {
+            @Override
+            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+
+                try {
+                    res = response;
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                finally {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserDto> call, Throwable t) {
+
+            }
+        });
+
+        return res;
+    }
+
 }

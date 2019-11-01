@@ -120,9 +120,9 @@ public class LoginActivity extends BaseActivity {
                 Intent intent = new Intent(LoginActivity.this, MoodPromptActivity.class);
                 startActivity(intent);
 
-                /*loadingProgressBar.setVisibility(View.VISIBLE);
+                loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());*/
+                        passwordEditText.getText().toString());
             }
         });
     }

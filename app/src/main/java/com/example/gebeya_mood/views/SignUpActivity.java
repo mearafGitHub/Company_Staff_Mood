@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.gebeya_mood.R;
@@ -36,11 +37,10 @@ public class SignUpActivity extends BaseActivity {
     private ImageButton fp_image;
     private FingerprintManager fp_manager;
     private KeyguardManager keyguardManager;
-
+    private ProgressBar signUpProgressBar;
     private EditText email, username, gender, team, password, confirmpassword;
     private  String responseObject , code, error;
     private  Response<UserDto> response;
-
 
    // @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -48,19 +48,19 @@ public class SignUpActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-
+        signUpProgressBar = findViewById(R.id.loading);
         email = findViewById(R.id.email);
         username = findViewById(R.id.screenname);
         gender = findViewById(R.id.gender);
         team = findViewById(R.id.team);
         password = findViewById(R.id.password);
         confirmpassword = findViewById(R.id.confirm_password);
-
         signup = findViewById(R.id.signUp);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 signUp();
             }
         });
@@ -112,21 +112,23 @@ public class SignUpActivity extends BaseActivity {
             confirmpassword.requestFocus();
             confirmpassword.setError("Confirmed password must match with password!");
         }
+        signUpProgressBar.setVisibility(View.VISIBLE);
         response = userViewModel.signUp(emailVal,usernameVal,genderVal,teamVal,passwordVal);
+        checkResponse();
+    }
+
+  protected  void checkResponse(){
 
         try {
             if (response == null){
                 Toast.makeText(SignUpActivity.this, "response: Null " + code, Toast.LENGTH_LONG).show();
             }
-
             else if(! (response == null)){
 
-             if(response.code() == 201){
+                if(response.code() == 201){
                     code = String.valueOf(response.code());
                     responseObject = String.valueOf(response.body());
-
-                    Toast.makeText(SignUpActivity.this, "response: " + responseObject + " code:" + code, Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(SignUpActivity.this, "Signed up succussfully " + " code:" + code, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
@@ -138,6 +140,7 @@ public class SignUpActivity extends BaseActivity {
                     code = String.valueOf(response.code());
                     error = String.valueOf(response.errorBody());
                     Toast.makeText(SignUpActivity.this, "Code: " + code + "  error: " + error, Toast.LENGTH_LONG).show();
+
                 }
 
                 // JSON Parsing here
@@ -146,13 +149,12 @@ public class SignUpActivity extends BaseActivity {
                 } catch (JSONException e){
                     e.printStackTrace();
                 }
-
             }
         } catch (Exception e){
             e.printStackTrace();
         }
-        finally {
-            //Toast.makeText(SignUpActivity.this,  " Sign up to Gebeya Mood", Toast.LENGTH_LONG).show();
+        finally {signUpProgressBar.setVisibility(View.GONE);
+        //Toast.makeText(SignUpActivity.this,  " Sign up to Gebeya Mood", Toast.LENGTH_LONG).show();
         }
     }
 
