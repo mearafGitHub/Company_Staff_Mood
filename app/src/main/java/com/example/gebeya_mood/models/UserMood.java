@@ -14,6 +14,11 @@ public class UserMood {
     public String userId;
 
     @NonNull
+    public String username;
+
+    @NonNull
+    public String team_name;
+    @NonNull
     public String user_emotion; // mood
 
     @NonNull

@@ -1,17 +1,25 @@
 package com.example.gebeya_mood.viewmodels;
 
 import android.app.Application;
+import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.gebeya_mood.models.User;
 import com.example.gebeya_mood.models.UserMood;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodTransformer;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodsDto;
 import com.example.gebeya_mood.repo.users.UserApiService;
+import com.example.gebeya_mood.repo.users.UserDao;
+import com.example.gebeya_mood.repo.users.UserDto;
+import com.example.gebeya_mood.repo.users.UserTransformer;
+import com.example.gebeya_mood.ui.login.LoginActivity;
+import com.example.gebeya_mood.views.SignUpActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +32,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserViewModel extends AndroidViewModel {
     private static final String BaseUrl = "https://stark-peak-15799.herokuapp.com/";
-    private static UserViewModel userMoodViewModel;
+    private static UserViewModel userViewModel;
     private static Application application;
     public Retrofit retrofit;
-    public UserMoodDao dao;
-    public MutableLiveData<List<UserMood>> moods;
-
+    public UserDao dao;
+    public MutableLiveData<List<User>> users;
+    public  Response<UserDto> res;
 
 
     public UserViewModel(@NonNull Application application) {
@@ -38,52 +46,87 @@ public class UserViewModel extends AndroidViewModel {
                 .baseUrl(BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        moods = new MutableLiveData<>(new ArrayList<>());
+       users = new MutableLiveData<>(new ArrayList<>());
 
         //loadUserMoods();
     }
 
-    private void loadUserMoods(){
-        List<UserMood> moodsDb = dao.getAll();
-        if (moodsDb.isEmpty()){
-            userMoodsFromApi();
+    public UserViewModel() {
+        super(application);
+    }
+
+    private void loadUser(){
+        List<User> usersDb = dao.getAll();
+        if (usersDb.isEmpty()){
+            userFromApi();
         }
         else{
-            moods.setValue(moodsDb);
+            users.setValue(usersDb);
         }
     }
 
-    private void userMoodsFromApi(){
+    private void userFromApi(){
 
-        UserMoodApiService userMoodApiService = retrofit.create(UserMoodApiService.class);
-        userMoodApiService.getMoods().enqueue(new Callback<List<UserMoodsDto>>() {
+        UserApiService userApiService = retrofit.create(UserApiService.class);
+        userApiService.getMoods().enqueue(new Callback<List<UserDto>>() {
             @Override
-            public void onResponse(Call<List<UserMoodsDto>> call, Response<List<UserMoodsDto>> response) {
-                List<UserMood> moodsApi = UserMoodTransformer.ListDtoToMood(response.body());
-                dao.addMoods(moodsApi);
-                moods.setValue(moodsApi);
+            public void onResponse(Call<List<UserDto>> call, Response<List<UserDto>> response) {
+                List<User> usersApi = UserTransformer.ListDtoToUserList(response.body());
+                dao.addUsers(usersApi);
+                users.setValue(usersApi);
             }
 
             @Override
-            public void onFailure(Call<List<UserMoodsDto>> call, Throwable t) {
+            public void onFailure(Call<List<UserDto>> call, Throwable t) {
 
             }
         });
 
     }
 
-    public MutableLiveData<List<UserMood>> getMoods(){
-        return moods;
+    public MutableLiveData<List<User>> getUsers(){
+        return users;
     }
 
     public static synchronized UserViewModel getInstance(){
-        if(userMoodViewModel == null){
-            userMoodViewModel = new UserViewModel(application);
+        if(userViewModel == null){
+            userViewModel = new UserViewModel(application);
         }
-        return userMoodViewModel;
+        return userViewModel;
     }
 
     public UserApiService getUserService(){
         return retrofit.create(UserApiService.class);
+    }
+
+
+    public Response<UserDto> signUp(String email, String username, String gender, String team, String password){
+
+        Call<UserDto> callSignUp = UserViewModel.getInstance()
+                .getUserService()
+                .signUp(email, username, gender, team, password);
+
+        callSignUp.enqueue(new Callback<UserDto>() {
+            @Override
+            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+
+                try {
+                    res = response;
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                finally {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserDto> call, Throwable t) {
+
+            }
+        });
+
+        return res;
     }
 }

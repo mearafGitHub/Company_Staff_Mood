@@ -1,7 +1,5 @@
 package com.example.gebeya_mood.repo.users;
 
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodsDto;
-
 import java.util.List;
 
 import retrofit2.Call;

@@ -11,16 +11,18 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
-
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.models.User;
 import com.example.gebeya_mood.repo.users.UserDto;
 import com.example.gebeya_mood.ui.login.LoginActivity;
-import com.example.gebeya_mood.viewmodels.UserMoodViewModel;
 import com.example.gebeya_mood.viewmodels.UserViewModel;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,7 +38,8 @@ public class SignUpActivity extends BaseActivity {
     private KeyguardManager keyguardManager;
 
     private EditText email, username, gender, team, password, confirmpassword;
-
+    private  String responseObject , code, error;
+    private  Response<UserDto> response;
 
 
    // @RequiresApi(api = Build.VERSION_CODES.P)
@@ -58,13 +61,14 @@ public class SignUpActivity extends BaseActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                startActivity(intent);
+                signUp();
             }
         });
     }
 
     private void signUp(){
+        UserViewModel userViewModel = new UserViewModel();
+
         String emailVal = email.getText().toString().trim();
         String usernameVal = username.getText().toString().trim();
         String genderVal = gender.getText().toString().trim();
@@ -108,25 +112,50 @@ public class SignUpActivity extends BaseActivity {
             confirmpassword.requestFocus();
             confirmpassword.setError("Confirmed password must match with password!");
         }
+        response = userViewModel.signUp(emailVal,usernameVal,genderVal,teamVal,passwordVal);
 
-        Call<UserDto> callSignUp = UserViewModel.getInstance()
-            .getUserService()
-            .signUp(emailVal, usernameVal, genderVal, teamVal, passwordVal);
-
-        callSignUp.enqueue(new Callback<UserDto>() {
-            @Override
-            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
-                String responseObject = String.valueOf(response.body());
-                Toast.makeText(SignUpActivity.this, responseObject, Toast.LENGTH_LONG).show();
-
+        try {
+            if (response == null){
+                Toast.makeText(SignUpActivity.this, "response: Null " + code, Toast.LENGTH_LONG).show();
             }
 
-            @Override
-            public void onFailure(Call<UserDto> call, Throwable t) {
-                Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            else if(! (response == null)){
+
+             if(response.code() == 201){
+                    code = String.valueOf(response.code());
+                    responseObject = String.valueOf(response.body());
+
+                    Toast.makeText(SignUpActivity.this, "response: " + responseObject + " code:" + code, Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+                else if(response.code() == 400){
+                    responseObject = String.valueOf(response.body());
+                    Toast.makeText(SignUpActivity.this, "  NULL Response: "  + responseObject, Toast.LENGTH_LONG).show();
+                }
+                else{
+                    code = String.valueOf(response.code());
+                    error = String.valueOf(response.errorBody());
+                    Toast.makeText(SignUpActivity.this, "Code: " + code + "  error: " + error, Toast.LENGTH_LONG).show();
+                }
+
+                // JSON Parsing here
+                try {
+                    JSONObject jsonObject = new JSONObject(responseObject);
+                } catch (JSONException e){
+                    e.printStackTrace();
+                }
+
             }
-        });
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            //Toast.makeText(SignUpActivity.this,  " Sign up to Gebeya Mood", Toast.LENGTH_LONG).show();
+        }
+    }
+
     }
 
 
-}

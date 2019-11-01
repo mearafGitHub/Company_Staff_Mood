@@ -38,7 +38,8 @@ public class UserMoodsAdapter extends RecyclerView.Adapter<UserMoodViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull UserMoodViewHolder holder, int position) {
         UserMood userMood = moodsList.get(position);
-        holder.Username.setText(userMood.Username);
+
+        holder.Username.setText(userMood.username);
         holder.team_name.setText(userMood.team_name);
         holder.user_emotion.setText(userMood.user_emotion);
         holder.user_mood_date.setText(userMood.date);

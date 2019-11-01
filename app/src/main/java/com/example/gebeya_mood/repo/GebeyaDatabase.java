@@ -15,7 +15,8 @@ import com.example.gebeya_mood.repo.users.UserDao;
     version = 1
 )
 
-@Entity(tableName = "UserMood")
+//@Entity(tableName = "UserMood")
+
 public abstract class GebeyaDatabase extends RoomDatabase {
 
     public abstract UserMoodDao UserMood();
