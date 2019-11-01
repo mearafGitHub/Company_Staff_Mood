@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 
 public class UserMoodsDto {
 
+
     @Expose
     public String emotion;
 

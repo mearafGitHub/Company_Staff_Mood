@@ -11,6 +11,7 @@ import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodTransformer;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodsDto;
+import com.example.gebeya_mood.repo.users.UserApiService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserMoodViewModel extends AndroidViewModel {
+public class UserViewModel extends AndroidViewModel {
     private static final String BaseUrl = "https://stark-peak-15799.herokuapp.com/";
-    private static UserMoodViewModel userMoodViewModel;
+    private static UserViewModel userMoodViewModel;
     private static Application application;
     public Retrofit retrofit;
     public UserMoodDao dao;
@@ -31,7 +32,7 @@ public class UserMoodViewModel extends AndroidViewModel {
 
 
 
-    public UserMoodViewModel(@NonNull Application application) {
+    public UserViewModel(@NonNull Application application) {
         super(application);
         retrofit = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
@@ -75,14 +76,14 @@ public class UserMoodViewModel extends AndroidViewModel {
         return moods;
     }
 
-    public static synchronized UserMoodViewModel getInstance(){
+    public static synchronized UserViewModel getInstance(){
         if(userMoodViewModel == null){
-            userMoodViewModel = new UserMoodViewModel(application);
+            userMoodViewModel = new UserViewModel(application);
         }
         return userMoodViewModel;
     }
 
-    public UserMoodApiService getUserMoodService(){
-        return retrofit.create(UserMoodApiService.class);
+    public UserApiService getUserService(){
+        return retrofit.create(UserApiService.class);
     }
 }

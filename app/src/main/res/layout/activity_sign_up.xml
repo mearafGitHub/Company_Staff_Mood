@@ -74,6 +74,21 @@
         />
 
     <EditText
+        android:id="@+id/team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:hint="@string/prompt_gender"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="true"
+        android:textColorHint="@color/colorBackgroundAccent"
+        />
+
+
+    <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

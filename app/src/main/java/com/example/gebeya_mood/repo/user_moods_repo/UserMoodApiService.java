@@ -3,6 +3,8 @@ package com.example.gebeya_mood.repo.user_moods_repo;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -12,8 +14,15 @@ public interface UserMoodApiService {
 
     // base url: https://stark-peak-15799.herokuapp.com/
 
+    @FormUrlEncoded
     @POST("users")
-    Call<UserMoodsDto> signUp();
+    Call<UserMoodsDto> signUp(
+            @Field("email")String email,
+            @Field("password")String password,
+            @Field("username")String username,
+            @Field("team")String team,
+            @Field("gender")String gender
+            );
 
     @POST("users/login")
     Call<UserMoodsDto> logIn();
