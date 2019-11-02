@@ -1,7 +1,5 @@
 package com.example.gebeya_mood.views;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,16 +8,16 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.pojos.LoginPojo;
 import com.example.gebeya_mood.viewmodels.UserViewModel;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
-    private Response response;
+public class LoginActivity extends BaseActivity {
+    private Response<LoginPojo> response;
     private String responseObject, code, error;
     private Button login;
     private EditText email;
@@ -27,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar loadingLogin;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -39,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login();
-                Intent intent = new Intent(LoginActivity.this, MoodPromptActivity.class);
+              //  login();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -66,47 +64,49 @@ public class LoginActivity extends AppCompatActivity {
 
         loadingLogin.setVisibility(View.VISIBLE);
         response = userViewModel.logIn(emailVal, passwordVal);
-        checkResponse();
+        checkLoginResponse();
     }
 
-    protected  void checkResponse(){
+    protected  void checkLoginResponse(){
 
         try {
-            if (response == null){
-                Toast.makeText(LoginActivity.this, "response: Null " + code, Toast.LENGTH_LONG).show();
+            if (!(response.isSuccessful())){
+                Toast.makeText(LoginActivity.this, " Not Successful." + code, Toast.LENGTH_LONG).show();
             }
-            else if(! (response == null)){
+            else if(response.isSuccessful()){
+                Toast.makeText(LoginActivity.this, " Successful !!! " + code, Toast.LENGTH_LONG).show();
 
-                if(response.code() == 201){
-                    code = String.valueOf(response.code());
-                    responseObject = String.valueOf(response.body());
-                    Toast.makeText(LoginActivity.this, "Signed up succussfully " + " code:" + code, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, com.example.gebeya_mood.ui.login.LoginActivity.class);
-                    startActivity(intent);
-                }
-                else if(response.code() == 400){
-                    responseObject = String.valueOf(response.body());
-                    Toast.makeText(LoginActivity.this, "  NULL Response: "  + responseObject, Toast.LENGTH_LONG).show();
-                }
-                else{
-                    code = String.valueOf(response.code());
+
+                if(response.errorBody() != null){
                     error = String.valueOf(response.errorBody());
-                    Toast.makeText(LoginActivity.this, "Code: " + code + "  error: " + error, Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(LoginActivity.this, "Error: Null " + error + "Code:" + code, Toast.LENGTH_LONG).show();
+                    d(error);
                 }
 
-                // JSON Parsing here
-                try {
-                    JSONObject jsonObject = new JSONObject(responseObject);
-                } catch (JSONException e){
-                    e.printStackTrace();
-                }
+                else if(! (response.body() == null)){
+                    responseObject = String.valueOf(response.body());
+                    d(responseObject);
+                    code = String.valueOf(response.code());
+                    Toast.makeText(LoginActivity.this, "Response:  "  + responseObject, Toast.LENGTH_LONG).show();
+
+                    if(response.code() == 201){
+                        Toast.makeText(LoginActivity.this, "Logged in successfully " + " code:" + code, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        code = String.valueOf(response.code());
+                        error = String.valueOf(response.errorBody());
+                        Toast.makeText(LoginActivity.this, "Code: " + code + "  error: " + error, Toast.LENGTH_LONG).show();
+                    }
+            }
             }
         } catch (Exception e){
             e.printStackTrace();
         }
         finally {loadingLogin.setVisibility(View.GONE);
-            //Toast.makeText(SignUpActivity.this,  " Sign up to Gebeya Mood", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
         }
     }
 

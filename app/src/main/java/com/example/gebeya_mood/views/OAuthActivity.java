@@ -8,35 +8,27 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.framework.base.BaseActivity;
 
-public class OAuthActivity extends AppCompatActivity {
+public class OAuthActivity extends BaseActivity {
 
     private Button gebeyaSignUp;
     private Button googleSignUp;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oauth);
-    gebeyaSignUp = findViewById(R.id.gebeyaSignUp);
+        gebeyaSignUp = findViewById(R.id.gebeyaSignUp);
+        googleSignUp = findViewById(R.id.googleSignUp);
 
-
-    gebeyaSignUp.setOnClickListener(new View.OnClickListener() {
+        gebeyaSignUp.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(OAuthActivity.this, SignUpActivity.class);
             startActivity(intent);
-            finish();
-        }
-    });
 
-    gebeyaSignUp.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(OAuthActivity.this, SignUpActivity.class);
-            startActivity(intent);
-            finish();
         }
     });
 

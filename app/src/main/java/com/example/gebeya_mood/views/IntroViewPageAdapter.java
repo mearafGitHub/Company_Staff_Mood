@@ -1,4 +1,4 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.views;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.views.IntroScreenItem;
 
 import java.util.List;
 

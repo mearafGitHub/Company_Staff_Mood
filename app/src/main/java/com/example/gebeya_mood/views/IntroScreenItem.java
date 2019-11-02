@@ -1,4 +1,4 @@
-package com.example.gebeya_mood;
+package com.example.gebeya_mood.views;
 
 public class IntroScreenItem {
 

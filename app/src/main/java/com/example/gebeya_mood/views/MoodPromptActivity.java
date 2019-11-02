@@ -3,7 +3,6 @@ package com.example.gebeya_mood.views;
 import androidx.annotation.NonNull;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.gebeya_mood.GebeyaIntro;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

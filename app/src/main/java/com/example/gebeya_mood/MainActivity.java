@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.gebeya_mood.views.MoodPromptActivity;
 import com.example.gebeya_mood.views.OAuthActivity;
 
 import java.util.Timer;
@@ -23,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, OAuthActivity.class);
+                Intent intent = new Intent(MainActivity.this, MoodPromptActivity.class);
                 startActivity(intent);
                 finish();
             }
-        },3000);
+        },2500);
     }
 }

@@ -1,25 +1,15 @@
 package com.example.gebeya_mood.viewmodels;
 
-import android.app.Application;
-import android.content.Intent;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.gebeya_mood.models.User;
-import com.example.gebeya_mood.models.UserMood;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodTransformer;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodsDto;
+import com.example.gebeya_mood.pojos.LoginPojo;
+import com.example.gebeya_mood.pojos.SingUpPojo;
 import com.example.gebeya_mood.repo.users.UserApiService;
 import com.example.gebeya_mood.repo.users.UserDao;
 import com.example.gebeya_mood.repo.users.UserDto;
 import com.example.gebeya_mood.repo.users.UserTransformer;
-import com.example.gebeya_mood.ui.login.LoginActivity;
-import com.example.gebeya_mood.views.SignUpActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,29 +20,23 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserViewModel extends AndroidViewModel {
+public class UserViewModel extends ViewModel {
     private static final String BaseUrl = "https://stark-peak-15799.herokuapp.com/";
     private static UserViewModel userViewModel;
-    private static Application application;
     public Retrofit retrofit;
     public UserDao dao;
     public MutableLiveData<List<User>> users;
-    public  Response<UserDto> res;
+    public  Response<LoginPojo> loginRespones;
+    public  Response<SingUpPojo> signUpRespones;
 
 
-    public UserViewModel(@NonNull Application application) {
-        super(application);
+    public UserViewModel() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
        users = new MutableLiveData<>(new ArrayList<>());
-
         //loadUserMoods();
-    }
-
-    public UserViewModel() {
-        super(application);
     }
 
     private void loadUser(){
@@ -90,7 +74,7 @@ public class UserViewModel extends AndroidViewModel {
 
     public static synchronized UserViewModel getInstance(){
         if(userViewModel == null){
-            userViewModel = new UserViewModel(application);
+            userViewModel = new UserViewModel();
         }
         return userViewModel;
     }
@@ -100,18 +84,20 @@ public class UserViewModel extends AndroidViewModel {
     }
 
 
-    public Response<UserDto> signUp(String email, String username, String gender, String team, String password){
+    public Response<SingUpPojo> signUp(String email, String username, String gender, String team, String password){
 
-        Call<UserDto> callSignUp = UserViewModel.getInstance()
+        User user = new User(email, username, gender, team, password);
+
+        Call<SingUpPojo> callSignUp = UserViewModel.getInstance()
                 .getUserService()
-                .signUp(email, username, gender, team, password);
+                .signUp(user);
 
-        callSignUp.enqueue(new Callback<UserDto>() {
+        callSignUp.enqueue(new Callback<SingUpPojo>() {
             @Override
-            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+            public void onResponse(Call<SingUpPojo> call, Response<SingUpPojo> response) {
 
                 try {
-                    res = response;
+                    signUpRespones = response;
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -122,26 +108,26 @@ public class UserViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onFailure(Call<UserDto> call, Throwable t) {
-
+            public void onFailure(Call<SingUpPojo> call, Throwable t) {
+                return;
             }
         });
 
-        return res;
+        return signUpRespones;
     }
 
-    public Response<UserDto> logIn(String email, String password){
+    public Response<LoginPojo> logIn(String email, String password){
 
-        Call<UserDto> callSignUp = UserViewModel.getInstance()
+        Call<LoginPojo> callLogin = UserViewModel.getInstance()
                 .getUserService()
                 .logIn(email, password);
 
-        callSignUp.enqueue(new Callback<UserDto>() {
+        callLogin.enqueue(new Callback<LoginPojo>() {
             @Override
-            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+            public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response) {
 
                 try {
-                    res = response;
+                    loginRespones = response;
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -152,12 +138,13 @@ public class UserViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onFailure(Call<UserDto> call, Throwable t) {
+            public void onFailure(Call<LoginPojo> call, Throwable t) {
 
+                return;
             }
         });
 
-        return res;
+        return loginRespones;
     }
 
 }

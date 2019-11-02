@@ -40,7 +40,7 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
         adminRecyclerView = findViewById(R.id.adminRecycler);
 
 
-// Spinner
+// Spinners
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.date_filter,

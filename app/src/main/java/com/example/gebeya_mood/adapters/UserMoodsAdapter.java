@@ -18,13 +18,13 @@ import java.util.List;
 public class UserMoodsAdapter extends RecyclerView.Adapter<UserMoodViewHolder> {
 
     Context context;
-    List<UserMood> moodsList;
+    List<UserMood> moodsList = new ArrayList<>();
     LayoutInflater inflater;
 
     public UserMoodsAdapter(Context context, List<UserMood> moodsList) {
 
         this.context = context;
-        moodsList = new ArrayList<>(moodsList);
+        moodsList = moodsList;
         inflater = LayoutInflater.from(context);
     }
 
