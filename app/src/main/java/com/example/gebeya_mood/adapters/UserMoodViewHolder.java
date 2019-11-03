@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.views;
+package com.example.gebeya_mood.adapters;
 
 import android.view.View;
 import android.widget.ImageView;

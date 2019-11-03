@@ -17,7 +17,7 @@ import com.example.gebeya_mood.viewmodels.UserViewModel;
 import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity {
-    private Response<LoginPojo> response;
+    protected Response<LoginPojo> response;
     private String responseObject, code, error;
     private Button login;
     private EditText email;
@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  login();
+               login();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -57,57 +57,15 @@ public class LoginActivity extends BaseActivity {
         }
 
         if(passwordVal.isEmpty()){
-            password.setError("Email required");
+            password.setError("Password is required");
             password.requestFocus();
             return;
         }
 
         loadingLogin.setVisibility(View.VISIBLE);
         response = userViewModel.logIn(emailVal, passwordVal);
-        checkLoginResponse();
-    }
-
-    protected  void checkLoginResponse(){
-
-        try {
-            if (!(response.isSuccessful())){
-                Toast.makeText(LoginActivity.this, " Not Successful." + code, Toast.LENGTH_LONG).show();
-            }
-            else if(response.isSuccessful()){
-                Toast.makeText(LoginActivity.this, " Successful !!! " + code, Toast.LENGTH_LONG).show();
-
-
-                if(response.errorBody() != null){
-                    error = String.valueOf(response.errorBody());
-                    Toast.makeText(LoginActivity.this, "Error: Null " + error + "Code:" + code, Toast.LENGTH_LONG).show();
-                    d(error);
-                }
-
-                else if(! (response.body() == null)){
-                    responseObject = String.valueOf(response.body());
-                    d(responseObject);
-                    code = String.valueOf(response.code());
-                    Toast.makeText(LoginActivity.this, "Response:  "  + responseObject, Toast.LENGTH_LONG).show();
-
-                    if(response.code() == 201){
-                        Toast.makeText(LoginActivity.this, "Logged in successfully " + " code:" + code, Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        code = String.valueOf(response.code());
-                        error = String.valueOf(response.errorBody());
-                        Toast.makeText(LoginActivity.this, "Code: " + code + "  error: " + error, Toast.LENGTH_LONG).show();
-                    }
-            }
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        finally {loadingLogin.setVisibility(View.GONE);
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
+        //checkLoginResponse();
+        loadingLogin.setVisibility(View.GONE);
     }
 
 }

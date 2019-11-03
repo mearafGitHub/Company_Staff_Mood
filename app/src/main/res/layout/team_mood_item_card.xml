@@ -14,7 +14,7 @@
 
     <RelativeLayout
         android:elevation="9dp"
-        android:id="@+id/relativeLayoutMoodsReport"
+        android:id="@+id/teamMoodContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -111,7 +111,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/emotionTeam"
+                            android:id="@+id/teamEmotion"
                             android:layout_width="wrap_content"
                             android:layout_height="23dp"
                             android:layout_marginLeft="9dp"
@@ -159,7 +159,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/emoji"
+        android:id="@+id/teamEmoji"
         android:elevation="9dp"
         android:layout_width="63dp"
         android:layout_height="63dp"

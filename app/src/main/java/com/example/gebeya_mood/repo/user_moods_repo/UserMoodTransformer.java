@@ -9,12 +9,19 @@ public class UserMoodTransformer {
 
     public static UserMood DtoToMood(UserMoodsDto userMoodsDto){
 
-        UserMood userMood = new UserMood();
-        userMood.userId = userMoodsDto.getUserId();
+        UserMood userMood = new UserMood(userMoodsDto.getUserId(),
+                userMoodsDto.getMoodId(),
+                userMoodsDto.getUserId(),
+                "happy",
+                123,
+                userMoodsDto.getDate(),
+                userMoodsDto.getReason());
+
+      /*  userMood.userId = userMoodsDto.getUserId();
         userMood.user_emotion = userMoodsDto.getMoodId();
         userMood.userId = userMoodsDto.getUserId();
         userMood.date = userMoodsDto.getDate();
-        userMood.reason = userMoodsDto.getReason();
+        userMood.reason = userMoodsDto.getReason();*/
 
         return userMood;
     }

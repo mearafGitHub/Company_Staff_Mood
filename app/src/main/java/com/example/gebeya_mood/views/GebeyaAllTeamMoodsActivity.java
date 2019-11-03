@@ -1,7 +1,6 @@
 package com.example.gebeya_mood.views;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -10,24 +9,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.gebeya_mood.models.UserMood;
-import com.example.gebeya_mood.viewmodels.UserMoodViewModel;
-import com.example.gebeya_mood.adapters.UserMoodsAdapter;
+import com.example.gebeya_mood.adapters.TeamMoodAdapter;
+import com.example.gebeya_mood.models.TeamMood;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.viewmodels.TeamMoodViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 
 public class GebeyaAllTeamMoodsActivity extends BaseActivity {
     private RecyclerView moodRecyclerView;
-    private UserMoodsAdapter userMoodsAdapter;
-    private UserMoodViewModel userMoodViewModel;
-    private List<UserMood> userMoods;
+    private TeamMoodAdapter teamMoodsAdapter;
+    public TeamMoodViewModel teamMoodVeiwModel;
+    private List<TeamMood> teamMoods;
     private Context context;
     public static final int activityNum = 0;
+    //private UserMoodViewModel userMoodViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +35,11 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
         ButterKnife.bind(this);
        // setBottomNavView();
 
-        userMoods = new ArrayList<>();
+       /* userMoods = new ArrayList<>();
         userMoodViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
-                .create(UserMoodViewModel.class);
-
+                .create(TeamMoodViewModel.class);
+*/
         // USER MOOD ADAPTER AND MODEL VIEW TO POPULATE DATA HERE
 
        /* userMoodsAdapter = new UserMoodsAdapter(this, userMoods);

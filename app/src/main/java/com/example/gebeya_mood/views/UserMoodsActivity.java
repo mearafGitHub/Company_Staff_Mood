@@ -60,7 +60,7 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
 
         // TODO: API CONNECTION USERMOOD-VIEWMODEL
 
-        // TODO: Get User from LOCAL DB / API
+        // TODO: Get UserPojoHelper from LOCAL DB / API
         /*   getUsersCall();
 
         //  TODO: Get USER Moods Here

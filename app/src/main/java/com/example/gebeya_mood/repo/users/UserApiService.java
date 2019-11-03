@@ -17,16 +17,35 @@ import retrofit2.http.Path;
 
 public interface UserApiService {
 
+    //GET https://stark-peak-15799.herokuapp.com/users/profile
+
+    // POST https://stark-peak-15799.herokuapp.com/users/login
+
+    // PUT https://stark-peak-15799.herokuapp.com/users/profile
+
+    // POST https://stark-peak-15799.herokuapp.com/users
+
+    // GET https://stark-peak-15799.herokuapp.com/users/types
+
+    // GET https://stark-peak-15799.herokuapp.com/users/search
+
+    // GET https://stark-peak-15799.herokuapp.com/users/:id
+
+    // GET https://stark-peak-15799.herokuapp.com/moods/my-logs
+
+    // GET https://stark-peak-15799.herokuapp.com/moods/my-mood-count
+
+
+
     @FormUrlEncoded
     @POST("users")
-    Call<SingUpPojo> signUp(@Body User user);
-   /* Call<SingUpPojo> signUp(
-            @Field("username")String username,
+    Call<SingUpPojo> signUp(
+            @Field("name")String name,
             @Field("email")String email,
             @Field("password")String password,
-            @Field("type")String type,
-            @Field("sex")String sex
-    );*/
+            @Field("team")String team,
+            @Field("sex")String gender
+    );
 
     @FormUrlEncoded
     @POST("users/login")
@@ -38,14 +57,6 @@ public interface UserApiService {
     @GET("users/profile")
     Call<UserProfilePojo> userProfile();
 
-    @GET("moods")
-    Call<List<UserDto>> getMoods();
-
-    @GET("moods{mooId}")
-    Call <UserDto> getMood(@Path("moodId") String moodId);
-
-    @GET("moods{userId}")
-    Call <List<UserDto>> getUserMood(@Path("userId") String userId);
 
 
 }

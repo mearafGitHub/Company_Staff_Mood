@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.models.UserMood;
-import com.example.gebeya_mood.views.UserMoodViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

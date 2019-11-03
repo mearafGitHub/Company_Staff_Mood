@@ -31,4 +31,13 @@ public class UserMood {
     @NonNull
     public String reason;
 
+    public UserMood(@NonNull String userId, @NonNull String username, @NonNull String team_name, @NonNull String user_emotion, int user_EMOJI, @NonNull String date, @NonNull String reason) {
+        this.userId = userId;
+        this.username = username;
+        this.team_name = team_name;
+        this.user_emotion = user_emotion;
+        this.user_EMOJI = user_EMOJI;
+        this.date = date;
+        this.reason = reason;
+    }
 }

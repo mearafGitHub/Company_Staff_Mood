@@ -1,13 +1,14 @@
 
 package com.example.gebeya_mood.viewmodels;
 
-        import android.app.Application;
+import android.app.Application;
 
         import androidx.annotation.NonNull;
         import androidx.lifecycle.AndroidViewModel;
         import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
-        import com.example.gebeya_mood.models.UserMood;
+import com.example.gebeya_mood.models.UserMood;
         import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
         import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
         import com.example.gebeya_mood.repo.user_moods_repo.UserMoodTransformer;
@@ -21,20 +22,16 @@ package com.example.gebeya_mood.viewmodels;
         import retrofit2.Response;
         import retrofit2.Retrofit;
 
-public class MyMoodsViewModel extends AndroidViewModel {
+public class MyMoodsViewModel extends ViewModel {
     public Retrofit retrofit;
     public UserMoodDao dao;
     public MutableLiveData<List<UserMood>> moods;
 
 
-    public MyMoodsViewModel(@NonNull Application application) {
-        super(application);
-
-   /*   retrofit = ((Application) application).getRetrofit();
-        dao = ((Application) application).getDb().moodDao();*/
+    public MyMoodsViewModel() {
         moods = new MutableLiveData<>(new ArrayList<>());
 
-        //loadUserMoods(string, string);
+
     }
 
     private void loadUserMoods(String userId, String user_team){
@@ -48,7 +45,7 @@ public class MyMoodsViewModel extends AndroidViewModel {
 
     }
 
-    private void MyMoodsFromApi(String userId, String user_team){
+    private void getMyMoodsFromApi(String userId, String user_team){
 
         UserMoodApiService userMoodApiService = retrofit.create(UserMoodApiService.class);
         userMoodApiService.getMoods().enqueue(new Callback<List<UserMoodsDto>>() {

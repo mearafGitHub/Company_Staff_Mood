@@ -11,6 +11,12 @@ public interface TeamMoodApiService {
 
     // base url: https://stark-peak-15799.herokuapp.com/
 
+    // POST https://stark-peak-15799.herokuapp.com/team-moods
+
+    // GET https://stark-peak-15799.herokuapp.com/team-moods/search
+
+    // PUT https://stark-peak-15799.herokuapp.com/team-moods/:id
+
     @POST("users")
     Call<TeamMoodsDto> signUp();
 
@@ -19,8 +25,6 @@ public interface TeamMoodApiService {
 
     @POST("users/profile")
     Call<TeamMoodsDto> userMoodPost();
-
-
 
     @GET("moods")
     Call<List<TeamMoodsDto>> getMoods();

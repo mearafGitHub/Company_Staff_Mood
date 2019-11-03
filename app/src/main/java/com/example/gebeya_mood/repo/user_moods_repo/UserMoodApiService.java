@@ -1,5 +1,8 @@
 package com.example.gebeya_mood.repo.user_moods_repo;
 
+import com.example.gebeya_mood.pojos.MoodPojo;
+import com.example.gebeya_mood.repo.users.UserDto;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -11,16 +14,32 @@ public interface UserMoodApiService {
 
     // base url:
 
-    @POST("users")
-    Call<UserMoodsDto> createUser();
+    // GET https://stark-peak-15799.herokuapp.com/moods/choices
+
+    // POST https://stark-peak-15799.herokuapp.com/moods
+
+    //GET https://stark-peak-15799.herokuapp.com/moods/my-mood-count
+
+    // GET https://stark-peak-15799.herokuapp.com/moods/count
+
+    //GET https://stark-peak-15799.herokuapp.com/moods/search
+
+    // GET https://stark-peak-15799.herokuapp.com/moods/my-logs
+
+    @POST("moods")
+    Call<MoodPojo> postMood(
+
+    );
+
+    @GET("moods{mooId}")
+    Call <UserDto> getMood(@Path("moodId") String moodId);
+
+    @GET("moods{userId}")
+    Call <List<UserDto>> getUserMood(@Path("userId") String userId);
+
 
     @GET("moods")
     Call<List<UserMoodsDto>> getMoods();
 
-    @GET("moods{mooId}")
-    Call <UserMoodsDto> getMood(@Path("moodId") String moodId);
-
-    @GET("moods{userId}")
-    Call <List<UserMoodsDto>> getUserMood(@Path("userId") String userId);
 
 }

@@ -9,21 +9,21 @@ DOING:
 
  [X] 1. list cards in recycler view
        [x] the userMoods on the gebeya userMood home screen
-       [x] the user userMood history (userMood log)
-       [x] the admin user userMood review screen
+       [x] the userPojoHelper userMood history (userMood log)
+       [x] the admin userPojoHelper userMood review screen
        [x] userMood prompt screen
 
  [..] 2. display dynamic values in inflated layout
  	    [x] list view
  	    [x] filter views
- 	    [...]  filter data according to user's choise
+ 	    [...]  filter data according to userPojoHelper's choise
  	    [...]  receive data from api
 
  [..] 3. display modal with text input
- 	    [x] user prompt to insert userMoods and/or reasons
- 	    [...] user input post to api
+ 	    [x] userPojoHelper prompt to insert userMoods and/or reasons
+ 	    [...] userPojoHelper input post to api
 
- [ ] 4. send user's moods to api
+ [ ] 4. send userPojoHelper's moods to api
       [] login db
       [] sign up
 

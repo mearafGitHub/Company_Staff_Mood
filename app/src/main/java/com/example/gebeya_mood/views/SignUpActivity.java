@@ -3,6 +3,7 @@ package com.example.gebeya_mood.views;
 //import android.app.KeyguardManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -38,7 +39,6 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
     private String team, gender;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,17 +52,13 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         confirmpassword = findViewById(R.id.confirm_password);
         signup = findViewById(R.id.signUp);
 
-
         Spinner teamChoice = findViewById(R.id.Team_Select);
 
         teamChoice.setOnItemSelectedListener(this);
         List<String> teamNames = new ArrayList<String>();
-        teamNames.add("Manage");
-        teamNames.add("Trainers");
-        teamNames.add("Mobile");
-        teamNames.add("UI/UX");
-        teamNames.add("FrontEnd");
-        teamNames.add("BackEnd");
+        teamNames.add("Staff");
+        teamNames.add("Talent");
+        teamNames.add("Contractor");
         teamNames.add("Student");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamNames);
@@ -80,7 +76,6 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         ArrayAdapter<String> dataAdapterGender = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genderNames);
         dataAdapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderChoice.setAdapter(dataAdapterGender);
-
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,44 +121,10 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         }
         signUpProgressBar.setVisibility(View.VISIBLE);
         response = userViewModel.signUp(emailVal,usernameVal,gender,team,passwordVal);
-        checkResponse();
-    }
+        signUpProgressBar.setVisibility(View.GONE);
 
-    protected  void checkResponse(){
-
-        try {
-            if (response == null){
-                Toast.makeText(SignUpActivity.this, "response: Is Null " + code, Toast.LENGTH_LONG).show();
-
-            }
-            else if(! (response == null)){
-                responseObject = String.valueOf(response.body());
-                d(responseObject);
-                if(response.code() == 201){
-                    code = String.valueOf(response.code());
-                    responseObject = String.valueOf(response.body());
-                    Toast.makeText(SignUpActivity.this, "Signed up successfully " + " code:" + code, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-                else if(response.code() == 400){
-                    responseObject = String.valueOf(response.body());
-                    Toast.makeText(SignUpActivity.this, "  NULL Response: "  + responseObject, Toast.LENGTH_LONG).show();
-                }
-                else{
-                    code = String.valueOf(response.code());
-                    error = String.valueOf(response.errorBody());
-                    Toast.makeText(SignUpActivity.this, "Code: " + code + "  error: " + error, Toast.LENGTH_LONG).show();
-                }
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        finally {signUpProgressBar.setVisibility(View.GONE);
-            Toast.makeText(SignUpActivity.this,  " Sign up to Gebeya Mood", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
 

@@ -13,74 +13,61 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.models.TeamMood;
 import com.example.gebeya_mood.viewmodels.TeamMoodViewModel;
 
 import java.util.List;
 
-public class TeamMoodAdapter extends RecyclerView.Adapter<TeamMoodAdapter.UserMoodViewHolder> {
-        Context uContext;
-        List<TeamMoodViewModel> teamMoodModelList;
+public class TeamMoodAdapter extends RecyclerView.Adapter<TeamMoodViewHolder> {
+        Context context;
+        List<TeamMood> teamMoodlList;
 
-    public TeamMoodAdapter(Context context, List<TeamMoodViewModel> teamMoodModelList) {
-        this.uContext = context;
-        this.teamMoodModelList = teamMoodModelList;
+    public TeamMoodAdapter(Context context, List<TeamMood> teamMoodlList) {
+        this.context = context;
+        this.teamMoodlList = teamMoodlList;
     }
 
     public Context getContext() {
-        return uContext;
+        return context;
     }
 
     public void setContext(Context context) {
-        this.uContext = context;
+        this.context = context;
     }
 
-    public List<TeamMoodViewModel> getTeamMoodModelList() {
-        return teamMoodModelList;
+    public List<TeamMood> getTeamMoodModelList() {
+        return teamMoodlList;
     }
 
-    public void setTeamMoodModelList(List<TeamMoodViewModel> teamMoodModelList) {
-        this.teamMoodModelList = teamMoodModelList;
+    public void setTeamMoodModelList(List<TeamMood> teamMoodModelList) {
+        this.teamMoodlList = teamMoodModelList;
     }
 
     @NonNull
     @Override
-    public UserMoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TeamMoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout;
-        layout = LayoutInflater.from(uContext).inflate(R.layout.less_item_card, parent, false);
-        return new UserMoodViewHolder(layout);
+        layout = LayoutInflater.from(context).inflate(R.layout.less_item_card, parent, false);
+        return new TeamMoodViewHolder(layout);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserMoodViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TeamMoodViewHolder holder, int position) {
+        TeamMood teamMood = teamMoodlList.get(position);
 
-        holder.emoji.setAnimation(AnimationUtils.loadAnimation(uContext, R.anim.list_fade_anim));
-       // holder.userMoodContainer.setAnimation(AnimationUtils.loadAnimation(uContext, R.anim.list_fade_anim));
+        holder.teamEmoji.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
+        holder.teamMoodContainer.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
 
-        holder.date.setText(teamMoodModelList.get(position).getDate());
-        holder.emotion.setText(teamMoodModelList.get(position).getEmotion());
-        holder.emoji.setImageResource(teamMoodModelList.get(position).getEmoji());
+        holder.team_name.setText(teamMood.teamName);
+        holder.teamEmoji.setImageResource(teamMood.teamEmoji);
+        holder.team_emotion.setText(teamMood.emotion);
+        holder.team_mood_date.setText(teamMood.date);
+        holder.totalMembers.setText(teamMood.totalMembers);
     }
 
     @Override
     public int getItemCount() {
-        return teamMoodModelList.size();
+        return teamMoodlList.size();
     }
 
-    // VIEW HOLDER CLASS
-
-    public class UserMoodViewHolder extends RecyclerView.ViewHolder {
-
-        TextView date, team, emotion;
-        ImageView emoji;
-        RelativeLayout userMoodContainer;
-
-        public UserMoodViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            date = itemView.findViewById(R.id.date_usermood);
-            emoji = itemView.findViewById(R.id.user_emoji);
-            emotion = itemView.findViewById(R.id.emotion);
-            userMoodContainer = itemView.findViewById(R.id.userMoodRelativeLayout);
-        }
-    }
 }
