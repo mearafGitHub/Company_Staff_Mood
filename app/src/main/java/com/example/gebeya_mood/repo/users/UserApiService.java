@@ -4,6 +4,8 @@ import com.example.gebeya_mood.models.User;
 import com.example.gebeya_mood.pojos.LoginPojo;
 import com.example.gebeya_mood.pojos.SingUpPojo;
 import com.example.gebeya_mood.pojos.UserProfilePojo;
+import com.example.gebeya_mood.pojos.UserResponse;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -36,23 +38,15 @@ public interface UserApiService {
     // GET https://stark-peak-15799.herokuapp.com/moods/my-mood-count
 
 
-
-    @FormUrlEncoded
     @POST("users")
-    Call<SingUpPojo> signUp(
-            @Field("name")String name,
-            @Field("email")String email,
-            @Field("password")String password,
-            @Field("team")String team,
-            @Field("sex")String gender
-    );
+    Call<UserResponse> createUser(@Body JsonObject object);
 
-    @FormUrlEncoded
+
+    @POST("users")
+    Call<SingUpPojo> signUp(@Body JsonObject object);
+
     @POST("users/login")
-    Call<LoginPojo> logIn(
-            @Field("email")String email,
-            @Field("password")String password
-    );
+    Call<LoginPojo> logIn(@Body JsonObject object);
 
     @GET("users/profile")
     Call<UserProfilePojo> userProfile();

@@ -24,6 +24,10 @@ public class UserResponse implements Serializable
     @SerializedName("type")
     @Expose
     private String type;
+
+    @Expose
+    private String role;
+
     @SerializedName("date_created")
     @Expose
     private String dateCreated;
@@ -72,6 +76,14 @@ public class UserResponse implements Serializable
     public UserResponse withEmail(String email) {
         this.email = email;
         return this;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPassword() {

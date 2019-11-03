@@ -51,15 +51,18 @@
 
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/money"
             android:layout_margin="8dp"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:scaleType="centerCrop"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/retry" />
+            app:lottie_rawRes="@raw/retry"
+            />
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/weather"
             android:layout_margin="8dp"
             android:layout_width="85dp"
             android:layout_height="85dp"
@@ -69,6 +72,7 @@
             app:lottie_rawRes="@raw/tenor" />
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/work"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_margin="8dp"
@@ -91,6 +95,7 @@
 
 
        <com.airbnb.lottie.LottieAnimationView
+           android:id="@+id/helth"
            android:layout_margin="8dp"
            android:layout_width="85dp"
            android:layout_height="85dp"
@@ -101,6 +106,7 @@
 
 
        <com.airbnb.lottie.LottieAnimationView
+           android:id="@+id/deal"
            android:layout_margin="8dp"
            android:layout_width="85dp"
            android:layout_height="85dp"
@@ -111,6 +117,7 @@
 
 
        <com.airbnb.lottie.LottieAnimationView
+           android:id="@+id/staff"
            android:layout_margin="8dp"
            android:layout_width="85dp"
            android:layout_height="85dp"

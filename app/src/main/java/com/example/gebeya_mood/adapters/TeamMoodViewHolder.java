@@ -50,7 +50,7 @@ public class TeamMoodViewHolder extends RecyclerView.ViewHolder {
         team_emotion = itemView.findViewById(R.id.teamEmotion);
         team_mood_date = itemView.findViewById(R.id.teamDate);
         totalMembers = itemView.findViewById(R.id.totalMembers);
-        teamEmoji = itemView.findViewById(R.id.user_EMOJI);
+        teamEmoji = itemView.findViewById(R.id.teamEmoji);
         teamMoodContainer = itemView.findViewById(R.id.teamMoodContainer);
     }
 }

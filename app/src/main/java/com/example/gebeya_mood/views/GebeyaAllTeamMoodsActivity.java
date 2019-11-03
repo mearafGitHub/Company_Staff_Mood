@@ -1,7 +1,6 @@
 package com.example.gebeya_mood.views;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.gebeya_mood.adapters.AdminViewAdapter;
 import com.example.gebeya_mood.adapters.TeamMoodAdapter;
 import com.example.gebeya_mood.models.TeamMood;
 import com.example.gebeya_mood.R;
@@ -25,7 +23,7 @@ import butterknife.ButterKnife;
 public class GebeyaAllTeamMoodsActivity extends BaseActivity {
     private RecyclerView teamMoodRecyclerView;
     private TeamMoodAdapter teamMoodsAdapter;
-    public TeamMoodViewModel teamMoodVeiwModel;
+    public TeamMoodViewModel teamMoodViewModel;
     private List<TeamMood> teamMoods;
     private Context context;
     public static final int activityNum = 0;
@@ -37,8 +35,9 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
         ButterKnife.bind(this);
        // setBottomNavView();
 
-        teamMoods =  teamMoodVeiwModel.getInstance().getTeamMood();
+        teamMoodViewModel.getInstance().getTeamMood();
         teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
+
         initRecycler();
     }
 

@@ -19,6 +19,7 @@ import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.adapters.AdminViewAdapter;
 import com.example.gebeya_mood.adapters.AdminViewHolder;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.models.TeamMood;
 import com.example.gebeya_mood.viewmodels.TeamMoodViewModel;
 
 import java.util.List;
@@ -28,7 +29,10 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
     int activityNum = 2;
     RecyclerView adminRecyclerView;
     AdminViewAdapter adminAdapter;
-    List<TeamMoodViewModel> teamMoodViewModelList;
+    List<TeamMood> teamMoods;
+    TeamMoodViewModel teamMoodViewModel;
+
+    private String filterByDate, filterByTeam;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
         Spinner teamFilter = findViewById(R.id.team_filter);
         adminRecyclerView = findViewById(R.id.adminRecycler);
 
+      teamMoodViewModel.getInstance().getTeamMood();
 
 // Spinners
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
@@ -50,7 +55,6 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
         filterMood.setAdapter(arrayAdapter);
         filterMood.setOnItemSelectedListener(this);
 
-
         ArrayAdapter<CharSequence> teamArrayAdapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.team_filter,
@@ -61,13 +65,10 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
         teamFilter.setOnItemSelectedListener(this);
     }
 
-
-    // Recycler
-
     private void initRecycler() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         adminRecyclerView.setLayoutManager(linearLayoutManager);
-        adminAdapter = new AdminViewAdapter(this, teamMoodViewModelList);
+        adminAdapter = new AdminViewAdapter(this, teamMoods);
         adminRecyclerView.setAdapter(adminAdapter);
     }
 
@@ -76,6 +77,35 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String choice = parent.getItemAtPosition(position).toString();
         // send and filter by choice to api and display result
+        switch (choice){
+            case "Week" :
+                filterByDate = choice;
+                break;
+            case "day":
+                filterByDate = choice;
+                break;
+            case "Month":
+                filterByDate = choice;
+            case "Year" :
+                filterByDate = choice;
+                break;
+            case "Staff" :
+                filterByTeam = choice;
+                break;
+            case "Talent":
+                filterByTeam = choice;
+            case "Student" :
+                filterByTeam = choice;
+                break;
+            case "Contractor":
+                filterByTeam = choice;
+                break;
+            case "Investor" :
+                filterByTeam = choice;
+                break;
+             default:
+                 break;
+        }
         Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
     }
 
@@ -101,6 +131,11 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
+
+    public AdminViewAdapter getAdminAdapter() {
+        return adminAdapter;
+    }
+
+
 }

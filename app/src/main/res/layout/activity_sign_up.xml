@@ -145,6 +145,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="64dp"
             android:visibility="gone"
+            android:elevation="21dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/password"
             app:layout_constraintStart_toStartOf="@+id/password"
@@ -164,9 +165,17 @@
         android:background="@drawable/round_button"
         android:enabled="true"
         android:gravity="center"
+        android:elevation="21dp"
         android:text="@string/action_sing_up_short"
+
         android:textColor="@color/colorPrimaryGebeya"
         tools:text="Sign Up" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/response"
+        android:textColor="@color/colorAccent"/>
+
 
     <ImageView
         android:id="@+id/gebeya_logo"

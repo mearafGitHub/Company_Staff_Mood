@@ -13,8 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.adapters.UserMoodsAdapter;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.adapters.TeamMoodAdapter;
+import com.example.gebeya_mood.models.UserMood;
 import com.example.gebeya_mood.viewmodels.TeamMoodViewModel;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,8 +26,8 @@ import java.util.List;
 public class UserMoodsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
    public static final int activityNum = 1;
     public RecyclerView userMoodRecycler;
-    public TeamMoodAdapter teamMoodAdapter;
-    public List<TeamMoodViewModel> userMoodItems;
+    public UserMoodsAdapter userMoodAdapter;
+    public List<UserMood> userMoodItems;
     private Context context;
 
     @SerializedName("name")
@@ -53,8 +55,8 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
         filterMood.setOnItemSelectedListener(this);
 
 
-        teamMoodAdapter = new TeamMoodAdapter(this, userMoodItems);
-        userMoodRecycler.setAdapter(teamMoodAdapter);
+        userMoodAdapter = new UserMoodsAdapter(this, userMoodItems);
+        userMoodRecycler.setAdapter(userMoodAdapter);
         userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));
 
 

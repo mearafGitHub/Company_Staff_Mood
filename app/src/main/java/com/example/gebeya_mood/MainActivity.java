@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.gebeya_mood.views.MoodPromptActivity;
-import com.example.gebeya_mood.views.OAuthActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

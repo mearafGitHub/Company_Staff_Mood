@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.models.UserMood;
@@ -32,6 +33,13 @@ public class MoodPromptActivity extends BaseActivity {
   //  @BindView(R.id.whateverMood)
     private ImageButton neutralMood;
 
+    private LottieAnimationView money;
+    private LottieAnimationView staff;
+    private LottieAnimationView deal;
+    private LottieAnimationView health;
+    private LottieAnimationView weather;
+    private LottieAnimationView work;
+
    protected Button go, skip;
    protected ImageButton cancel;
    protected Dialog why;
@@ -51,6 +59,14 @@ public class MoodPromptActivity extends BaseActivity {
         contentMood = findViewById(R.id.mehMood);
         angryMood = findViewById(R.id.disappointedMood);
         neutralMood = findViewById(R.id.neutral);
+
+        health = findViewById(R.id.helth);
+        work = findViewById(R.id.work);
+        staff = findViewById(R.id.staff);
+        money = findViewById(R.id.money);
+        weather = findViewById(R.id.weather);
+        deal = findViewById(R.id.deal);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -74,64 +90,12 @@ public class MoodPromptActivity extends BaseActivity {
             }
         });
 
-
-
-        happyMood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MoodPromptActivity.this, "Glad you are Happy.", Toast.LENGTH_LONG).show();
-                moodValue = "happy";
-                moodDialogAlert("happyMood");
-            }
-        });
-
-
-        sadMood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MoodPromptActivity.this, "Sorry you are Sad.", Toast.LENGTH_LONG).show();
-                moodValue = "sad";
-
-                moodDialogAlert("sadMood");
-            }
-        });
-
-        contentMood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moodValue = "content";
-
-                Toast.makeText(MoodPromptActivity.this, "Oh, you are bord?", Toast.LENGTH_LONG).show();
-                moodDialogAlert("mehMood");
-            }
-        });
-
-        angryMood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moodValue = "angry";
-
-                Toast.makeText(MoodPromptActivity.this, "Angry? What's it?", Toast.LENGTH_LONG).show();
-                moodDialogAlert("angryMood");
-            }
-        });
-
-        neutralMood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moodValue = "neutral";
-
-                Toast.makeText(MoodPromptActivity.this, "Just normal", Toast.LENGTH_LONG).show();
-                moodDialogAlert("neutral");
-            }
-        });
-
     }
 
     public void moodDialogAlert(String mood){
         why = new Dialog(MoodPromptActivity.this);
         why.setContentView(R.layout.activity_mood_submit);
-        why.setTitle("What is it?");
+        why.setTitle(mood);
 
         go = why.findViewById(R.id.goModalButton);
         skip = why.findViewById(R.id.skipModalButton);
@@ -141,11 +105,78 @@ public class MoodPromptActivity extends BaseActivity {
         skip.setEnabled(true);
         cancel.setEnabled(true);
 
+        health.setEnabled(true);
+        work.setEnabled(true);
+        staff.setEnabled(true);
+        money.setEnabled(true);
+        weather.setEnabled(true);
+        deal.setEnabled(true);
+        /*
+
+        health.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReson = "health";
+                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReson = "work";
+                Toast.makeText(MoodPromptActivity.this, " Job is done ! ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        deal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReson = "Deal";
+                Toast.makeText(MoodPromptActivity.this, " About an important Deal ! ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        money.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReson = "Money";
+                Toast.makeText(MoodPromptActivity.this, "Got Paid", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReson = "Weather";
+                Toast.makeText(MoodPromptActivity.this, "Angry? What's it?", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        staff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReson = "Staff";
+                Toast.makeText(MoodPromptActivity.this, " A staff Member.. ", Toast.LENGTH_LONG).show();
+            }
+        });
+*/
 
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             //send to api
+              /*  UserMood userMood = new UserMood(
+                        "userId",
+                        "UserPojoHelper Name",
+                        "Team Name",
+                        moodValue,
+                        123,
+                        "01,11,2019",
+                        moodReson)*/;
+
+               // String postMoodRes = UserMoodViewModel.getInstance().postUserMood(userMood);
+              //  Toast.makeText(MoodPromptActivity.this, postMoodRes, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -153,6 +184,17 @@ public class MoodPromptActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
             // make a toast & send the emoji to api
+            /*    UserMood userMood = new UserMood(
+                        "userId",
+                        "UserPojoHelper Name",
+                        "Team Name",
+                        moodValue,
+                        123,
+                        "01,11,2019",
+                        null);
+*/
+                // String postMoodRes = UserMoodViewModel.getInstance().postUserMood(userMood);
+                // Toast.makeText(MoodPromptActivity.this, postMoodRes, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -164,18 +206,6 @@ public class MoodPromptActivity extends BaseActivity {
         });
 
         why.show();
-        // TODO: do something to get user reason choices
-
-        UserMood userMood = new UserMood("userId",
-                "UserPojoHelper Name",
-                "Team Name",
-                "happy",
-                123,
-                "01,11,2019",
-                "Weather");
-
-        String postMoodRes = UserMoodViewModel.getInstance().postUserMood(userMood);
-        Toast.makeText(MoodPromptActivity.this, postMoodRes, Toast.LENGTH_LONG).show();
     }
 
     @Override

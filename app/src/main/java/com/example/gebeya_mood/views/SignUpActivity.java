@@ -1,6 +1,7 @@
 package com.example.gebeya_mood.views;
 
 //import android.app.KeyguardManager;
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,11 +15,17 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 
 import com.example.gebeya_mood.pojos.SingUpPojo;
+import com.example.gebeya_mood.pojos.UserResponse;
 import com.example.gebeya_mood.viewmodels.UserViewModel;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +44,14 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
     private String responseObject , code, error;
     private Response<SingUpPojo> response;
     private String team, gender;
-
+    private UserViewModel userViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+      //  userViewModel = new UserViewModel(application);
 
         signUpProgressBar = findViewById(R.id.loading);
         email = findViewById(R.id.email);
@@ -53,6 +62,10 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         signup = findViewById(R.id.signUp);
 
         Spinner teamChoice = findViewById(R.id.Team_Select);
+
+        userViewModel=new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())
+                .create(UserViewModel.class);
 
         teamChoice.setOnItemSelectedListener(this);
         List<String> teamNames = new ArrayList<String>();
@@ -87,7 +100,6 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
 
 
     private void signUp(){
-        UserViewModel userViewModel = new UserViewModel();
 
         String emailVal = email.getText().toString();
         String usernameVal = username.getText().toString();
@@ -119,15 +131,47 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
             confirmpassword.requestFocus();
             confirmpassword.setError("Confirmed password must match with password!");
         }
+
         signUpProgressBar.setVisibility(View.VISIBLE);
 
-        response = userViewModel.getInstance().signUp(emailVal,usernameVal,gender,team,passwordVal);
-       // response = userViewModel.signUp(emailVal,usernameVal,gender,team,passwordVal);
+        JsonObject userJson =new JsonObject();
 
-        signUpProgressBar.setVisibility(View.GONE);
+        userJson.addProperty("name",usernameVal);
+        userJson.addProperty("email",emailVal);
+        userJson.addProperty("password",passwordVal);
+        userJson.addProperty("team",team);
+        userJson.addProperty("sex",gender);
 
-        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-        startActivity(intent);
+        userViewModel.createUser(userJson);
+
+        userViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
+            @Override
+            public void onChanged(UserResponse createUserResponse) {
+                TextView result=findViewById(R.id.response);
+
+                result.append("ID\t:"+createUserResponse.getId());
+                result.append("\nname\t:"+createUserResponse.getName());
+                result.append("\nemail\t:"+createUserResponse.getEmail());
+                result.append("\nTeam\t:"+createUserResponse.getType());
+                result.append("\nGender\t:"+createUserResponse.getSex());
+                result.append("\nUser Role\t:"+createUserResponse.getRole());
+                Toast.makeText(SignUpActivity.this ,createUserResponse.getRole(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+       /* userViewModel.createUserAll(userJson);
+        userViewModel.getSignUpAllRespones().observe(this, new Observer<SingUpPojo>() {
+            @Override
+            public void onChanged(SingUpPojo singUpPojo) {
+               Toast.makeText(SignUpActivity.this ,singUpPojo.getToken(), Toast.LENGTH_LONG).show();
+
+            }
+        });*/
+       signUpProgressBar.setVisibility(View.GONE);
+
+        //Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+        //startActivity(intent);
     }
 
 

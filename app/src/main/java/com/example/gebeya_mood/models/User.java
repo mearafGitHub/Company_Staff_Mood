@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "UserPojoHelper")
+@Entity(tableName = "User")
 public class  User {
 
     @PrimaryKey
@@ -27,7 +27,7 @@ public class  User {
     @NonNull
     public String password;
 
-
+    @Ignore
     public User(String username, String email, String team, String gender, String password) {
         this.username = username;
         this.email = email;
@@ -36,13 +36,15 @@ public class  User {
         this.password = password;
 
     }
-    @Ignore
-    public User( String email, String password) {
+
+
+    public User(){
+        this.username = username;
         this.email = email;
+        this.team = team;
+        this.gender = gender;
         this.password = password;
     }
-    @Ignore
-    public User(){}
 
     @NonNull
     public String getUserId() {
