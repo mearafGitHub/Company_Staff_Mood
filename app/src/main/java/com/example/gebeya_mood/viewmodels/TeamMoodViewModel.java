@@ -3,12 +3,20 @@ package com.example.gebeya_mood.viewmodels;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.gebeya_mood.models.TeamMood;
+import com.example.gebeya_mood.pojos.TeamMoodPojo;
 import com.example.gebeya_mood.repo.team_moods_repo.TeamMoodApiService;
+import com.example.gebeya_mood.repo.team_moods_repo.TeamMoodTransformer;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TeamMoodViewModel implements Parcelable {
+   // private TeamMoodViewModel teamMoodViewModel;
 
     private static final String BaseUrl = "https://stark-peak-15799.herokuapp.com/";
     private static TeamMoodViewModel teamMoodViewModel;
@@ -26,6 +34,17 @@ public class TeamMoodViewModel implements Parcelable {
         this.teamTotal = teamTotal;
     }
 
+    public static synchronized TeamMoodViewModel getInstance(){
+        if(teamMoodViewModel == null){
+            teamMoodViewModel = new TeamMoodViewModel();
+        }
+        return teamMoodViewModel;
+    }
+
+    public TeamMoodApiService getTeamMoodService(){
+        return retrofit.create(TeamMoodApiService.class);
+    }
+
     private TeamMoodViewModel(){
         retrofit = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
@@ -33,11 +52,13 @@ public class TeamMoodViewModel implements Parcelable {
                 .build();
     }
 
-    public TeamMoodViewModel(String emotion, String date, String teamTotal) {
-        this.emotion = emotion;
-        this.date = date;
-        this.teamTotal = teamTotal;
-        this.emoji = emoji;
+    public List<TeamMood> getTeamMood(){
+            List<TeamMood> teamMoodList = new ArrayList<>();
+            Call<List<TeamMoodPojo>> getTeamMoodCall = new TeamMoodViewModel().getInstance().getTeamMoodService().getTeamMoods();
+
+            teamMoodList = TeamMoodTransformer.toTeamModelList((List<TeamMoodPojo>) getTeamMoodCall);
+            //getInstance().
+            return teamMoodList;
     }
 
 
@@ -125,14 +146,5 @@ public class TeamMoodViewModel implements Parcelable {
         dest.writeInt(emoji);
     }
 
-    public static synchronized TeamMoodViewModel getInstance(){
-        if(teamMoodViewModel == null){
-            teamMoodViewModel = new TeamMoodViewModel();
-        }
-        return teamMoodViewModel;
-    }
 
-    public TeamMoodApiService getTeamService(){
-        return retrofit.create(TeamMoodApiService.class);
-    }
 }

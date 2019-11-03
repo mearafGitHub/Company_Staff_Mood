@@ -120,7 +120,10 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
             confirmpassword.setError("Confirmed password must match with password!");
         }
         signUpProgressBar.setVisibility(View.VISIBLE);
-        response = userViewModel.signUp(emailVal,usernameVal,gender,team,passwordVal);
+
+        response = userViewModel.getInstance().signUp(emailVal,usernameVal,gender,team,passwordVal);
+       // response = userViewModel.signUp(emailVal,usernameVal,gender,team,passwordVal);
+
         signUpProgressBar.setVisibility(View.GONE);
 
         Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);

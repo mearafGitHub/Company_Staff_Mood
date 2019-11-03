@@ -1,5 +1,7 @@
 package com.example.gebeya_mood.repo.team_moods_repo;
 
+import com.example.gebeya_mood.pojos.TeamMoodPojo;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,17 +19,8 @@ public interface TeamMoodApiService {
 
     // PUT https://stark-peak-15799.herokuapp.com/team-moods/:id
 
-    @POST("users")
-    Call<TeamMoodsDto> signUp();
-
-    @POST("users/login")
-    Call<TeamMoodsDto> logIn();
-
-    @POST("users/profile")
-    Call<TeamMoodsDto> userMoodPost();
-
-    @GET("moods")
-    Call<List<TeamMoodsDto>> getMoods();
+    @GET("team-moods")
+    Call<List<TeamMoodPojo>> getTeamMoods();
 
     @GET("moods{mooId}")
     Call <TeamMoodsDto> getMood(@Path("moodId") String moodId);

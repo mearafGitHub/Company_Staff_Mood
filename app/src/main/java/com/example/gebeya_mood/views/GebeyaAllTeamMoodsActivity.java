@@ -1,6 +1,8 @@
 package com.example.gebeya_mood.views;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.gebeya_mood.adapters.AdminViewAdapter;
 import com.example.gebeya_mood.adapters.TeamMoodAdapter;
 import com.example.gebeya_mood.models.TeamMood;
 import com.example.gebeya_mood.R;
@@ -20,13 +23,12 @@ import java.util.List;
 import butterknife.ButterKnife;
 
 public class GebeyaAllTeamMoodsActivity extends BaseActivity {
-    private RecyclerView moodRecyclerView;
+    private RecyclerView teamMoodRecyclerView;
     private TeamMoodAdapter teamMoodsAdapter;
     public TeamMoodViewModel teamMoodVeiwModel;
     private List<TeamMood> teamMoods;
     private Context context;
     public static final int activityNum = 0;
-    //private UserMoodViewModel userMoodViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,18 +37,18 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
         ButterKnife.bind(this);
        // setBottomNavView();
 
-       /* userMoods = new ArrayList<>();
-        userMoodViewModel = new ViewModelProvider
-                .AndroidViewModelFactory(getApplication())
-                .create(TeamMoodViewModel.class);
-*/
-        // USER MOOD ADAPTER AND MODEL VIEW TO POPULATE DATA HERE
-
-       /* userMoodsAdapter = new UserMoodsAdapter(this, userMoods);
-        moodRecyclerView.setAdapter(userMoodsAdapter);
-        moodRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
+        teamMoods =  teamMoodVeiwModel.getInstance().getTeamMood();
+        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
+        initRecycler();
     }
 
+    private void initRecycler() {
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        teamMoodRecyclerView.setLayoutManager(linearLayoutManager);
+        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
+        teamMoodRecyclerView.setAdapter(teamMoodsAdapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,7 +58,6 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
