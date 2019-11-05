@@ -19,14 +19,13 @@ public interface TeamMoodApiService {
 
     // PUT https://stark-peak-15799.herokuapp.com/team-moods/:id
 
-    @GET("team-moods")
-    Call<List<TeamMoodPojo>> getTeamMoods();
+    @GET("moods/teamMoods")
+    Call<List<TeamMoodPojo>> getAllTeamMoods();
 
-    @GET("moods{mooId}")
-    Call <TeamMoodsDto> getMood(@Path("moodId") String moodId);
+    @GET("moods{teamId}")
+    Call <List<TeamMoodPojo>> getOneTeamMoods(@Path("teamId") String teamId);
 
-    @GET("moods{userId}")
-    Call <List<TeamMoodsDto>> getUserMood(@Path("userId") String userId);
+
 
 
 }

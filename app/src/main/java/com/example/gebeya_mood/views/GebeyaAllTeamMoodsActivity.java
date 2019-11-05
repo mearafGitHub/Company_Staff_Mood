@@ -35,14 +35,14 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
         ButterKnife.bind(this);
        // setBottomNavView();
 
-        teamMoodViewModel.getInstance().getTeamMood();
-        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
+        teamMoodViewModel.getInstance().getAllTeamMood();
+
 
         initRecycler();
     }
 
     private void initRecycler() {
-
+        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         teamMoodRecyclerView.setLayoutManager(linearLayoutManager);
         teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);

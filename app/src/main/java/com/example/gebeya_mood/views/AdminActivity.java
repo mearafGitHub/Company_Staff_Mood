@@ -43,7 +43,8 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
         Spinner teamFilter = findViewById(R.id.team_filter);
         adminRecyclerView = findViewById(R.id.adminRecycler);
 
-      teamMoodViewModel.getInstance().getTeamMood();
+        teamMoodViewModel.getInstance().getAllTeamMood();
+        // TODO: OBSERVER
 
 // Spinners
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(

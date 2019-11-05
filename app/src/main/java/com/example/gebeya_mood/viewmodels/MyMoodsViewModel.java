@@ -8,8 +8,10 @@ import android.app.Application;
         import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.gebeya_mood.App;
 import com.example.gebeya_mood.models.UserMood;
-        import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
+import com.example.gebeya_mood.pojos.UserMoodGETPojo;
+import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
         import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
         import com.example.gebeya_mood.repo.user_moods_repo.UserMoodTransformer;
         import com.example.gebeya_mood.repo.user_moods_repo.UserMoodsDto;
@@ -22,49 +24,55 @@ import com.example.gebeya_mood.models.UserMood;
         import retrofit2.Response;
         import retrofit2.Retrofit;
 
-public class MyMoodsViewModel extends ViewModel {
+public class MyMoodsViewModel extends AndroidViewModel {
     public Retrofit retrofit;
     public UserMoodDao dao;
-    public MutableLiveData<List<UserMood>> moods;
+    public static Application application;
+    public List<UserMood> userMoodList;
+    public MutableLiveData<UserMoodGETPojo> postMoodPojoResponse;
+    public MutableLiveData<List<UserMoodGETPojo>> getOneUserMoods;
 
 
-    public MyMoodsViewModel() {
-        moods = new MutableLiveData<>(new ArrayList<>());
+    public MyMoodsViewModel(@NonNull Application application) {
+        super(application);
+        getOneUserMoods = new MutableLiveData<>(new ArrayList<>());
 
 
     }
+    public UserMoodApiService getUserMoodService(){
+        return retrofit.create(UserMoodApiService.class);
+    }
 
-    private void loadUserMoods(String userId, String user_team){
-        List<UserMood> moodsDb = dao.getAll();
-        if (moodsDb.isEmpty()){
-           // MyMoodsFromApi();
+
+    private void getOneUserMoodsLocal (String userId){
+
+        List<UserMood> tempo = ((App)application).getDb().userMoodDAO().getUserMood(userId);
+        if (tempo.isEmpty()){
+            getOneUserMooReomote(userId);
         }
         else{
-            moods.setValue(moodsDb);
+            userMoodList = ((App)application).getDb().userMoodDAO().getUserMood(userId);
         }
 
     }
 
-    private void getMyMoodsFromApi(String userId, String user_team){
-
-        UserMoodApiService userMoodApiService = retrofit.create(UserMoodApiService.class);
-        userMoodApiService.getMoods().enqueue(new Callback<List<UserMoodsDto>>() {
+    public void getOneUserMooReomote(String userId){
+        // TODO:  finish it
+        getUserMoodService().getOneUserMoods(userId).enqueue(new Callback<List<UserMoodGETPojo>>() {
             @Override
-            public void onResponse(Call<List<UserMoodsDto>> call, Response<List<UserMoodsDto>> response) {
-                List<UserMood> moodsApi = UserMoodTransformer.ListDtoToMood(response.body());
-                dao.addMoods(moodsApi);
-                moods.setValue(moodsApi);
+            public void onResponse(Call<List<UserMoodGETPojo>> call, Response<List<UserMoodGETPojo>> response) {
+                getOneUserMoods.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<UserMoodsDto>> call, Throwable t) {
+            public void onFailure(Call<List<UserMoodGETPojo>> call, Throwable t) {
 
             }
         });
-
     }
 
-    public MutableLiveData<List<UserMood>> getMoods(){
-        return moods;
+
+    public MutableLiveData<List<UserMoodGETPojo>> getthisUserMoods(){
+        return getOneUserMoods;
     }
 }

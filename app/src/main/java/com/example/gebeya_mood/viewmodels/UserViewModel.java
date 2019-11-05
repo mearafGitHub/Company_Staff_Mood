@@ -31,7 +31,7 @@ public class UserViewModel extends AndroidViewModel {
     private MutableLiveData<UserResponse> signUpRespones;
     public MutableLiveData<List<User>> users;
     public MutableLiveData<LoginPojo> loginRespones;
-    public Application application;
+    public static Application application;
 
 
     public UserViewModel(@NonNull Application application) {
@@ -39,10 +39,9 @@ public class UserViewModel extends AndroidViewModel {
 
         retrofit =((App)application).getRetrofit();
         signUpRespones = new MutableLiveData<>();
-        signUpAllResponse = new MutableLiveData<>();
+        loginRespones = new MutableLiveData<>();
 
-        users = new MutableLiveData<>(new ArrayList<>());
-
+        //users = new MutableLiveData<>(new ArrayList<>());
     }
 
     public MutableLiveData<List<User>> getUsers(){

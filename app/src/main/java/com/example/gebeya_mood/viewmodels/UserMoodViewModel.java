@@ -1,15 +1,17 @@
 package com.example.gebeya_mood.viewmodels;
 
 import android.app.Application;
-import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
+import com.example.gebeya_mood.App;
 import com.example.gebeya_mood.models.UserMood;
-import com.example.gebeya_mood.pojos.MoodPojo;
+import com.example.gebeya_mood.pojos.UserMoodGETPojo;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodApiService;
 import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,68 +20,109 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserMoodViewModel extends ViewModel {
-    private static final String BaseUrl = "https://stark-peak-15799.herokuapp.com/";
+public class UserMoodViewModel extends AndroidViewModel {
     private static UserMoodViewModel userMoodViewModel;
     private static Application application;
     public Retrofit retrofit;
-    public UserMoodDao dao;
-    protected UserMoodApiService userMoodApiService;
-    public Response<MoodPojo> moodPojoResponse;
-    public MutableLiveData<List<UserMood>> moods;
+    public UserMoodDao userMoodDao;
+    public static List<UserMood> userMoodList;
+    public static List<UserMood> allUsersMoodList;
+    public MutableLiveData<UserMoodGETPojo> postMoodPojoResponse;
+    public MutableLiveData<List<UserMoodGETPojo>> getOneUserMoods;
+    public MutableLiveData<List<UserMoodGETPojo>> getAllUsersMoods;
+    private MutableLiveData<List<UserMood>> usermoodsRemote;
 
 
-    public UserMoodViewModel() {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BaseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    public UserMoodViewModel(@NonNull Application application) {
+        super(application);
+        retrofit =((App)application).getRetrofit();
+        getOneUserMoods = new MutableLiveData<>();
+        getAllUsersMoods = new MutableLiveData<>(new ArrayList<>());
+        postMoodPojoResponse = new MutableLiveData<>();
+        usermoodsRemote = new MutableLiveData<>(new ArrayList<>());
+        userMoodList = new ArrayList<>();
+        userMoodList = new ArrayList<>();
+        allUsersMoodList = new ArrayList<>();
 
-        userMoodApiService = getUserService();
-        moods = new MutableLiveData<>(new ArrayList<>());
     }
 
-    // this , i guess keeps/ hold on to the state of the app... make sure
-    public static synchronized UserMoodViewModel getInstance(){
-        if(userMoodViewModel == null){
-            userMoodViewModel = new UserMoodViewModel();
-        }
-        return userMoodViewModel;
-    }
-
-    public UserMoodApiService getUserService(){
+    public UserMoodApiService getUserMoodService(){
         return retrofit.create(UserMoodApiService.class);
     }
 
+    public  static List<UserMood> getOneUserMoodsLocal(String userId){
+        userMoodList = ((App)application).getDb().userMoodDAO().getUserMood(userId);
+        return userMoodList;
+    }
 
-    //  POST REQUEST
-    public String postUserMood(UserMood userMood){
-        userMoodApiService.postMood().enqueue(new Callback<MoodPojo>() {
+    public void getOneUserMooReomote(String userId){
+        // TODO:  finish it
+             getUserMoodService().getOneUserMoods(userId).enqueue(new Callback<List<UserMoodGETPojo>>() {
             @Override
-            public void onResponse(Call<MoodPojo> call, Response<MoodPojo> response) {
-                moodPojoResponse = response;
-                try{
-                    if(response.body() != null){
-                        String res = String.valueOf(response.body());
-                        String err = String.valueOf(response.errorBody());
-                        String code = String.valueOf(response.code());
-                        Log.e("MoodApi Response: ",res );
-                        Log.e("MoodApi CODE: ",code );
-                        Log.e("MoodApi ERROR: ",err );
-
-                    }
-                }catch (Exception e){e.printStackTrace();}
+            public void onResponse(Call<List<UserMoodGETPojo>> call, Response<List<UserMoodGETPojo>> response) {
+                getOneUserMoods.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<MoodPojo> call, Throwable t) {
+            public void onFailure(Call<List<UserMoodGETPojo>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    public  static List<UserMood> getAllUsersMoodsLocal(String id){
+        allUsersMoodList = ((App)application).getDb().userMoodDAO().getUserMood(id);
+        return allUsersMoodList;
+    }
+
+    public  List<UserMood> getAllUsersMoodsRemote(){
+        getUserMoodService().getAllUsersMoods().enqueue(new Callback<List<UserMoodGETPojo>>() {
+            @Override
+            public void onResponse(Call<List<UserMoodGETPojo>> call, Response<List<UserMoodGETPojo>> response) {
+                getAllUsersMoods.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<UserMoodGETPojo>> call, Throwable t) {
 
             }
         });
 
-       return String.valueOf(moodPojoResponse.body());
+        return null;
+    }
+
+    public static synchronized UserMoodViewModel getInstance(){
+        if(userMoodViewModel == null){
+            userMoodViewModel = new UserMoodViewModel(application);
+        }
+        return userMoodViewModel;
+    }
+
+
+
+    //  POST REQUEST
+    public void postUserMood(JsonObject newUserMood){
+        getUserMoodService().postUserMood(newUserMood).enqueue(new Callback<UserMoodGETPojo>() {
+            @Override
+            public void onResponse(Call<UserMoodGETPojo> call, Response<UserMoodGETPojo> response) {
+                postMoodPojoResponse.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<UserMoodGETPojo> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public MutableLiveData<UserMoodGETPojo> postUserMoodResponse() {
+        return postMoodPojoResponse;
+    }
+
+    public MutableLiveData<List<UserMoodGETPojo>> getUserMoodResponse() {
+        return getOneUserMoods;
     }
 
 

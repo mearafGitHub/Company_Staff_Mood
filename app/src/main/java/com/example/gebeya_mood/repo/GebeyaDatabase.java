@@ -19,6 +19,7 @@ import com.example.gebeya_mood.repo.users.UserDao;
 
 public abstract class GebeyaDatabase extends RoomDatabase {
 
-    public abstract UserMoodDao UserMood();
+    public abstract UserMoodDao userMoodDAO();
     public abstract UserDao User();
+
 }

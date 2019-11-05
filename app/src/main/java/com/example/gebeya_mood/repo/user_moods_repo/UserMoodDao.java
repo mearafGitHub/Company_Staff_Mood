@@ -15,13 +15,13 @@ public interface UserMoodDao {
     void addMoods(List<UserMood> userMoods);
 
     @Query("SELECT * FROM UserMood")
-    List<UserMood> getAll();
+    List<UserMood> getUserMoods();
+
+    @Query("SELECT * FROM UserMood WHERE userId = :userId" )
+    List<UserMood> getUserMood(String userId);
 
   //  @Query("SELECT * FROM UserMood WHERE userId = :userId")
   //  UserMood getOneUserMood(String userId);
-
-
-
 
 }
 

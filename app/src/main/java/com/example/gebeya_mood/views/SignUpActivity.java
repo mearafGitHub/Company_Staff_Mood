@@ -3,6 +3,7 @@ package com.example.gebeya_mood.views;
 //import android.app.KeyguardManager;
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,9 +20,11 @@ import android.widget.Toast;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 
+import com.example.gebeya_mood.framework.util.Const;
 import com.example.gebeya_mood.pojos.SingUpPojo;
 import com.example.gebeya_mood.pojos.UserResponse;
 import com.example.gebeya_mood.viewmodels.UserViewModel;
@@ -29,6 +32,8 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Response;
 
@@ -39,20 +44,40 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
     private Button signup;
     private ImageButton fp_image;
 
+    private Timer timer;
     private ProgressBar signUpProgressBar;
     private EditText email, username, password, confirmpassword;
     private String responseObject , code, error;
     private Response<SingUpPojo> response;
     private String team, gender;
     private UserViewModel userViewModel;
+    private String checker;
+    private SharedPreferences prefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-      //  userViewModel = new UserViewModel(application);
+        prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
+        boolean seen = prefs.getBoolean(Const.SEEN_INTRO, false);
+        if (seen) {
+            openLogin(null);
+        } else {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean(Const.SEEN_INTRO, true);
+            editor.apply();
+            showViews(null);
+        }
 
+    }
+
+    protected void openLogin(View view){
+        Intent intentOne = new Intent(SignUpActivity.this, LoginActivity.class);
+        startActivity(intentOne);
+    }
+
+    protected void showViews(View view) {
         signUpProgressBar = findViewById(R.id.loading);
         email = findViewById(R.id.email);
         username = findViewById(R.id.screenname);
@@ -98,7 +123,6 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         });
     }
 
-
     private void signUp(){
 
         String emailVal = email.getText().toString();
@@ -134,7 +158,7 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
 
         signUpProgressBar.setVisibility(View.VISIBLE);
 
-        JsonObject userJson =new JsonObject();
+        JsonObject userJson = new JsonObject();
 
         userJson.addProperty("name",usernameVal);
         userJson.addProperty("email",emailVal);
@@ -147,33 +171,24 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         userViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
             @Override
             public void onChanged(UserResponse createUserResponse) {
-                TextView result=findViewById(R.id.response);
+                checker = String.valueOf(createUserResponse);
+               // if(checker != null){
+                    TextView result = findViewById(R.id.response);
+                    result.append("ID\t:"+createUserResponse.getId());
+                    result.append("\nname\t:"+createUserResponse.getName());
+                    result.append("\nemail\t:"+createUserResponse.getEmail());
+                    result.append("\nTeam\t:"+createUserResponse.getType());
+                    result.append("\nGender\t:"+createUserResponse.getSex());
+                    result.append("\nUser Role\t:"+createUserResponse.getRole());
+                    Toast.makeText(SignUpActivity.this ,createUserResponse.getRole(), Toast.LENGTH_LONG).show();
+                    // TODO: save this to local db
 
-                result.append("ID\t:"+createUserResponse.getId());
-                result.append("\nname\t:"+createUserResponse.getName());
-                result.append("\nemail\t:"+createUserResponse.getEmail());
-                result.append("\nTeam\t:"+createUserResponse.getType());
-                result.append("\nGender\t:"+createUserResponse.getSex());
-                result.append("\nUser Role\t:"+createUserResponse.getRole());
-                Toast.makeText(SignUpActivity.this ,createUserResponse.getRole(), Toast.LENGTH_LONG).show();
-
+                    Intent intentOne = new Intent(SignUpActivity.this, LoginActivity.class);
+                    startActivity(intentOne);
             }
         });
-
-       /* userViewModel.createUserAll(userJson);
-        userViewModel.getSignUpAllRespones().observe(this, new Observer<SingUpPojo>() {
-            @Override
-            public void onChanged(SingUpPojo singUpPojo) {
-               Toast.makeText(SignUpActivity.this ,singUpPojo.getToken(), Toast.LENGTH_LONG).show();
-
-            }
-        });*/
-       signUpProgressBar.setVisibility(View.GONE);
-
-        //Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-        //startActivity(intent);
+        signUpProgressBar.setVisibility(View.GONE);
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -184,7 +199,6 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         else{
             team = choice;
         }
-
         Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
     }
 

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
@@ -19,6 +20,9 @@ import com.example.gebeya_mood.pojos.LoginPojo;
 import com.example.gebeya_mood.pojos.UserResponse;
 import com.example.gebeya_mood.viewmodels.UserViewModel;
 import com.google.gson.JsonObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Response;
 
@@ -30,11 +34,17 @@ public class LoginActivity extends BaseActivity {
     private EditText email;
     private EditText password;
     private ProgressBar loadingLogin;
+    private String checker;
+    private UserViewModel userViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        userViewModel = new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())
+                .create(UserViewModel.class);
 
         login = findViewById(R.id.login);
         email = findViewById(R.id.emailLogin);
@@ -45,14 +55,11 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                login();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
             }
         });
     }
 
     protected void  login(){
-        UserViewModel userViewModel = new UserViewModel(application);
 
         String emailVal = email.getText().toString().trim();
         String passwordVal = password.getText().toString();
@@ -75,23 +82,40 @@ public class LoginActivity extends BaseActivity {
         jsonObject.addProperty("password",passwordVal);
 
         userViewModel.loginUser(jsonObject);
-        //checkLoginResponse();
 
         userViewModel.getLoginRespones().observe(this, new Observer<LoginPojo>() {
             @Override
             public void onChanged(LoginPojo createUserResponse) {
-                TextView result=findViewById(R.id.response);
+                if(checker != null){
+                    Toast.makeText(LoginActivity.this, "Logged is successfuly.",Toast.LENGTH_LONG  ).show();
+                    TextView result=findViewById(R.id.responseLogin);
+                    checker = String.valueOf(createUserResponse);
+                    result.append("ID\t:"+createUserResponse.getMessage());
+                    result.append("\nname\t:"+createUserResponse.getToken());
+                    result.append("\nemail\t:"+createUserResponse.getUser());
 
-                result.append("ID\t:"+createUserResponse.getMessage());
-                result.append("\nname\t:"+createUserResponse.getToken());
-                result.append("\nemail\t:"+createUserResponse.getUser());
-                Toast.makeText(LoginActivity.this ,createUserResponse.getMessage(), Toast.LENGTH_LONG).show();
+                     Toast.makeText(LoginActivity.this ,createUserResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    // TODO: Save token to the local db
+
+                    Intent intent = new Intent(LoginActivity.this, MoodPromptActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                   Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this ,"Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+
+                        }
+                    },2500);
+                }
 
             }
         });
 
-
         loadingLogin.setVisibility(View.GONE);
+
     }
 
 }

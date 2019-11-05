@@ -1,6 +1,8 @@
 package com.example.gebeya_mood.views;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -16,12 +18,18 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.models.UserMood;
+import com.example.gebeya_mood.pojos.UserMoodGETPojo;
 import com.example.gebeya_mood.viewmodels.UserMoodViewModel;
+import com.example.gebeya_mood.viewmodels.UserViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.JsonObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MoodPromptActivity extends BaseActivity {
-
+    private UserMoodViewModel  userMoodViewModel;
     //@BindView(R.id.happyMood)
     private ImageButton happyMood;
    // @BindView(R.id.sadMood)
@@ -48,7 +56,6 @@ public class MoodPromptActivity extends BaseActivity {
    protected String moodReson;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +74,54 @@ public class MoodPromptActivity extends BaseActivity {
         weather = findViewById(R.id.weather);
         deal = findViewById(R.id.deal);
 
+        userMoodViewModel = new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())
+                .create(UserMoodViewModel.class);
+
+        happyMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodValue = "happy";
+                moodDialogAlert(moodValue);
+                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        sadMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodValue = "sad";
+                moodDialogAlert(moodValue);
+                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        contentMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodValue = "content";
+                moodDialogAlert(moodValue);
+                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        angryMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodValue = "angry";
+                moodDialogAlert(moodValue);
+                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        neutralMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodValue = "neutral";
+                moodDialogAlert(moodValue);
+                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+            }
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -111,7 +166,6 @@ public class MoodPromptActivity extends BaseActivity {
         money.setEnabled(true);
         weather.setEnabled(true);
         deal.setEnabled(true);
-        /*
 
         health.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,41 +214,34 @@ public class MoodPromptActivity extends BaseActivity {
                 Toast.makeText(MoodPromptActivity.this, " A staff Member.. ", Toast.LENGTH_LONG).show();
             }
         });
-*/
 
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //send to api
-              /*  UserMood userMood = new UserMood(
-                        "userId",
-                        "UserPojoHelper Name",
-                        "Team Name",
-                        moodValue,
-                        123,
-                        "01,11,2019",
-                        moodReson)*/;
 
-               // String postMoodRes = UserMoodViewModel.getInstance().postUserMood(userMood);
-              //  Toast.makeText(MoodPromptActivity.this, postMoodRes, Toast.LENGTH_LONG).show();
+                JsonObject newUesrMood = new JsonObject();
+                newUesrMood.addProperty("id","id");
+                newUesrMood.addProperty("name", "name");
+                newUesrMood.addProperty("mood", "mood");
+                newUesrMood.addProperty("reason", "reson");
+
+                userMoodViewModel.postUserMood(newUesrMood);
+                observeData();
             }
         });
+
 
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            // make a toast & send the emoji to api
-            /*    UserMood userMood = new UserMood(
-                        "userId",
-                        "UserPojoHelper Name",
-                        "Team Name",
-                        moodValue,
-                        123,
-                        "01,11,2019",
-                        null);
-*/
-                // String postMoodRes = UserMoodViewModel.getInstance().postUserMood(userMood);
-                // Toast.makeText(MoodPromptActivity.this, postMoodRes, Toast.LENGTH_LONG).show();
+                JsonObject newUesrMood = new JsonObject();
+                newUesrMood.addProperty("id","id");
+                newUesrMood.addProperty("name", "name");
+                newUesrMood.addProperty("mood", "mood");
+                newUesrMood.addProperty("reason", "unsaid");
+
+                userMoodViewModel.postUserMood(newUesrMood);
+                observeData();
             }
         });
 
@@ -204,8 +251,17 @@ public class MoodPromptActivity extends BaseActivity {
                 why.cancel();
             }
         });
-
         why.show();
+    }
+
+   protected void observeData(){
+        userMoodViewModel.postUserMoodResponse().observe(this, new Observer<UserMoodGETPojo>() {
+            @Override
+            public void onChanged(UserMoodGETPojo userMoodGETPojo) {
+                String check = String.valueOf(userMoodGETPojo);
+                Toast.makeText(MoodPromptActivity.this, "Sent mood successfully.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -215,10 +271,9 @@ public class MoodPromptActivity extends BaseActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.listIcon:
                 Intent intent = new Intent(MoodPromptActivity.this, GebeyaAllTeamMoodsActivity.class);
                 startActivity(intent);
@@ -230,8 +285,6 @@ public class MoodPromptActivity extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
-
 
 }
