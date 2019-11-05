@@ -112,7 +112,7 @@ public class MoodPromptActivity extends BaseActivity {
             public void onClick(View v) {
                 moodValue = "Happy";
               //  moodDialogAlert("Happy");
-                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodPromptActivity.this, " Glad you're happy.. ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -121,7 +121,7 @@ public class MoodPromptActivity extends BaseActivity {
             public void onClick(View v) {
                 moodValue = "Sad";
                 moodDialogAlert("Sad");
-                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodPromptActivity.this, " Sorry you're sad. What happened? ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -130,7 +130,7 @@ public class MoodPromptActivity extends BaseActivity {
             public void onClick(View v) {
                 moodValue = "Content";
               //  moodDialogAlert("Content");
-                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodPromptActivity.this, " Content, it is! ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -139,7 +139,7 @@ public class MoodPromptActivity extends BaseActivity {
             public void onClick(View v) {
                 moodValue = "Angry";
                // moodDialogAlert("Angry");
-                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodPromptActivity.this, " Angry? Oh, what happened? ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -148,7 +148,7 @@ public class MoodPromptActivity extends BaseActivity {
             public void onClick(View v) {
                 moodValue = "Neutral";
                // moodDialogAlert("Neutral");
-                Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodPromptActivity.this, " Ok, you're neutral about something. ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -171,7 +171,7 @@ public class MoodPromptActivity extends BaseActivity {
     }
 
     public void moodDialogAlert(String mood){
-        why = new Dialog(MoodPromptActivity.this);
+        why = new Dialog(this);
         why.setContentView(R.layout.activity_mood_submit);
         why.setTitle(mood);
 
@@ -182,8 +182,9 @@ public class MoodPromptActivity extends BaseActivity {
         go.setEnabled(true);
         skip.setEnabled(true);
         cancel.setEnabled(true);
+        why.show();
 
-       // health.setEnabled(true);
+//        health.setEnabled(true);
        // work.setEnabled(true);
        // staff.setEnabled(true);
        // money.setEnabled(true);
@@ -197,6 +198,7 @@ public class MoodPromptActivity extends BaseActivity {
                 Toast.makeText(MoodPromptActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
             }
         });
+
 
         work.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,7 +275,7 @@ public class MoodPromptActivity extends BaseActivity {
                 why.cancel();
             }
         });
-        why.show();
+
     }
 
     public void stickBottomNav(){
