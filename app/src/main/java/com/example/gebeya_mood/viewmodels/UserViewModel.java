@@ -1,6 +1,7 @@
 package com.example.gebeya_mood.viewmodels;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -33,15 +34,11 @@ public class UserViewModel extends AndroidViewModel {
     public MutableLiveData<LoginPojo> loginRespones;
     public static Application application;
 
-
     public UserViewModel(@NonNull Application application) {
         super(application);
-
         retrofit =((App)application).getRetrofit();
         signUpRespones = new MutableLiveData<>();
         loginRespones = new MutableLiveData<>();
-
-        //users = new MutableLiveData<>(new ArrayList<>());
     }
 
     public MutableLiveData<List<User>> getUsers(){
@@ -59,7 +56,6 @@ public class UserViewModel extends AndroidViewModel {
         return retrofit.create(UserApiService.class);
     }
 
-
     public void createUser(JsonObject userinfo){
         UserApiService userService = getUserService();
         userService.createUser(userinfo).enqueue(new Callback<UserResponse>() {
@@ -67,24 +63,8 @@ public class UserViewModel extends AndroidViewModel {
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 signUpRespones.setValue(response.body());
             }
-
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-
-            }
-        });
-    }
-
-    public void createUserAll(JsonObject userinfo){
-        UserApiService userService = getUserService();
-        userService.signUp(userinfo).enqueue(new Callback<SingUpPojo>() {
-            @Override
-            public void onResponse(Call<SingUpPojo> call, Response<SingUpPojo> response) {
-                signUpAllResponse.setValue(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<SingUpPojo> call, Throwable t) {
 
             }
         });
@@ -94,54 +74,22 @@ public class UserViewModel extends AndroidViewModel {
         return signUpRespones;
     }
 
-    public MutableLiveData<SingUpPojo> getSignUpAllRespones() {
-        return signUpAllResponse;
-    }
-
-    public MutableLiveData<UserResponse> processSignupResponse(MutableLiveData<UserResponse> response){
-
-        try {
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        finally {
-        }
-
-        return response;
-    }
-
     public void loginUser(JsonObject userinfo){
         UserApiService userService=retrofit.create(UserApiService.class);
         userService.logIn(userinfo).enqueue(new Callback<LoginPojo>() {
             @Override
             public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response) {
                 loginRespones.setValue(response.body());
+                Log.e("Login Response", String.valueOf(response.body()));
             }
-
             @Override
             public void onFailure(Call<LoginPojo> call, Throwable t) {
-
             }
         });
     }
 
     public MutableLiveData<LoginPojo> getLoginRespones() {
         return loginRespones;
-    }
-
-    protected  MutableLiveData<LoginPojo> processLoginResponse(MutableLiveData<LoginPojo> response){
-
-        try {
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        finally {
-
-        }
-
-        return response;
     }
 
 }

@@ -10,7 +10,7 @@ public final class Util {
     /**
      * Debug tag for logging and filtering our application.
      */
-    private static final String TAG = "MISILOCH-TAG-DEBUG";
+    private static final String TAG = "GEBEYA-MOOD-TAG-DEBUG";
 
     /**
      * Log a normal debug message

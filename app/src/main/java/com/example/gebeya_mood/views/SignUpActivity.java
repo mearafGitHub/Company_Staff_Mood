@@ -4,6 +4,8 @@ package com.example.gebeya_mood.views;
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +22,6 @@ import android.widget.Toast;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 
@@ -69,7 +70,6 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
             editor.apply();
             showViews(null);
         }
-
     }
 
     protected void openLogin(View view){
@@ -114,6 +114,7 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         ArrayAdapter<String> dataAdapterGender = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genderNames);
         dataAdapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderChoice.setAdapter(dataAdapterGender);
+
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

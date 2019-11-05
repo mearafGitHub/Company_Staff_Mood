@@ -2,7 +2,9 @@ package com.example.gebeya_mood.views;
 
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.framework.util.Const;
 import com.example.gebeya_mood.pojos.LoginPojo;
 import com.example.gebeya_mood.pojos.UserResponse;
 import com.example.gebeya_mood.viewmodels.UserViewModel;
@@ -36,27 +39,25 @@ public class LoginActivity extends BaseActivity {
     private ProgressBar loadingLogin;
     private String checker;
     private UserViewModel userViewModel;
-
+    private SharedPreferences prefs;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        userViewModel = new ViewModelProvider
-                .AndroidViewModelFactory(getApplication())
-                .create(UserViewModel.class);
 
-        login = findViewById(R.id.login);
-        email = findViewById(R.id.emailLogin);
-        password = findViewById(R.id.passwordLogin);
-        loadingLogin = findViewById(R.id.loadingLogin);
+        prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
+        boolean seen = prefs.getBoolean(Const.SEEN_INTRO, false);
+        if (seen) {
+            openPromt(null);
+        } else {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean(Const.SEEN_INTRO, true);
+            editor.apply();
+            showView(null);
+        }
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               login();
-            }
-        });
+
     }
 
     protected void  login(){
@@ -85,31 +86,21 @@ public class LoginActivity extends BaseActivity {
 
         userViewModel.getLoginRespones().observe(this, new Observer<LoginPojo>() {
             @Override
-            public void onChanged(LoginPojo createUserResponse) {
-                if(checker != null){
+            public void onChanged(LoginPojo loginUserResponse) {
+
                     Toast.makeText(LoginActivity.this, "Logged is successfuly.",Toast.LENGTH_LONG  ).show();
                     TextView result=findViewById(R.id.responseLogin);
-                    checker = String.valueOf(createUserResponse);
-                    result.append("ID\t:"+createUserResponse.getMessage());
-                    result.append("\nname\t:"+createUserResponse.getToken());
-                    result.append("\nemail\t:"+createUserResponse.getUser());
-
-                     Toast.makeText(LoginActivity.this ,createUserResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    checker = String.valueOf(loginUserResponse);
+                    result.append("Message\t:"+loginUserResponse.getMessage());
+                    result.append("\nToken\t:"+loginUserResponse.getToken());
+                    result.append("\nUser object\t:"+loginUserResponse.getUser());
+                 //     Log.e("Result: ", loginUserResponse.getToken());
+                     Toast.makeText(LoginActivity.this ,loginUserResponse.getMessage(), Toast.LENGTH_LONG).show();
                     // TODO: Save token to the local db
 
                     Intent intent = new Intent(LoginActivity.this, MoodPromptActivity.class);
                     startActivity(intent);
-                }
-                else{
-                   Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(LoginActivity.this ,"Oops! Something went wrong.", Toast.LENGTH_LONG).show();
 
-                        }
-                    },2500);
-                }
 
             }
         });
@@ -117,5 +108,29 @@ public class LoginActivity extends BaseActivity {
         loadingLogin.setVisibility(View.GONE);
 
     }
+
+    protected void openPromt(View view){
+
+        Intent intent = new Intent(LoginActivity.this, MoodPromptActivity.class);
+        startActivity(intent);
+    }
+
+    protected void showView(View view){
+        userViewModel = new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())
+                .create(UserViewModel.class);
+
+        login = findViewById(R.id.login);
+        email = findViewById(R.id.emailLogin);
+        password = findViewById(R.id.passwordLogin);
+        loadingLogin = findViewById(R.id.loadingLogin);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
+    }
+
 
 }

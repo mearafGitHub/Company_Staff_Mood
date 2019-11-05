@@ -49,7 +49,7 @@
             android:scrollbars="vertical"
             android:showDividers="end"
             android:soundEffectsEnabled="true"
-            android:background="@color/colorBackgroundLight"
+            android:background="@color/colorBackgroundLight2"
             android:elevation="16dp"
             >
 

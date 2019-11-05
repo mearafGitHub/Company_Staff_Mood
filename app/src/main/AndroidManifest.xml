@@ -35,7 +35,8 @@
         <activity
             android:name=".views.AdminActivity"
             android:label="@string/admin_title" />
-        <activity android:name=".views.LoginActivity" />
+        <activity android:name=".views.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".views.MoodPromptActivity"
             android:theme="@style/AppTheme.NoActionBar" />
