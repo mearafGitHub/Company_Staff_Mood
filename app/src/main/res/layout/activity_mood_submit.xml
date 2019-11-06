@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.MoodSubmitActivity"
+    tools:context=".UserMood.MoodSubmitActivity"
     android:padding="18dp"
     android:orientation="vertical"
     android:id="@+id/modalLayout"
@@ -16,6 +16,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/moodText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,6 +62,7 @@
             android:scaleType="centerCrop"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
+            android:clickable="true"
             app:lottie_rawRes="@raw/retry"
             />
 
@@ -69,10 +74,12 @@
             android:scaleType="centerCrop"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
+            android:clickable="true"
             app:lottie_rawRes="@raw/tenor" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/work"
+            android:clickable="true"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_margin="8dp"
@@ -102,11 +109,13 @@
            android:scaleType="centerCrop"
            app:lottie_autoPlay="true"
            app:lottie_loop="true"
+           android:clickable="true"
            app:lottie_rawRes="@raw/me_at_office" />
 
 
        <com.airbnb.lottie.LottieAnimationView
            android:id="@+id/deal"
+           android:clickable="true"
            android:layout_margin="8dp"
            android:layout_width="85dp"
            android:layout_height="85dp"
@@ -118,6 +127,7 @@
 
        <com.airbnb.lottie.LottieAnimationView
            android:id="@+id/staff"
+           android:clickable="true"
            android:layout_margin="8dp"
            android:layout_width="85dp"
            android:layout_height="85dp"
@@ -161,7 +171,9 @@
             android:text="Skip"
             android:elevation="9dp"
             android:textColor="@color/colorAccent"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 

@@ -1,13 +1,12 @@
 package com.example.gebeya_mood.repo;
 
 import androidx.room.Database;
-import androidx.room.Entity;
 import androidx.room.RoomDatabase;
 
-import com.example.gebeya_mood.models.User;
-import com.example.gebeya_mood.models.UserMood;
-import com.example.gebeya_mood.repo.user_moods_repo.UserMoodDao;
-import com.example.gebeya_mood.repo.users.UserDao;
+import com.example.gebeya_mood.Auths.User;
+import com.example.gebeya_mood.UserMood.UserMood;
+import com.example.gebeya_mood.UserMood.UserMoodDao;
+import com.example.gebeya_mood.Auths.users.UserDao;
 
 
 @Database(

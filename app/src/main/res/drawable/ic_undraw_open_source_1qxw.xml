@@ -2,7 +2,8 @@
     android:width="1028dp"
     android:height="598.99744dp"
     android:viewportWidth="1028"
-    android:viewportHeight="598.99744">
+    android:viewportHeight="598.99744"
+    >
   <path
       android:pathData="M332,292m-292,0a292,292 0,1 1,584.01 0a292,292 0,1 1,-584.01 0"
       android:fillColor="#f2f2f2"/>

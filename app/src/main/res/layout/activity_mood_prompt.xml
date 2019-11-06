@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundLight"
-    tools:context=".views.MoodPromptActivity">
+    tools:context=".UserMood.MoodPromptActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

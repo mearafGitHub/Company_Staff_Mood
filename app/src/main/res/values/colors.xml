@@ -5,7 +5,9 @@
     <color name="colorAccent">#FF8C00</color>
     <color name="colorIcons">#E6E6FA</color>
     <color name="colorFrontAccent">#B19CD9</color>
-    <color name="colorPrimaryFront">#af94e1</color>
+    <color name="colorPrimaryFront">#Af94e1</color>
+    <color name="colorSpinner">#999CD9</color>
+
     <color name="colorBackgroundAccent">#ebd0ff</color>
     <color name="colorBackgroundLight">#e6dff3</color>
     <color name="colorBackgroundLight2">#e3dff3</color>

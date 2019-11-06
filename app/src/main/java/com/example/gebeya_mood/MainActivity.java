@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.gebeya_mood.views.MoodPromptActivity;
+import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

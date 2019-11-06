@@ -11,17 +11,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class App extends Application {
-
     private Retrofit retrofit;
     private GebeyaDatabase db;
     @Override
     public void onCreate() {
         super.onCreate();
         retrofit=new Retrofit.Builder()
-                .baseUrl("https://stark-peak-15799.herokuapp.com/")
+                .baseUrl(Const.BASE_URL_HEROKU)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
 
         db = Room.databaseBuilder(this,
                 GebeyaDatabase.class,
