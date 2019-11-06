@@ -5,8 +5,6 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.gebeya_mood.Auths.User;
-
 import java.util.List;
 
 @Dao

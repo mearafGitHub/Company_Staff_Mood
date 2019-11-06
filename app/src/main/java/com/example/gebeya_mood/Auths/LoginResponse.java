@@ -1,6 +1,6 @@
 package com.example.gebeya_mood.Auths;
 
-import com.example.gebeya_mood.Auths.User;
+import com.example.gebeya_mood.Auths.users.User;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginResponse {

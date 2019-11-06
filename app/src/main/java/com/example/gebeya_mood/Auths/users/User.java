@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.Auths;
+package com.example.gebeya_mood.Auths.users;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

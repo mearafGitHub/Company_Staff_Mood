@@ -1,7 +1,5 @@
 package com.example.gebeya_mood.Auths.users;
 
-import com.example.gebeya_mood.Auths.User;
-
 import java.util.ArrayList;
 import java.util.List;
 

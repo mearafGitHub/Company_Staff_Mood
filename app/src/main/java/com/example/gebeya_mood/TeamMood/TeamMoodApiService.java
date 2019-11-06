@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.Auths;
+package com.example.gebeya_mood.TeamMood;
 
 import com.example.gebeya_mood.TeamMood.TeamMoodPojo;
 
