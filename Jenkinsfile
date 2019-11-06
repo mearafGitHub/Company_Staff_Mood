@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
      stage('Lint & Unit Test') {
-      parallel {                                 (***)
+      parallel {                                
         stage('checkStyle') {
           steps {
             // We use checkstyle gradle plugin to perform this
