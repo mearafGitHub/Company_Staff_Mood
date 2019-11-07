@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GebeyaIntro extends BaseActivity {
-
    private ViewPager viewPager;
    private IntroViewPageAdapter introPageAdapter;
    private TabLayout tab;
@@ -44,7 +43,6 @@ public class GebeyaIntro extends BaseActivity {
     }
 
     protected void showViews(){
-
         buttonGo = findViewById(R.id.GoButton);
         tab = findViewById(R.id.tab);
         List<IntroScreenItem> screens = new ArrayList<>();

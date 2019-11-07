@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.gebeya_mood.Auths.login.LoginActivity;
 import com.example.gebeya_mood.Auths.UserResponse;
 import com.example.gebeya_mood.Auths.UserViewModel;
+import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 
@@ -60,12 +61,12 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_sign_up);
 
         prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
-        boolean seen = prefs.getBoolean(Const.SEEN_SIGNUP, false);
+        boolean seen = prefs.getBoolean(Const.TOKEN, false);
         if (seen) {
             openLogin(null);
         } else {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean(Const.SEEN_SIGNUP, true);
+            editor.putBoolean(Const.TOKEN, false);
             editor.apply();
             showViews(null);
         }
@@ -81,35 +82,23 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         email = findViewById(R.id.email);
         username = findViewById(R.id.screenname);
         linkToLogin = findViewById(R.id.linkToLogin);
-
         password = findViewById(R.id.password);
         confirmpassword = findViewById(R.id.confirm_password);
         signup = findViewById(R.id.signUp);
 
         Spinner teamChoice = findViewById(R.id.Team_Select);
-
         userViewModel=new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
                 .create(UserViewModel.class);
 
         teamChoice.setOnItemSelectedListener(this);
-        List<String> teamNames = new ArrayList<String>();
-        teamNames.add("Team?");
-        teamNames.add("Staff");
-        teamNames.add("Talent");
-        teamNames.add("Contractor");
-        teamNames.add("Student");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamNames);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.TeamName());
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         teamChoice.setAdapter(dataAdapter);
 
         Spinner genderChoice = findViewById(R.id.Gender_Select);
         genderChoice.setOnItemSelectedListener(this);
-        List<String> genderNames = new ArrayList<String>();
-        genderNames.add("Gender?");
-        genderNames.add("Female");
-        genderNames.add("Male");
-        ArrayAdapter<String> dataAdapterGender = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genderNames);
+        ArrayAdapter<String> dataAdapterGender = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.Gender());
         dataAdapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderChoice.setAdapter(dataAdapterGender);
 
@@ -173,17 +162,20 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         userViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
             @Override
             public void onChanged(UserResponse createUserResponse) {
-                checker = String.valueOf(createUserResponse);
-                if(checker !=null){
-                   String role = createUserResponse.getRole();
-                    Toast.makeText(SignUpActivity.this , "Sign up successful! Welcome" + createUserResponse.getName(), Toast.LENGTH_LONG).show();
-                    Intent intentOne = new Intent(SignUpActivity.this, LoginActivity.class);
-                    startActivity(intentOne);
-                }
-                else{
-                    Toast.makeText(SignUpActivity.this , "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
-
-                }
+                try {
+                    checker = String.valueOf(createUserResponse);
+                    if (checker != null) {
+                        String role = createUserResponse.getRole();
+                        Const.ROLE = role;
+                        Const.USERNAME = createUserResponse.getName();
+                        Const.TEAM = createUserResponse.getType();
+                        Toast.makeText(SignUpActivity.this, "Sign up successful! Welcome" + createUserResponse.getName(), Toast.LENGTH_LONG).show();
+                        Intent intentOne = new Intent(SignUpActivity.this, MainActivity.class);
+                        startActivity(intentOne);
+                    } else {
+                        Toast.makeText(SignUpActivity.this, "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){e.printStackTrace();}
             }
             });
 

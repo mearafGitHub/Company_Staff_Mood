@@ -21,12 +21,12 @@ public class OAuthActivity extends BaseActivity {
         setContentView(R.layout.activity_oauth);
 
         prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
-        boolean seen = prefs.getBoolean(Const.SEEN_OAUTH, false);
+        boolean seen = prefs.getBoolean(Const.TOKEN, false);
         if (seen) {
             openSignUp(null);
         } else {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean(Const.SEEN_OAUTH, true);
+            editor.putBoolean(Const.TOKEN, false);
             editor.apply();
             showViews(null);
         }

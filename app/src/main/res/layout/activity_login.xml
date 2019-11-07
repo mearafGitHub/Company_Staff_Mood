@@ -22,7 +22,7 @@
     android:layout_gravity="center_horizontal"
     android:background="#994b0082"
     android:layout_marginHorizontal="12dp"
-    android:layout_marginVertical="79dp"
+    android:layout_marginVertical="59dp"
     >
 
     <ImageView
@@ -95,10 +95,10 @@
         app:layout_editor_absoluteX="@dimen/cardview_default_elevation" />
 
     <TextView
+        android:id="@+id/responseLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/responseLogin"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent" />
 
     <ProgressBar
         android:id="@+id/loadingLogin"

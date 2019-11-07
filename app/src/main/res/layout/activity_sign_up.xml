@@ -77,6 +77,7 @@
                 android:layout_marginRight="3dp"
                 android:layout_marginBottom="9dp"
                 android:text="Gender Select"
+                android:gravity="center_vertical"
                 style="@style/spinnerStyle"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
@@ -90,6 +91,7 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="9dp"
+                android:gravity="center_vertical"
                 style="@style/spinnerStyle"
                 android:text="Select Team "
                 android:textColor="#FFFFFF"
@@ -169,8 +171,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:linksClickable="true"
+            android:layout_marginTop="12sp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textDirection="firstStrongLtr"
             android:id="@+id/linkToLogin"
-            android:text="already have an account, Login." />
+            android:text="Already have an account, Login." />
 
 
     </LinearLayout>

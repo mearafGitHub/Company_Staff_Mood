@@ -14,8 +14,11 @@ import android.widget.Toast;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.gebeya_mood.Admin.AdminActivity;
 import com.example.gebeya_mood.Auths.UserResponse;
 import com.example.gebeya_mood.Auths.UserViewModel;
+import com.example.gebeya_mood.Auths.register.SignUpActivity;
+import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
@@ -47,12 +50,12 @@ public class LoginActivity extends BaseActivity {
 
 
         prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
-        boolean seen = prefs.getBoolean(Const.SEEN_LOGIN, false);
+        boolean seen = prefs.getBoolean(Const.TOKEN, false);
         if (seen) {
             openPrompt(null);
         } else {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean(Const.SEEN_LOGIN, true);
+            editor.putBoolean(Const.TOKEN, false);
             editor.apply();
             showView(null);
         }
@@ -95,13 +98,28 @@ public class LoginActivity extends BaseActivity {
             userViewModel.getLoginRespones().observe(this, new Observer<UserResponse>() {
                 @Override
                 public void onChanged(UserResponse loginUserResponse) {
-                    Toast.makeText(LoginActivity.this, "Logged is successfuly.",Toast.LENGTH_LONG  ).show();
-                    userRole = loginUserResponse.getRole();
-                    Log.e("Result: ", loginUserResponse.getRole());
-                    Toast.makeText(LoginActivity.this ,loginUserResponse.getRole(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, MoodPromptActivity.class);
-                    startActivity(intent);
-                }
+                    try {
+                        checker = String.valueOf(loginUserResponse);
+                        if (checker != null) {
+                            String role = loginUserResponse.getRole();
+                            Const.ROLE = role;
+                            Const.TOKEN = "TOKEN";
+                            Const.USERNAME = loginUserResponse.getName();
+                            Const.TEAM = loginUserResponse.getType();
+                            userRole = loginUserResponse.getRole();
+                            Log.e("Result: ", loginUserResponse.getRole());
+                            Toast.makeText(LoginActivity.this, "Logged in successfuly.",Toast.LENGTH_LONG  ).show();
+                            Toast.makeText(LoginActivity.this, loginUserResponse.getName(), Toast.LENGTH_LONG).show();
+
+                            if(role.equals("admin")){
+                                openAdmin(null);
+                            }else{openPrompt(null);}
+                         }
+                         else {
+                            Toast.makeText(LoginActivity.this, "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
+                         }
+                     }catch (Exception e){e.printStackTrace();}
+                 }
             });
         }catch(Exception e){
             e.printStackTrace();
@@ -111,6 +129,11 @@ public class LoginActivity extends BaseActivity {
 
     protected void openPrompt(View view){
         Intent intent = new Intent(LoginActivity.this, MoodPromptActivity.class);
+        startActivity(intent);
+    }
+
+    protected void openAdmin(View view){
+        Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
         startActivity(intent);
     }
 
