@@ -72,6 +72,7 @@ public class MoodSubmitActivity extends BaseActivity {
         weather = findViewById(R.id.weather);
         deal = findViewById(R.id.deal);
         moodText = findViewById(R.id.moodText);
+        moodText.setText(moodValue);
 
         userMoodViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
@@ -82,7 +83,6 @@ public class MoodSubmitActivity extends BaseActivity {
             public void onClick(View v) {
                 moodReason = "health";
                 Toast.makeText(MoodSubmitActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
-
             }
         });
 
@@ -114,7 +114,7 @@ public class MoodSubmitActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 moodReason = "Weather";
-                Toast.makeText(MoodSubmitActivity.this, "Angry? What's it?", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodSubmitActivity.this, "Got paid, right?!", Toast.LENGTH_LONG).show();
             }
         });
 

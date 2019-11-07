@@ -17,7 +17,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         retrofit=new Retrofit.Builder()
-                .baseUrl(Const.BASE_URL_HEROKU)
+                .baseUrl(Const.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

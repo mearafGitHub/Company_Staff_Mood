@@ -70,28 +70,6 @@ public class MoodPromptActivity extends BaseActivity {
                 .AndroidViewModelFactory(getApplication())
                 .create(UserMoodViewModel.class);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.home_nav:
-                        Intent intent = new Intent(MoodPromptActivity.this, GebeyaAllTeamMoodsActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.info_nav:
-                        Intent intentI = new Intent(MoodPromptActivity.this, AdminActivity.class);
-                        startActivity(intentI);
-                        break;
-                    case R.id.my_moods_nav:
-                        Intent intentM = new Intent(MoodPromptActivity.this, UserMoodsActivity.class);
-                        startActivity(intentM);
-                        break;
-                }
-                return false;
-            }
-        });
-
         happy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,14 +115,6 @@ public class MoodPromptActivity extends BaseActivity {
             }
         });
 
-        content.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moodValue = "Content";
-                Toast.makeText(MoodPromptActivity.this, " Content.. ", Toast.LENGTH_LONG).show();
-                openSubmit(null, moodValue );
-            }
-        });
     }
 
     @NonNull

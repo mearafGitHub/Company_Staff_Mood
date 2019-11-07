@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.TeamMood.TeamDetailActivity;
 import com.example.gebeya_mood.TeamMood.TeamMoodAdapter;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.TeamMood.TeamMood;
@@ -155,7 +156,7 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.adminLisIcon:
-                Intent intentAdminView = new Intent(AdminActivity.this, GebeyaAllTeamMoodsActivity.class);
+                Intent intentAdminView = new Intent(AdminActivity.this, TeamDetailActivity.class);
                 startActivity(intentAdminView);
                 return true;
             default:
