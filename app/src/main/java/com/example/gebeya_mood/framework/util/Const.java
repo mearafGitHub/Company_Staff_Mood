@@ -49,7 +49,7 @@ public final class Const {
 
     public static List<IntroScreenItem> IntroContent(){
         List<IntroScreenItem> screens = new ArrayList<>();
-        screens.add(new IntroScreenItem("Gebeaya Mood®", "Made for and by Gebeya Inc®. At Gebeya, we all are in the same team. We care about how you feel about everything in Gebeya Inc. Feel free to share your moods. At Gebeya we are in the same team. ", R.drawable.ic_undraw_winners_ao2o));
+        screens.add(new IntroScreenItem("Gebeaya Mood®", "Made for and by Gebeya Inc®. At Gebeya, we all are in the same team. We care about how you feel about everything in Gebeya Inc. Feel free to share your moods.", R.drawable.ic_undraw_winners_ao2o));
         screens.add(new IntroScreenItem("Hi! You're Welcome", "We will check on you to see how you are feeling. Here We will record you emotions so that you can remember your moods a while ago.", R.drawable.ic_undraw_smiley_face_lmgm));
         screens.add(new IntroScreenItem("Gebeya's General Mood", "In the common screen you can see your colleagues teams mood. Feel free to share your moods. At Gebeya we are in the same team. ", R.drawable.ic_undraw_celebration_0jvk));
         screens.add(new IntroScreenItem("Team mood", "In the common screen you can see your colleagues teams mood.Feel free to share your moods. At Gebeya we are in the same team. ", R.drawable.ic_undraw_welcoming_xvuq));

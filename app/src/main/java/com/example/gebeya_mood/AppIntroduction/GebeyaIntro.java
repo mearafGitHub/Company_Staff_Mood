@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.framework.util.Const;
@@ -30,19 +31,19 @@ public class GebeyaIntro extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gebeya_intro);
 
-        prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
-        boolean seen = prefs.getBoolean(Const.SEEN_INTRO, false);
-        if (seen) {
-            openAuth(null);
-        } else {
+       // prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
+       // boolean seen = prefs.getBoolean(Const.SEEN_INTRO, false);
+       // if (seen) {
+        showViews(null);
+      /*  } else {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean(Const.SEEN_INTRO, true);
             editor.apply();
             showViews();
-        }
+        }*/
     }
 
-    protected void showViews(){
+    protected void showViews(View view){
         buttonGo = findViewById(R.id.GoButton);
         tab = findViewById(R.id.tab);
         viewPager = findViewById(R.id.screen_Pager);
@@ -53,14 +54,12 @@ public class GebeyaIntro extends BaseActivity {
         buttonGo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GebeyaIntro.this, OAuthActivity.class);
-                startActivity(intent);
-                finish();
+                openAuth(null);
             }
         });
     }
    protected void openAuth(View view){
-       Intent intent = new Intent(GebeyaIntro.this, OAuthActivity.class);
+       Intent intent = new Intent(GebeyaIntro.this, MainActivity.class);
        startActivity(intent);
        finish();
     }
