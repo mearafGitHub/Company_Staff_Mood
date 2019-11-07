@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Auths.OAuthActivity"
+            android:name=".Auths.register.OAuthActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AppIntroduction.GebeyaIntro"
@@ -36,7 +36,7 @@
         <activity
             android:name=".Admin.AdminActivity"
             android:label="@string/admin_title" />
-        <activity android:name=".Auths.LoginActivity"
+        <activity android:name=".Auths.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UserMood.MoodPromptActivity" />
@@ -44,7 +44,7 @@
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Auths.SignUpActivity"
+            android:name=".Auths.register.SignUpActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

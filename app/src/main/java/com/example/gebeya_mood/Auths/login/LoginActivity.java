@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.Auths;
+package com.example.gebeya_mood.Auths.login;
 
 import android.app.Application;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.gebeya_mood.Auths.UserResponse;
+import com.example.gebeya_mood.Auths.UserViewModel;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;

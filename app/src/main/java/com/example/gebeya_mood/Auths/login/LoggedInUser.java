@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.Auths;
+package com.example.gebeya_mood.Auths.login;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

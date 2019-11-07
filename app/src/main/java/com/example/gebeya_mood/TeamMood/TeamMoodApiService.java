@@ -25,7 +25,4 @@ public interface TeamMoodApiService {
     @GET("team-moods{teamId}")
     Call <List<TeamMoodPojo>> getOneTeamMoods(@Path("teamId") String teamId);
 
-
-
-
 }

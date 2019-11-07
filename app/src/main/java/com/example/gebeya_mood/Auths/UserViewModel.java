@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gebeya_mood.App;
+import com.example.gebeya_mood.Auths.register.SingUpPojo;
 import com.example.gebeya_mood.Auths.users.User;
 import com.example.gebeya_mood.Auths.users.UserApiService;
 import com.example.gebeya_mood.Auths.users.UserDao;

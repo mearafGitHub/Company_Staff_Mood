@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.Auths;
+package com.example.gebeya_mood.Auths.register;
 
 //import android.app.KeyguardManager;
 import android.content.Intent;
@@ -18,6 +18,9 @@ import android.widget.Toast;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.gebeya_mood.Auths.login.LoginActivity;
+import com.example.gebeya_mood.Auths.UserResponse;
+import com.example.gebeya_mood.Auths.UserViewModel;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 
@@ -28,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
+import butterknife.BindView;
 import retrofit2.Response;
 
 public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
@@ -46,6 +50,9 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
     private UserViewModel userViewModel;
     private String checker;
     private SharedPreferences prefs;
+
+    @BindView(R.id.linkToLogin)
+    public TextView linkToLogin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,7 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         signUpProgressBar = findViewById(R.id.loading);
         email = findViewById(R.id.email);
         username = findViewById(R.id.screenname);
+        linkToLogin = findViewById(R.id.linkToLogin);
 
         password = findViewById(R.id.password);
         confirmpassword = findViewById(R.id.confirm_password);
@@ -105,6 +113,12 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         dataAdapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderChoice.setAdapter(dataAdapterGender);
 
+        linkToLogin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,23 +169,22 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         userJson.addProperty("team",team);
         userJson.addProperty("sex",gender);
 
-
-            userViewModel.createUser(userJson);
-            userViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
-                @Override
-                public void onChanged(UserResponse createUserResponse) {
-                    checker = String.valueOf(createUserResponse);
-                    if(checker !=null){
-                       String role = createUserResponse.getRole();
-                        Toast.makeText(SignUpActivity.this , "Sign up successful! Welcome" + createUserResponse.getName(), Toast.LENGTH_LONG).show();
-                        Intent intentOne = new Intent(SignUpActivity.this, LoginActivity.class);
-                        startActivity(intentOne);
-                    }
-                    else{
-                        Toast.makeText(SignUpActivity.this , "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
-
-                    }
+        userViewModel.createUser(userJson);
+        userViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
+            @Override
+            public void onChanged(UserResponse createUserResponse) {
+                checker = String.valueOf(createUserResponse);
+                if(checker !=null){
+                   String role = createUserResponse.getRole();
+                    Toast.makeText(SignUpActivity.this , "Sign up successful! Welcome" + createUserResponse.getName(), Toast.LENGTH_LONG).show();
+                    Intent intentOne = new Intent(SignUpActivity.this, LoginActivity.class);
+                    startActivity(intentOne);
                 }
+                else{
+                    Toast.makeText(SignUpActivity.this , "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
+
+                }
+            }
             });
 
         signUpProgressBar.setVisibility(View.GONE);
