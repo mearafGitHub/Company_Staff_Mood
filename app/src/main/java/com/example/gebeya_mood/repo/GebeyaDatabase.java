@@ -3,10 +3,10 @@ package com.example.gebeya_mood.repo;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-import com.example.gebeya_mood.Auths.users.User;
+import com.example.gebeya_mood.users.User;
 import com.example.gebeya_mood.UserMood.UserMood;
 import com.example.gebeya_mood.UserMood.UserMoodDao;
-import com.example.gebeya_mood.Auths.users.UserDao;
+import com.example.gebeya_mood.users.UserDao;
 
 
 @Database(

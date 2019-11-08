@@ -7,10 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gebeya_mood.App;
-import com.example.gebeya_mood.Auths.users.UserResponse;
-import com.example.gebeya_mood.Auths.users.User;
-import com.example.gebeya_mood.Auths.users.UserApiService;
-import com.example.gebeya_mood.Auths.users.UserDao;
+import com.example.gebeya_mood.users.UserResponse;
+import com.example.gebeya_mood.users.User;
+import com.example.gebeya_mood.users.UserApiService;
+import com.example.gebeya_mood.users.UserDao;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -51,14 +51,26 @@ public class SingUpViewModel extends AndroidViewModel {
         return retrofit.create(UserApiService.class);
     }
 
-    public void createUser(JsonObject userinfo){
+    public void signUP(String name, String email, String gender, String teamname, String password){
+        JsonObject newUserJson = new JsonObject();
+        newUserJson.addProperty("name",name);
+        newUserJson.addProperty("email",email);
+        newUserJson.addProperty("password",password);
+        newUserJson.addProperty("team",teamname);
+        newUserJson.addProperty("sex",gender);
+        createUser(newUserJson);
+    }
+
+
+    public void createUser(JsonObject newUserJson){
         UserApiService userService = getUserService();
-        userService.createUser(userinfo).enqueue(new Callback<UserResponse>() {
+        userService.createUser(newUserJson).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 try{
                     signUpRespones.setValue(response.body());
-                }catch(Exception e){
+                }
+                catch(Exception e){
                     e.printStackTrace();
                 }
             }

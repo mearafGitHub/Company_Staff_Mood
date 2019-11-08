@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gebeya_mood.Admin.AdminActivity;
-import com.example.gebeya_mood.Auths.users.UserResponse;
+import com.example.gebeya_mood.users.UserResponse;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;

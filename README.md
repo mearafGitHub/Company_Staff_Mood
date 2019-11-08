@@ -5,7 +5,7 @@ DOING -> DONE:
     [X]  Models and View Design
     [X]  API connection test with POJO
     [X]  Working with DTO and DAO for API Communication
-    [x] fetching and sending to actual gebeya-mood API
+    [x]  fetching and sending to actual gebeya-mood API
 
  [X] 1. list cards in recycler view
        [x] the userMoods on the gebeya userMood home screen
@@ -34,7 +34,7 @@ DOING -> DONE:
       [x]  actual data send/receive
 
  [..]  6. Smooth transition between activities
-
+ [X]  7. App introduction screens
  [..] 8. Admin Views
       [x] List of userMood reports with details of the staffs
       [x ] actual data send/receive

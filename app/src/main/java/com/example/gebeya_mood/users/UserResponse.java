@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.Auths.users;
+package com.example.gebeya_mood.users;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;

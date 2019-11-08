@@ -1,6 +1,5 @@
-package com.example.gebeya_mood.Auths.users;
+package com.example.gebeya_mood.users;
 
-import com.example.gebeya_mood.Auths.UserProfilePojo;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -36,7 +35,7 @@ public interface UserApiService {
     Call<UserResponse> logIn(@Body JsonObject object);
 
     @GET("users/profile")
-    Call<UserProfilePojo> userProfile();
+    Call<UserResponse> userProfile();
 
 
 

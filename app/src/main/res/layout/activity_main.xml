@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundLight"
+    android:background="@drawable/ic_undraw_open_source_1qxw"
     tools:context=".MainActivity">
 
 
@@ -21,17 +21,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="72dp"
             android:text="Gebeya Mood"
-            android:textColor="@color/colorAccent"
-            android:textSize="45dp" />
+            android:textStyle="bold"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorPrimaryGebeya"
+            android:textSize="63dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:gravity="center_horizontal"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
             android:elevation="18dp"
             android:orientation="horizontal"
             >

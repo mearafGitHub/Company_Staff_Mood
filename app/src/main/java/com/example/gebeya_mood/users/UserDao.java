@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.Auths.users;
+package com.example.gebeya_mood.users;
 
 import androidx.room.Dao;
 import androidx.room.Insert;

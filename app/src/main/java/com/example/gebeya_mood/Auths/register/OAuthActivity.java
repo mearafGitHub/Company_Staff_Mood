@@ -5,15 +5,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.gebeya_mood.Auths.login.LoginActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.framework.util.Const;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class OAuthActivity extends BaseActivity {
     private Button gebeyaSignUp;
     private Button googleSignUp;
     private SharedPreferences prefs;
+
+    @BindView(R.id.linkToLogin)
+    public TextView linkToLogin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,12 +41,28 @@ public class OAuthActivity extends BaseActivity {
     }
 
     protected void showViews(View view){
+        ButterKnife.bind(this);
         gebeyaSignUp = findViewById(R.id.gebeyaSignUp);
         googleSignUp = findViewById(R.id.googleSignUp);
+        linkToLogin = findViewById(R.id.linkToLogin);
         gebeyaSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OAuthActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+        googleSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OAuthActivity.this, GoogleAuth.class);
+                startActivity(intent);
+            }
+        });
+
+        linkToLogin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(OAuthActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

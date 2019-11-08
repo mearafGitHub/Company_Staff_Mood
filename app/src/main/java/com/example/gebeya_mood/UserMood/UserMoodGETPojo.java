@@ -3,18 +3,17 @@ package com.example.gebeya_mood.UserMood;
 
 import java.io.Serializable;
 
+import com.example.gebeya_mood.users.UserResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class UserMoodGETPojo implements Serializable
-{
-
-    @SerializedName("_id")
+{   @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("userPojoHelper")
+    @SerializedName("userProfilePojo")
     @Expose
-    private UserPojoHelper userPojoHelper;
+    private UserResponse userResponse;
     @SerializedName("reason")
     @Expose
     private Reason reason;
@@ -42,16 +41,16 @@ public class UserMoodGETPojo implements Serializable
         return this;
     }
 
-    public UserPojoHelper getUserPojoHelper() {
-        return userPojoHelper;
+    public UserResponse getUserPojoHelper() {
+        return userResponse;
     }
 
-    public void setUserPojoHelper(UserPojoHelper userPojoHelper) {
-        this.userPojoHelper = userPojoHelper;
+    public void setUserPojoHelper(UserResponse userPojoHelper) {
+        this.userResponse = userPojoHelper;
     }
 
-    public UserMoodGETPojo withUser(UserPojoHelper userPojoHelper) {
-        this.userPojoHelper = userPojoHelper;
+    public UserMoodGETPojo withUser(UserResponse userPojoHelper) {
+        this.userResponse = userPojoHelper;
         return this;
     }
 

@@ -2,18 +2,15 @@ package com.example.gebeya_mood.Auths.login;
 
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.example.gebeya_mood.App;
-import com.example.gebeya_mood.Auths.users.UserResponse;
-import com.example.gebeya_mood.Auths.users.UserApiService;
-import com.example.gebeya_mood.Auths.users.UserDao;
-import com.example.gebeya_mood.framework.util.Const;
+import com.example.gebeya_mood.users.UserResponse;
+import com.example.gebeya_mood.users.UserApiService;
+import com.example.gebeya_mood.users.UserDao;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;

@@ -5,8 +5,8 @@
         android:id="@+id/adminLisIcon"
         android:checkable="false"
         android:enabled="true"
-        android:icon="@drawable/ic_home_action"
-        android:title="Home"
+        android:icon="@drawable/ic_list_action"
+        android:title="List"
         android:visible="true"
         app:showAsAction="always"
         />

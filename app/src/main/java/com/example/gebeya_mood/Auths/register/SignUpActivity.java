@@ -19,7 +19,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gebeya_mood.Auths.login.LoginActivity;
-import com.example.gebeya_mood.Auths.users.UserResponse;
+import com.example.gebeya_mood.users.UserResponse;
 import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
@@ -115,7 +115,6 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
     }
 
     private void signUp(){
-
         String emailVal = email.getText().toString();
         String usernameVal = username.getText().toString();
         String passwordVal = password.getText().toString();
@@ -148,14 +147,7 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         }
         signUpProgressBar.setVisibility(View.VISIBLE);
 
-        JsonObject userJson = new JsonObject();
-        userJson.addProperty("name",usernameVal);
-        userJson.addProperty("email",emailVal);
-        userJson.addProperty("password",passwordVal);
-        userJson.addProperty("team",team);
-        userJson.addProperty("sex",gender);
-
-        singUpViewModel.createUser(userJson);
+        singUpViewModel.signUP(usernameVal,emailVal,gender, team, passwordVal );
         singUpViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
             @Override
             public void onChanged(UserResponse createUserResponse) {
@@ -165,7 +157,7 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
                         String role = createUserResponse.getRole();
                         Const.ROLE = role;
                         Const.USERNAME = createUserResponse.getName();
-                        Const.TEAM = createUserResponse.getType();
+                        Const.TEAM = createUserResponse.getTeam();
                         Toast.makeText(SignUpActivity.this, "Sign up successful! Welcome" + createUserResponse.getName(), Toast.LENGTH_LONG).show();
                         Intent intentOne = new Intent(SignUpActivity.this, MainActivity.class);
                         startActivity(intentOne);

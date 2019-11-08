@@ -41,6 +41,7 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
     TeamMoodAdapter teamMoodAdapter;
     private String filterByDate, filterByTeam;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +74,8 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
             teamMoodViewModel.getInstance().getAllTeamMood();
             teamMoodViewModel.getAllTeamMoodsResponseM().observe(this, new Observer<List<TeamMoodPojo>>() {
                 @Override
-                public void onChanged(List<TeamMoodPojo> teamMoodPojos) {
-                    List<TeamMood> teamMoods = TeamMoodTransformer.toTeamModelList(teamMoodPojos);
+                public void onChanged(List<TeamMoodPojo> teamMoodPojo) {
+                    teamMoods = TeamMoodTransformer.toTeamModelList(teamMoodPojo);
                     teamMoodAdapter.setTeamMoodModelList(teamMoods);
                     teamMoodAdapter.notifyDataSetChanged();
                     teamMoodDao.addMoods(teamMoods);
@@ -84,68 +85,59 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
         initRecycler();
     }
 
-    private void initRecycler() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        adminRecyclerView.setLayoutManager(linearLayoutManager);
-        adminAdapter = new AdminViewAdapter(this, teamMoods);
-        adminRecyclerView.setAdapter(adminAdapter);
-    }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String choice = parent.getItemAtPosition(position).toString();
-        // send and filter by choice to api and display result
         switch (choice){
             case "day":
                 filterByDate = choice;
+                teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
                 break;
             case "Month":
                 filterByDate = choice;
-            case "Year" :
-                filterByDate = choice;
-                break;
+                teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
             case "Staff" :
                 filterByTeam = choice;
+                teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
                 break;
             case "Talent":
                 filterByTeam = choice;
-            case "Student" :
+                teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
+            case "Trainee" :
                 filterByTeam = choice;
+                teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
                 break;
-            case "Contractor":
-                filterByTeam = choice;
+            case "Year" :
+                filterByDate = choice;
+                teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
                 break;
             case "Investor" :
                 filterByTeam = choice;
-                filteredTeamMoods(filterByTeam, filterByDate);
+                teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
                 break;
              default:
+                 teamMoodViewModel.getAllTeamMooFilterd(filterByTeam, filterByDate);
                  break;
         }
         Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
-
+        teamMoodViewModel.filteredTeamMoods().observe(this, new Observer<List<TeamMoodPojo>>() {
+            @Override
+            public void onChanged(List<TeamMoodPojo> teamMoodPojo) {
+                teamMoods= TeamMoodTransformer.toTeamModelList(teamMoodPojo);
+                teamMoodAdapter.setTeamMoodModelList(teamMoods);
+                teamMoodAdapter.notifyDataSetChanged();
+                teamMoodDao.addMoods(teamMoods);
+            }
+        });
+        initRecycler();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    public void filteredTeamMoods(String data, String team){
-        try{
-            teamMoodViewModel.getInstance().getAllTeamMood();
-            teamMoodViewModel.getAllTeamMooFilterd(team,data).observe(this, new Observer<List<TeamMoodPojo>>() {
-                @Override
-                public void onChanged(List<TeamMoodPojo> teamMoodPojos) {
-                    List<TeamMood> teamMoods = TeamMoodTransformer.toTeamModelList(teamMoodPojos);
-                    teamMoodAdapter.setTeamMoodModelList(teamMoods);
-                    teamMoodAdapter.notifyDataSetChanged();
-                    teamMoodDao.addMoods(teamMoods);
-                }
-            });
-        }catch (Exception e){ e.printStackTrace();}
-        initRecycler();
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.admin_menu, menu);
@@ -163,6 +155,13 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void initRecycler() {
+        adminRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adminAdapter = new AdminViewAdapter(this, teamMoods);
+        adminRecyclerView.setAdapter(adminAdapter);
+    }
+
     public AdminViewAdapter getAdminAdapter() {
         return adminAdapter;
     }
