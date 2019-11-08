@@ -2,7 +2,7 @@ package com.example.gebeya_mood.Auths.login;
 
 import java.io.Serializable;
 
-import com.example.gebeya_mood.Auths.UserResponse;
+import com.example.gebeya_mood.Auths.users.UserResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

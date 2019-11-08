@@ -15,15 +15,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gebeya_mood.Admin.AdminActivity;
-import com.example.gebeya_mood.Auths.UserResponse;
-import com.example.gebeya_mood.Auths.UserViewModel;
-import com.example.gebeya_mood.Auths.register.SignUpActivity;
-import com.example.gebeya_mood.MainActivity;
+import com.example.gebeya_mood.Auths.users.UserResponse;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.framework.util.Const;
-import com.google.gson.JsonObject;
 
 import butterknife.ButterKnife;
 import retrofit2.Response;
@@ -36,18 +32,16 @@ public class LoginActivity extends BaseActivity {
     private EditText email;
     private EditText password;
     private ProgressBar loadingLogin;
-    private String checker;
-    private UserViewModel userViewModel;
+    private LoginUserViewModel loginUserViewModel;
     private SharedPreferences prefs;
     public String userRole;
-
+    private String checker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
 
         prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
         boolean seen = prefs.getBoolean(Const.TOKEN, false);
@@ -61,9 +55,9 @@ public class LoginActivity extends BaseActivity {
         }
     }
     public void showView(View view){
-        userViewModel = new ViewModelProvider
+        loginUserViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
-                .create(UserViewModel.class);
+                .create(LoginUserViewModel.class);
         login = findViewById(R.id.login);
         email = findViewById(R.id.emailLogin);
         password = findViewById(R.id.passwordLogin);
@@ -90,36 +84,33 @@ public class LoginActivity extends BaseActivity {
             return;
         }
         loadingLogin.setVisibility(View.VISIBLE);
-        JsonObject jsonObject=new JsonObject();;
-        jsonObject.addProperty("email",emailVal);
-        jsonObject.addProperty("password",passwordVal);
+        loginUserViewModel.userInputs(emailVal,passwordVal);
+
         try{
-            userViewModel.loginUser(jsonObject);
-            userViewModel.getLoginRespones().observe(this, new Observer<UserResponse>() {
+            loginUserViewModel.getLoginRespones().observe(this, new Observer<UserResponse>() {
                 @Override
                 public void onChanged(UserResponse loginUserResponse) {
                     try {
                         checker = String.valueOf(loginUserResponse);
                         if (checker != null) {
-                            String role = loginUserResponse.getRole();
-                            Const.ROLE = role;
                             Const.TOKEN = "TOKEN";
                             Const.USERNAME = loginUserResponse.getName();
-                            Const.TEAM = loginUserResponse.getType();
+                            Const.TEAM = loginUserResponse.getTeam();
                             userRole = loginUserResponse.getRole();
+                            Const.ROLE = userRole;
                             Log.e("Result: ", loginUserResponse.getRole());
-                            Toast.makeText(LoginActivity.this, "Logged in successfuly.",Toast.LENGTH_LONG  ).show();
+                            Toast.makeText(LoginActivity.this, "Logged in successfully.",Toast.LENGTH_LONG  ).show();
                             Toast.makeText(LoginActivity.this, loginUserResponse.getName(), Toast.LENGTH_LONG).show();
 
-                            if(role.equals("admin")){
+                            if(userRole.equals("admin")){
                                 openAdmin(null);
                             }else{openPrompt(null);}
-                         }
-                         else {
-                            Toast.makeText(LoginActivity.this, "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
-                         }
-                     }catch (Exception e){e.printStackTrace();}
-                 }
+                        }
+                        else {
+                             Toast.makeText(LoginActivity.this, "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
+                        }
+                    }catch (Exception e){e.printStackTrace();}
+                }
             });
         }catch(Exception e){
             e.printStackTrace();

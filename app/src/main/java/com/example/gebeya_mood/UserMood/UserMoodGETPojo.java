@@ -3,7 +3,6 @@ package com.example.gebeya_mood.UserMood;
 
 import java.io.Serializable;
 
-import com.example.gebeya_mood.Auths.UserPojoHelper;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

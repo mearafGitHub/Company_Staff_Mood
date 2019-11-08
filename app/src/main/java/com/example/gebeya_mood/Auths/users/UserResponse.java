@@ -1,15 +1,11 @@
-package com.example.gebeya_mood.Auths;
-
+package com.example.gebeya_mood.Auths.users;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+public class UserResponse implements Serializable
+{
 
-public class UserPojoHelper implements Serializable {
-
-    @SerializedName("role")
-    @Expose
-    private String role;
     @SerializedName("_id")
     @Expose
     private String id;
@@ -25,9 +21,13 @@ public class UserPojoHelper implements Serializable {
     @SerializedName("sex")
     @Expose
     private String sex;
-    @SerializedName("type")
+    @SerializedName("team")
     @Expose
-    private String type;
+    private String team;
+
+    @Expose
+    private String role;
+
     @SerializedName("date_created")
     @Expose
     private String dateCreated;
@@ -37,20 +37,7 @@ public class UserPojoHelper implements Serializable {
     @SerializedName("__v")
     @Expose
     private Integer v;
-    private final static long serialVersionUID = -120952321797001798L;
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public UserPojoHelper withRole(String role) {
-        this.role = role;
-        return this;
-    }
+    private final static long serialVersionUID = -7875470732545985887L;
 
     public String getId() {
         return id;
@@ -60,7 +47,7 @@ public class UserPojoHelper implements Serializable {
         this.id = id;
     }
 
-    public UserPojoHelper withId(String id) {
+    public UserResponse withId(String id) {
         this.id = id;
         return this;
     }
@@ -73,7 +60,7 @@ public class UserPojoHelper implements Serializable {
         this.name = name;
     }
 
-    public UserPojoHelper withName(String name) {
+    public UserResponse withName(String name) {
         this.name = name;
         return this;
     }
@@ -86,9 +73,17 @@ public class UserPojoHelper implements Serializable {
         this.email = email;
     }
 
-    public UserPojoHelper withEmail(String email) {
+    public UserResponse withEmail(String email) {
         this.email = email;
         return this;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPassword() {
@@ -99,7 +94,7 @@ public class UserPojoHelper implements Serializable {
         this.password = password;
     }
 
-    public UserPojoHelper withPassword(String password) {
+    public UserResponse withPassword(String password) {
         this.password = password;
         return this;
     }
@@ -112,21 +107,21 @@ public class UserPojoHelper implements Serializable {
         this.sex = sex;
     }
 
-    public UserPojoHelper withSex(String sex) {
+    public UserResponse withSex(String sex) {
         this.sex = sex;
         return this;
     }
 
-    public String getType() {
-        return type;
+    public String getTeam() {
+        return team;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTeam(String type) {
+        this.team = type;
     }
 
-    public UserPojoHelper withType(String type) {
-        this.type = type;
+    public UserResponse withType(String type) {
+        this.team = type;
         return this;
     }
 
@@ -138,7 +133,7 @@ public class UserPojoHelper implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-    public UserPojoHelper withDateCreated(String dateCreated) {
+    public UserResponse withDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
         return this;
     }
@@ -151,7 +146,7 @@ public class UserPojoHelper implements Serializable {
         this.dateModified = dateModified;
     }
 
-    public UserPojoHelper withDateModified(String dateModified) {
+    public UserResponse withDateModified(String dateModified) {
         this.dateModified = dateModified;
         return this;
     }
@@ -164,7 +159,7 @@ public class UserPojoHelper implements Serializable {
         this.v = v;
     }
 
-    public UserPojoHelper withV(Integer v) {
+    public UserResponse withV(Integer v) {
         this.v = v;
         return this;
     }

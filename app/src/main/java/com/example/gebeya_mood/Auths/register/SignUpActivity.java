@@ -19,8 +19,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gebeya_mood.Auths.login.LoginActivity;
-import com.example.gebeya_mood.Auths.UserResponse;
-import com.example.gebeya_mood.Auths.UserViewModel;
+import com.example.gebeya_mood.Auths.users.UserResponse;
 import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
@@ -28,8 +27,6 @@ import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.framework.util.Const;
 import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 
 import butterknife.BindView;
@@ -48,7 +45,7 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
     private String responseObject , code, error;
     private Response<SingUpPojo> response;
     private String team, gender;
-    private UserViewModel userViewModel;
+    private SingUpViewModel singUpViewModel;
     private String checker;
     private SharedPreferences prefs;
 
@@ -87,9 +84,9 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         signup = findViewById(R.id.signUp);
 
         Spinner teamChoice = findViewById(R.id.Team_Select);
-        userViewModel=new ViewModelProvider
+        singUpViewModel =new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
-                .create(UserViewModel.class);
+                .create(SingUpViewModel.class);
 
         teamChoice.setOnItemSelectedListener(this);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.TeamName());
@@ -158,8 +155,8 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
         userJson.addProperty("team",team);
         userJson.addProperty("sex",gender);
 
-        userViewModel.createUser(userJson);
-        userViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
+        singUpViewModel.createUser(userJson);
+        singUpViewModel.getSignUpRespones().observe(this, new Observer<UserResponse>() {
             @Override
             public void onChanged(UserResponse createUserResponse) {
                 try {

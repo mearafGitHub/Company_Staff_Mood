@@ -5,28 +5,21 @@ import java.util.List;
 
 public class UserTransformer {
 
-    public static User DtoToUser(UserDto userDto){
-
+    public static User DtoToUser(UserResponse userDto){
         User user = new User();
-        user.userId = userDto.getUserId();
-        user.team = userDto.getTeam();
-        user.userId = userDto.getUserId();
-        user.username = userDto.getUsername();
-        user.gender = userDto.getGender();
-
+        user.userId = userDto.getId();
+        user.teamname = userDto.getTeam();
+        user.username = userDto.getName();
+        user.gender = userDto.getSex();
+        user.role = userDto.getSex();
         return user;
     }
 
-
-    public static List<User> ListDtoToUserList(List<UserDto> listUsersDto){
-
+    public static List<User> ListDtoToUserList(List<UserResponse> listUsersDto){
         List<User> users = new ArrayList<User>();
-
-        for(UserDto userDto : listUsersDto){
-
+        for(UserResponse userDto : listUsersDto){
             users.add(DtoToUser(userDto));
         }
-
         return users;
     }
 }

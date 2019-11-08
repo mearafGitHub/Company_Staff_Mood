@@ -1,14 +1,13 @@
-package com.example.gebeya_mood.Auths;
+package com.example.gebeya_mood.Auths.register;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gebeya_mood.App;
-import com.example.gebeya_mood.Auths.register.SingUpPojo;
+import com.example.gebeya_mood.Auths.users.UserResponse;
 import com.example.gebeya_mood.Auths.users.User;
 import com.example.gebeya_mood.Auths.users.UserApiService;
 import com.example.gebeya_mood.Auths.users.UserDao;
@@ -21,32 +20,31 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class UserViewModel extends AndroidViewModel {
-    private static UserViewModel userViewModel;
+public class SingUpViewModel extends AndroidViewModel {
+    private static SingUpViewModel singUpViewModel;
     public Retrofit retrofit;
     public UserDao dao;
     private MutableLiveData<SingUpPojo> signUpAllResponse;
     private MutableLiveData<UserResponse> signUpRespones;
     public MutableLiveData<List<User>> users;
-    public MutableLiveData<UserResponse> loginRespones;
+
     public static Application application;
 
-    public UserViewModel(@NonNull Application application) {
+    public SingUpViewModel(@NonNull Application application) {
         super(application);
         retrofit =((App)application).getRetrofit();
         signUpRespones = new MutableLiveData<>();
-        loginRespones = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<User>> getUsers(){
         return users;
     }
 
-    public synchronized UserViewModel getInstance(){
-        if(userViewModel == null){
-            userViewModel = new UserViewModel(application);
+    public synchronized SingUpViewModel getInstance(){
+        if(singUpViewModel == null){
+            singUpViewModel = new SingUpViewModel(application);
         }
-        return userViewModel;
+        return singUpViewModel;
     }
 
     public UserApiService getUserService(){
@@ -72,24 +70,6 @@ public class UserViewModel extends AndroidViewModel {
 
     public MutableLiveData<UserResponse> getSignUpRespones() {
         return signUpRespones;
-    }
-
-    public void loginUser(JsonObject userinfo){
-        UserApiService userService=retrofit.create(UserApiService.class);
-        userService.logIn(userinfo).enqueue(new Callback<UserResponse>() {
-            @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                loginRespones.setValue(response.body());
-                Log.e("Login Response", String.valueOf(response.body()));
-            }
-            @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
-            }
-        });
-    }
-
-    public MutableLiveData<UserResponse> getLoginRespones() {
-        return loginRespones;
     }
 
 }

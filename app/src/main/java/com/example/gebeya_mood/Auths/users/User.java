@@ -19,31 +19,35 @@ public class  User {
     public String email;
 
     @NonNull
-    public String team;  // type on api
+    public String teamname;  // type on api
 
     @NonNull
     public String gender;
 
     @NonNull
     public String password;
+    @NonNull
+
+    public String role;
 
     @Ignore
-    public User(String username, String email, String team, String gender, String password) {
+    public User(String username, String email, String teamname, String gender, String password, String role) {
         this.username = username;
         this.email = email;
-        this.team = team;
+        this.teamname = teamname;
         this.gender = gender;
         this.password = password;
-
+        this.role = role;
     }
 
 
     public User(){
         this.username = username;
         this.email = email;
-        this.team = team;
+        this.teamname = teamname;
         this.gender = gender;
         this.password = password;
+        this.role = role;
     }
 
     @NonNull
@@ -74,12 +78,12 @@ public class  User {
     }
 
     @NonNull
-    public String getTeam() {
-        return team;
+    public String getTeamName() {
+        return teamname;
     }
 
-    public void setTeam(@NonNull String team) {
-        this.team = team;
+    public void setTeamName(@NonNull String team) {
+        this.teamname = team;
     }
 
     @NonNull
@@ -98,5 +102,14 @@ public class  User {
 
     public void setPassword(@NonNull String password) {
         this.password = password;
+    }
+
+    @NonNull
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(@NonNull String role) {
+        this.role = role;
     }
 }

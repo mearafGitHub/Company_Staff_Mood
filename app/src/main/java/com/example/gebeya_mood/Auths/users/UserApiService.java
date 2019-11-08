@@ -1,7 +1,6 @@
 package com.example.gebeya_mood.Auths.users;
 
 import com.example.gebeya_mood.Auths.UserProfilePojo;
-import com.example.gebeya_mood.Auths.UserResponse;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
