@@ -13,6 +13,13 @@
         <item>Year</item>
     </string-array>
 
+    <string-array name="general_date_filter">
+        <item>Today</item>
+        <item>Last Week</item>
+        <item>Last Month</item>
+        <item>Last Year</item>
+    </string-array>
+
     <string-array name="team_filter">
         <item>Managers</item>
         <item>Android Devs</item>

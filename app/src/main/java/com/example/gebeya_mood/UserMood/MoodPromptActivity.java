@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.gebeya_mood.TeamMood.GebeyaAllTeamMoodsActivity;
+import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaAllTeamMoodsActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.Admin.AdminActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;

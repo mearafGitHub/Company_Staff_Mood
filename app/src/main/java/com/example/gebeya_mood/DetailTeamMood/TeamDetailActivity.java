@@ -70,7 +70,7 @@ public class TeamDetailActivity extends BaseActivity implements AdapterView.OnIt
         //graph = findViewById(R.id.detail_teamMood_graph_icon);
         Spinner filterByDate = findViewById(R.id.by_date_filter);
         detailRecyclerView = findViewById(R.id.teamDetailRecycler);
-      ButterKnife.bind(this);
+        ButterKnife.bind(this);
         detailTeamMoodAdapter = new DetailTeamMoodAdapter(this, new ArrayList<>());
 
         ArrayAdapter<CharSequence> filterByDateAdapter = ArrayAdapter.createFromResource(

@@ -118,4 +118,24 @@ public class DetailTeamMoodViewModel extends AndroidViewModel {
         return getOneTeamMoodsResponse;
     }
 
+
+    public void getMoodCount(String team,String date){
+        try{
+            getTeamMoodService().getAllTeamMoodsFilterd(team,date).enqueue(new Callback<List<TeamMoodPojo>>() {
+                @Override
+                public void onResponse(Call<List<TeamMoodPojo>> call, Response<List<TeamMoodPojo>> response) {
+                    try{
+                        getOneTeamMoodsResponse.setValue(response.body());
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onFailure(Call<List<TeamMoodPojo>> call, Throwable t) {
+                    Log.e("ON-FAILURE",String.valueOf(t));
+                }
+            });
+        }catch (Exception e){ e.printStackTrace();}
+    }
+
 }

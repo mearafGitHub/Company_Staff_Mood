@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.Admin.AdminActivity;
-import com.example.gebeya_mood.TeamMood.GebeyaAllTeamMoodsActivity;
+import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaAllTeamMoodsActivity;
 import com.example.gebeya_mood.UserMood.UserMoodsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

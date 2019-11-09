@@ -36,7 +36,7 @@
             android:name=".UserMood.UserMoodsActivity"
             android:label="@string/title_activity_my_moods" />
         <activity
-            android:name=".TeamMood.GebeyaAllTeamMoodsActivity"
+            android:name=".GebeyaMoodGeneral.GebeyaAllTeamMoodsActivity"
             android:label="@string/title_activity_home" />
         <activity
             android:name=".Admin.AdminActivity"
