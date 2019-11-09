@@ -22,6 +22,8 @@ public final class Const {
 
     public static String TEAMNAMEOFDETAIL = "TEAMNAME";
     public static String TEAMNAMEDEPICTGRAPH = "TEAMNAMEDEPICTGRAPH";
+    public static String GENERALTEAMMOOD = "GENERALTEAMMOOD";
+    public static String GENERALGEBEYAMOOD = "GENERALGEBEYAMOOD";
 
     @NonNull
     public static String TOKEN = "NO_TOKEN";
@@ -35,13 +37,13 @@ public final class Const {
     @NonNull
     public static String TEAM = "NO_TEAM";
 
-    public static List<String> Gender (){
+    public static final List<String> Gender (){
         GENDER.add("Female");
         GENDER.add("Male");
         return GENDER;
     }
 
-    public static List<String> TeamName(){
+    public static final List<String> TeamName(){
         TEAMNAME.add("Staff");
         TEAMNAME.add("Talent");
         TEAMNAME.add("Trainer");
@@ -50,7 +52,7 @@ public final class Const {
         return TEAMNAME;
     }
 
-    public static List<IntroScreenItem> IntroContent(){
+    public static final List<IntroScreenItem> IntroContent(){
         List<IntroScreenItem> screens = new ArrayList<>();
         screens.add(new IntroScreenItem("Gebeaya Mood®", "Made for and by Gebeya Inc®. At Gebeya, we all are in the same team. We care about how you feel about everything in Gebeya Inc. Feel free to share your moods.", R.drawable.ic_undraw_winners_ao2o));
         screens.add(new IntroScreenItem("Hi! You're Welcome", "We will check on you to see how you are feeling. Here We will record you emotions so that you can remember your moods a while ago.", R.drawable.ic_undraw_smiley_face_lmgm));

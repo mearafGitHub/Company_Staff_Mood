@@ -8,16 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.framework.util.Const;
-import com.example.gebeya_mood.Auths.register.OAuthActivity;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GebeyaIntro extends BaseActivity {
    private ViewPager viewPager;

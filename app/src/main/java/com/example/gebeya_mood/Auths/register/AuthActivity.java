@@ -15,7 +15,7 @@ import com.example.gebeya_mood.framework.util.Const;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class OAuthActivity extends BaseActivity {
+public class AuthActivity extends BaseActivity {
     private Button gebeyaSignUp;
     private Button googleSignUp;
     private SharedPreferences prefs;
@@ -48,28 +48,28 @@ public class OAuthActivity extends BaseActivity {
         gebeyaSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OAuthActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(AuthActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
         googleSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OAuthActivity.this, GoogleAuth.class);
+                Intent intent = new Intent(AuthActivity.this, GoogleAuth.class);
                 startActivity(intent);
             }
         });
 
         linkToLogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(OAuthActivity.this, LoginActivity.class);
+                Intent intent = new Intent(AuthActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
     }
 
     protected void openSignUp(View view){
-        Intent intent = new Intent(OAuthActivity.this, SignUpActivity.class);
+        Intent intent = new Intent(AuthActivity.this, SignUpActivity.class);
         startActivity(intent);
         finish();
     }
