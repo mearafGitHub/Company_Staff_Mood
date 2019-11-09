@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.TeamMood;
+package com.example.gebeya_mood.DetailTeamMood;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.TeamMood.TeamMood;
+import com.example.gebeya_mood.TeamMood.TeamMoodViewHolder;
 
 import java.util.List;
 
-public class DetailTeamMoodAdapter extends RecyclerView.Adapter<TeamMoodViewHolder> {
+public class DetailTeamMoodAdapter extends RecyclerView.Adapter<DetailTeamMoodViewHolder> {
         Context context;
         List<TeamMood> teamMoodlList;
 
@@ -40,23 +42,23 @@ public class DetailTeamMoodAdapter extends RecyclerView.Adapter<TeamMoodViewHold
 
     @NonNull
     @Override
-    public TeamMoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DetailTeamMoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout;
-        layout = LayoutInflater.from(context).inflate(R.layout.team_mood_item_card, parent, false);
-        return new TeamMoodViewHolder(layout);
+        layout = LayoutInflater.from(context).inflate(R.layout.detail_team_moods_data_card, parent, false);
+        return new DetailTeamMoodViewHolder(layout);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeamMoodViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DetailTeamMoodViewHolder holder, int position) {
         TeamMood teamMood = new TeamMood();
         //TeamMood teamMood = teamMoodlList.get(position);
-        holder.teamEmoji.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
-        holder.teamMoodContainerTC.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
-        holder.team_name.setText(teamMood.teamName);
-        holder.teamEmoji.setImageResource(teamMood.teamEmoji);
-        holder.team_emotion.setText(teamMood.emotion);
-        holder.team_mood_date.setText(teamMood.date);
-        holder.totalMembers.setText(teamMood.totalMembers);
+        holder.detail_teamMood_EMOJI.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
+      //  holder.detail_teamMood_relativeLayoutReport.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
+        holder.detail_teamMood_graph_icon.setImageResource(R.drawable.graph);
+        holder.detail_teamMood_EMOJI.setImageResource(R.drawable.ic_emoticon_happy);
+        holder.detail_teamMood_EMOTION_text.setText(teamMood.emotion);
+        holder.detail_teamMood_DATE.setText(teamMood.date);
+
     }
 
     @Override

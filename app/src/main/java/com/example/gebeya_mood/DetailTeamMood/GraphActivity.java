@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.TeamMood;
+package com.example.gebeya_mood.DetailTeamMood;
 
 import androidx.appcompat.app.AppCompatActivity;
 

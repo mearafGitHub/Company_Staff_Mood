@@ -20,16 +20,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.gebeya_mood.R;
-import com.example.gebeya_mood.TeamMood.TeamDetailActivity;
+import com.example.gebeya_mood.DetailTeamMood.TeamDetailActivity;
 import com.example.gebeya_mood.TeamMood.TeamMoodAdapter;
-import com.example.gebeya_mood.UserMood.MoodSubmitActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.TeamMood.TeamMood;
 import com.example.gebeya_mood.TeamMood.TeamMoodPojo;
 import com.example.gebeya_mood.TeamMood.TeamMoodDao;
 import com.example.gebeya_mood.TeamMood.TeamMoodTransformer;
 import com.example.gebeya_mood.TeamMood.TeamMoodViewModel;
-import com.example.gebeya_mood.TeamMood.GebeyaAllTeamMoodsActivity;
 import com.example.gebeya_mood.framework.util.Const;
 
 import java.util.ArrayList;
@@ -193,6 +191,15 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
         adminRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adminAdapter = new AdminViewAdapter(this,teamMoods);
         adminRecyclerView.setAdapter(adminAdapter);
+
+        /*
+        graph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TeamDetailActivity.this, " Depict a graph.", Toast.LENGTH_LONG).show();
+                openDepictGraph(null, Const.TEAMNAMEOFDETAIL );
+            }
+        });*/
     }
 
 }

@@ -21,6 +21,7 @@ public final class Const {
     public static final List<String> TEAMNAME = new ArrayList<>();
 
     public static String TEAMNAMEOFDETAIL = "TEAMNAME";
+    public static String TEAMNAMEDEPICTGRAPH = "TEAMNAMEDEPICTGRAPH";
 
     @NonNull
     public static String TOKEN = "NO_TOKEN";

@@ -52,14 +52,14 @@ public class AdminViewAdapter extends RecyclerView.Adapter<AdminViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull AdminViewHolder holder, int position) {
         TeamMood teamMood = new TeamMood();
-
-//        holder.teamEmoji.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
  //       holder.relativeLayoutADMINReport.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
         holder.team_name.setText(teamMood.teamName);
-        holder.teamEmoji.setImageResource(teamMood.teamEmoji);
+        holder.teamEmoji.setImageResource(R.drawable.ic_emoticon_happy);
         holder.team_emotion.setText(teamMood.emotion);
         holder.team_mood_date.setText(teamMood.date);
         holder.totalMembers.setText(teamMood.totalMembers);
+
+        holder.teamEmoji.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
     }
 
     @Override

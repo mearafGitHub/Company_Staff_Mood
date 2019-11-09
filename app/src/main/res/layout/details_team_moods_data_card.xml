@@ -156,6 +156,7 @@
                     android:layout_marginLeft="49dp"
                     android:visibility="visible"
                     android:clickable="true"
+                    android:onClick="GraphActivity"
                     app:srcCompat="@drawable/graph" />
 
 

@@ -7,13 +7,13 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="false"
     android:background="#ffffff"
+    android:elevation="27dp"
     android:clipToPadding="true"
     android:orientation="vertical"
     android:textSize="16dp"
     >
 
     <RelativeLayout
-        android:elevation="9dp"
         android:id="@+id/teamMoodContainerTC"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,6 +27,7 @@
         android:paddingLeft="3dp"
         android:paddingRight="3dp"
         android:paddingBottom="8dp"
+        android:elevation="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -119,10 +120,8 @@
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
-
                     </LinearLayout>
                 </LinearLayout>
-
 
             </LinearLayout>
 
@@ -132,7 +131,6 @@
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="3dp"
                 android:orientation="horizontal">
-
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -150,9 +148,7 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
-
             </LinearLayout>
-
 
         </LinearLayout>
 
@@ -160,9 +156,9 @@
 
     <ImageView
         android:id="@+id/teamEmojiTC"
-        android:elevation="9dp"
-        android:layout_width="63dp"
-        android:layout_height="63dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:elevation="27dp"
         android:layout_marginStart="14dp"
         android:layout_marginLeft="14dp"
         android:layout_marginEnd="477dp"
