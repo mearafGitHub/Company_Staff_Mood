@@ -33,11 +33,22 @@ public class MoodSubmitActivity extends BaseActivity {
     @BindView(R.id.helth)
     public LottieAnimationView health;
 
+    @BindView(R.id.done)
+    public LottieAnimationView done;
+
+    @BindView(R.id.bubble)
+    public LottieAnimationView bubble;
+/*
+
+    @BindView(R.id.dashBoard)
+    public LottieAnimationView dashBoard;
+*/
+
     @BindView(R.id.weather)
     public LottieAnimationView weather;
 
-    @BindView(R.id.work)
-    public LottieAnimationView work;
+   /* @BindView(R.id.work)
+    public LottieAnimationView work;*/
 
     @BindView(R.id.goModalButton)
     public Button go;
@@ -66,8 +77,11 @@ public class MoodSubmitActivity extends BaseActivity {
         go.setEnabled(true);
         skip.setEnabled(true);
         health = findViewById(R.id.helth);
-        work = findViewById(R.id.work);
+       // work = findViewById(R.id.work);
         staff = findViewById(R.id.staff);
+       // dashBoard = findViewById(R.id.dashBoard);
+        bubble = findViewById(R.id.bubble);
+        done = findViewById(R.id.done);
         money = findViewById(R.id.money);
         weather = findViewById(R.id.weather);
         deal = findViewById(R.id.deal);
@@ -86,13 +100,24 @@ public class MoodSubmitActivity extends BaseActivity {
             }
         });
 
-        work.setOnClickListener(new View.OnClickListener() {
+
+        done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moodReason = "work";
                 Toast.makeText(MoodSubmitActivity.this, " Job is done ! ", Toast.LENGTH_LONG).show();
             }
         });
+
+        money.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReason = "work";
+                Toast.makeText(MoodSubmitActivity.this, " You got paid! ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
 
         deal.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -50,5 +50,4 @@
         app:tabIndicatorHeight="9dp"
         app:tabPaddingStart="3dp"></com.google.android.material.tabs.TabLayout>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

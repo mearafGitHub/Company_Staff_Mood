@@ -7,19 +7,16 @@
     android:orientation="vertical"
     tools:context=".TeamMood.TeamDetailActivity">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="3dp"
-        android:background="@color/colorFrontAccent"
+        android:background="@color/colorPrimaryGebeya"
         >
 
-
         <TextView
-            android:id="@+id/title_team_nameTD"
+            android:id="@+id/team_nameTD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -32,14 +29,58 @@
 
 
         <ImageView
-            android:id="@+id/team_emojiTD"
+            android:id="@+id/team_general_emoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"
             app:srcCompat="@drawable/ic_insert_emotions" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:orientation="horizontal"
+        android:scrollbars="vertical"
+        android:showDividers="end"
+        android:soundEffectsEnabled="true"
+        android:background="@color/colorBackgroundLight2"
+        android:elevation="16dp"
+        >
 
+
+        <ImageView
+            android:id="@+id/dateIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="3dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_date_range" />
+
+        <Spinner
+            android:id="@+id/by_date_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All"
+            android:layout_gravity="center_vertical"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/teamIcom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="89dp"
+            android:layout_marginRight="3dp"
+            android:tooltipText="graphical deisplay"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/graph" />
+
+
+    </LinearLayout>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_marginTop="18dp"
         android:layout_marginLeft="9dp"
@@ -49,6 +90,7 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/teamDetailRecycler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />

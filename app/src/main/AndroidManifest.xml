@@ -12,7 +12,8 @@
         android:roundIcon="@drawable/gebeya_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Auths.register.GoogleAuth"></activity>
+        <activity android:name=".TeamMood.GraphActivity"></activity>
+        <activity android:name=".Auths.register.GoogleAuth" />
         <activity
             android:name=".Auths.register.OAuthActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -25,7 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TeamMood.TeamDetailActivity" />
+        <activity
+            android:name=".TeamMood.TeamDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UserMood.MoodSubmitActivity"
             android:theme="@style/AppTheme.NoActionBar" />

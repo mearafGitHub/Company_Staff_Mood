@@ -20,6 +20,8 @@ public final class Const {
     public static final List<String> GENDER = new ArrayList<>();
     public static final List<String> TEAMNAME = new ArrayList<>();
 
+    public static String TEAMNAMEOFDETAIL = "TEAMNAME";
+
     @NonNull
     public static String TOKEN = "NO_TOKEN";
 

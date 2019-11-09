@@ -8,16 +8,13 @@
     android:layout_alignParentTop="false"
     android:background="#ffffff"
     android:clipToPadding="true"
-    android:orientation="vertical"
-    android:textSize="16dp"
-    >
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:elevation="9dp"
-        android:id="@+id/teamMoodContainerTC"
+        android:id="@+id/relativeLayoutDETAILReport"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="3dp"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="3dp"
         android:layout_marginLeft="3dp"
@@ -30,8 +27,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/teamEmojiTC"
-        app:layout_constraintTop_toTopOf="@id/teamEmojiTC"
+        app:layout_constraintStart_toStartOf="@id/admin_data_EMOJI_DETAIL"
+        app:layout_constraintTop_toTopOf="@id/admin_data_EMOJI_DETAIL"
         app:layout_constraintVertical_bias="0.0">
 
 
@@ -53,30 +50,30 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/teamNameTC"
+                    android:id="@+id/admin_data_TeamNameDETAIL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
-                    android:text="Team Name"
+                    android:text="Stuff Group"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:id="@+id/timeIconTC"
+                    android:id="@+id/timeIcon_DETAIL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|center_horizontal"
-                    android:layout_marginLeft="36dp"
+                    android:layout_marginLeft="21dp"
                     app:srcCompat="@drawable/ic_schedule" />
 
                 <TextView
-                    android:id="@+id/teamDateTC"
+                    android:id="@+id/admin_date_mood_DATEDETAIL"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
                     android:gravity="center_vertical"
-                    android:text="date"
+                    android:text="userMood date"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -101,7 +98,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/inMood_amountTC"
+                            android:id="@+id/admin_data_inMoodText_DETAIL"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
@@ -111,7 +108,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/teamEmotionTC"
+                            android:id="@+id/admin_data_EMOTION_DETAIL"
                             android:layout_width="wrap_content"
                             android:layout_height="23dp"
                             android:layout_marginLeft="9dp"
@@ -128,19 +125,21 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="3dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                >
 
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_supervised_user_circle" />
 
                 <TextView
-                    android:id="@+id/totalMembersTC"
+                    android:id="@+id/admin_data_totalMembers_DETAIL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
@@ -149,6 +148,15 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16dp"
                     android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/admin_grahp_icon_DETAIL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="49dp"
+                    android:visibility="visible"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/graph" />
 
 
             </LinearLayout>
@@ -159,8 +167,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/teamEmojiTC"
-        android:elevation="9dp"
+        android:id="@+id/admin_data_EMOJI_DETAIL"
         android:layout_width="63dp"
         android:layout_height="63dp"
         android:layout_marginStart="14dp"

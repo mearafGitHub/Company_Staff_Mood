@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.example.gebeya_mood.MainActivity;
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.framework.util.Const;
 import com.example.gebeya_mood.Auths.register.OAuthActivity;
@@ -59,7 +60,7 @@ public class GebeyaIntro extends BaseActivity {
         });
     }
    protected void openAuth(View view){
-       Intent intent = new Intent(GebeyaIntro.this, MainActivity.class);
+       Intent intent = new Intent(GebeyaIntro.this, MoodPromptActivity.class);
        startActivity(intent);
        finish();
     }

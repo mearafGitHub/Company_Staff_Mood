@@ -21,17 +21,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="12sp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="27dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp"
             android:elevation="18dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
+            android:layout_marginRight="50dp"
             android:text="Any reason?"
             android:textColor="@color/colorPrimary"
-            android:textSize="27dp"
+            android:textSize="25dp"
             android:elevation="18dp"
             />
 
@@ -49,48 +49,35 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="39dp"
         android:orientation="horizontal">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/money"
-            android:layout_margin="8dp"
+            android:id="@+id/done"
             android:layout_width="85dp"
             android:layout_height="85dp"
+            android:layout_margin="8dp"
+            android:clickable="true"
             android:scaleType="centerCrop"
+            android:tooltipText="Finish a task."
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            android:clickable="true"
-            android:tooltipText="Finish a task."
-            app:lottie_rawRes="@raw/retry"
-            />
+            app:lottie_rawRes="@raw/retry" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/weather"
-            android:layout_margin="8dp"
             android:layout_width="85dp"
             android:layout_height="85dp"
+            android:layout_margin="8dp"
+            android:clickable="true"
             android:scaleType="centerCrop"
+            android:tooltipText="Got paid!"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            android:tooltipText="Got paid!"
-            android:clickable="true"
             app:lottie_rawRes="@raw/tenor" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/work"
-            android:clickable="true"
-            android:tooltipText="Got paid!"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:layout_margin="8dp"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/youre_in" />
 
     </LinearLayout>
 
@@ -100,7 +87,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="18dp"
         android:orientation="horizontal">
-
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/helth"
@@ -114,7 +100,6 @@
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/me_at_office" />
 
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/deal"
             android:layout_width="85dp"
@@ -126,7 +111,6 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/happy_great_work" />
-
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/staff"
@@ -151,21 +135,9 @@
         >
 
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/internet"
-            android:layout_margin="8dp"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            android:tooltipText="Got paid!"
-            app:lottie_loop="true"
-            android:clickable="true"
-            app:lottie_rawRes="@raw/me_at_office" />
-
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/meating"
+            android:id="@+id/money"
             android:clickable="true"
             android:layout_margin="8dp"
             android:layout_width="85dp"
@@ -174,11 +146,10 @@
             android:tooltipText="Got paid!"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/happy_great_work" />
-
+            app:lottie_rawRes="@raw/money" />
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/scrum"
+            android:id="@+id/bubble"
             android:clickable="true"
             android:layout_margin="8dp"
             android:layout_width="85dp"
@@ -187,7 +158,7 @@
             android:tooltipText="Got paid!"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/onboarding_welcome" />
+            app:lottie_rawRes="@raw/mood_bubble" />
     </LinearLayout>
 
     <LinearLayout
@@ -228,6 +199,5 @@
             />
 
     </LinearLayout>
-
 
 </LinearLayout>

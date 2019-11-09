@@ -13,11 +13,11 @@ import com.example.gebeya_mood.R;
 
 import java.util.List;
 
-public class TeamMoodAdapter extends RecyclerView.Adapter<TeamMoodViewHolder> {
+public class DetailTeamMoodAdapter extends RecyclerView.Adapter<TeamMoodViewHolder> {
         Context context;
         List<TeamMood> teamMoodlList;
 
-    public TeamMoodAdapter(Context context, List<TeamMood> teamMoodlList) {
+    public DetailTeamMoodAdapter(Context context, List<TeamMood> teamMoodlList) {
         this.context = context;
         this.teamMoodlList = teamMoodlList;
     }

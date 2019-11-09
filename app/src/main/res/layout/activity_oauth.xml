@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundLight"
+    android:background="#FFFFFF"
     tools:context=".Auths.register.OAuthActivity">
 
     <LinearLayout
@@ -58,7 +58,7 @@
             android:id="@+id/googleSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="63dp"
+            android:layout_marginTop="54dp"
             android:layout_marginLeft="36dp"
             android:layout_marginRight="36dp"
             android:elevation="42dp"

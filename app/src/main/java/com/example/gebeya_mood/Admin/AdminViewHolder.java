@@ -16,19 +16,19 @@ import butterknife.ButterKnife;
 public class AdminViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     OnTeamMoodListener moodListener;
     public RelativeLayout relativeLayoutADMINReport;
-    @BindView(R.id.team_name)
+    @BindView(R.id.admin_data_TeamName)
     public TextView team_name;
 
-    @BindView(R.id.teamEmotion)
+    @BindView(R.id.admin_data_EMOTION_text)
     public TextView team_emotion;
 
-    @BindView(R.id.teamDate)
+    @BindView(R.id.admin_data_mood_DATE)
     public TextView team_mood_date;
 
-    @BindView(R.id.teamEmoji)
+    @BindView(R.id.admin_data_EMOJI)
     public ImageView teamEmoji;
 
-    @BindView(R.id.totalMembers)
+    @BindView(R.id.admin_data_totalMembers)
     public TextView totalMembers;
 
 
@@ -39,7 +39,7 @@ public class AdminViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.team_emotion = itemView.findViewById(R.id.admin_data_EMOTION_text);
         this.totalMembers = itemView.findViewById(R.id.admin_data_totalMembers);
         this.moodListener = moodListener;
-        team_mood_date = itemView.findViewById(R.id.teamDate);
+        team_mood_date = itemView.findViewById(R.id.admin_data_mood_DATE);
         teamEmoji = itemView.findViewById(R.id.admin_data_EMOJI);
         relativeLayoutADMINReport = itemView.findViewById(R.id.relativeLayoutADMINReport);
         itemView.setOnClickListener(this);

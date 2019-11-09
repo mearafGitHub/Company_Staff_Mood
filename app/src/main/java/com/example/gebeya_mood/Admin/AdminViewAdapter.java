@@ -19,10 +19,27 @@ public class AdminViewAdapter extends RecyclerView.Adapter<AdminViewHolder> {
     private Context context;
     private List<TeamMood> teamMoods;
 
-    public AdminViewAdapter(AdminViewHolder.OnTeamMoodListener moodListener, List<TeamMood> teamMoods) {
+    public AdminViewAdapter(Context context, List<TeamMood> teamMoods) {
         this.moodListener = moodListener;
         this.teamMoods = teamMoods;
         this.context = context;
+    }
+
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public List<TeamMood> getTeamMoodModes() {
+        return teamMoods;
+    }
+
+    public void setTeamMoodModes(List<TeamMood> teamMoodModelList) {
+        this.teamMoods = teamMoodModelList;
     }
 
     @NonNull
@@ -34,10 +51,10 @@ public class AdminViewAdapter extends RecyclerView.Adapter<AdminViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AdminViewHolder holder, int position) {
-        TeamMood teamMood = teamMoods.get(position);
+        TeamMood teamMood = new TeamMood();
 
-        holder.teamEmoji.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
-        holder.relativeLayoutADMINReport.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
+//        holder.teamEmoji.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
+ //       holder.relativeLayoutADMINReport.setAnimation(AnimationUtils.loadAnimation(context, R.anim.list_fade_anim));
         holder.team_name.setText(teamMood.teamName);
         holder.teamEmoji.setImageResource(teamMood.teamEmoji);
         holder.team_emotion.setText(teamMood.emotion);
