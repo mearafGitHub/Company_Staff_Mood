@@ -9,11 +9,10 @@
     tools:context=".GebeyaMoodGeneral.GebeyaAllTeamMoodsActivity">
 
     <LinearLayout
-        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:orientation="horizontal"
-        android:scrollbars="horizontal"
         android:showDividers="end"
         android:id="@+id/linearfilter"
         android:soundEffectsEnabled="true"
@@ -46,14 +45,24 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:elevation="27dp"
-        android:foregroundGravity="center">
+        android:layout_marginHorizontal="12dp"
+        android:foregroundGravity="center"
+        android:layout_marginTop="12dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30sp"
+                android:text="Gebeya Mood Today"
+                android:textAlignment="center"
+                android:textSize="21sp"
+                android:textColor="@color/colorPrimaryGebeya"/>
 
             <ImageView
                 android:id="@+id/general_gebeya_emogi"
@@ -65,143 +74,172 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:src="@drawable/ic_emoticon_happy" />
-
-                <TextView
-                    android:id="@+id/happyAmmount"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:text="happy"
-                    android:textColor="@color/colorPrimaryGebeya"
-                    android:textSize="21dp" />
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:src="@drawable/ic_emoticon_happy" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/happyAmmount"
+                        android:layout_width="38dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="2dp"
+                        android:text="39"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryGebeya"
+                        android:textSize="18dp" />
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:src="@drawable/ic_emoticon_neutral" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/contentAmmount"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:text="content"
-                    android:textColor="@color/colorPrimaryGebeya"
-                    android:textSize="21dp" />
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:src="@drawable/ic_emoticon_neutral" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/contentAmmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="2dp"
+                        android:text="20"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryGebeya"
+                        android:textSize="18dp" />
 
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:src="@drawable/ic_meh_action" />
-
-                <TextView
-                    android:id="@+id/neutralAmmount"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:text="neutral"
-                    android:textColor="@color/colorPrimaryGebeya"
-                    android:textSize="21dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:orientation="vertical">
 
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:src="@drawable/ic_disapointed_action" />
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:src="@drawable/ic_meh_action" />
 
-                <TextView
-                    android:id="@+id/angryAmmount"
+                    <TextView
+                        android:id="@+id/neutralAmmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="2dp"
+                        android:text="12"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryGebeya"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:text="angry"
-                    android:textColor="@color/colorPrimaryGebeya"
-                    android:textSize="21dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:orientation="vertical">
 
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:src="@drawable/ic_sad_action" />
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:src="@drawable/ic_disapointed_action" />
 
-                <TextView
-                    android:id="@+id/sadAmmount"
+                    <TextView
+                        android:id="@+id/angryAmmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="2dp"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryGebeya"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="5dp"
-                    android:text="sad"
-                    android:textColor="@color/colorPrimaryGebeya"
-                    android:textSize="21dp" />
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:src="@drawable/ic_sad_action" />
+
+                    <TextView
+                        android:id="@+id/sadAmmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="2dp"
+                        android:text="1"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryGebeya"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_marginTop="12dp"
+        android:text="Gebeya Week Mood Graph"
+        android:textSize="21sp"
+        android:textColor="@color/colorPrimaryGebeya"
+        android:textAlignment="center"/>
+
+
+    <com.github.mikephil.charting.charts.RadarChart
+
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="18dp"
-        android:id="@+id/homeRecyclerView"
+        android:id="@+id/generalRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="3dp"
-        android:elevation="9dp"
-        android:scrollbars="vertical" />
-
+        android:elevation="9dp"/>
 
 </LinearLayout>

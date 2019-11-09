@@ -15,9 +15,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class GebeyaGeneralViewModel extends AndroidViewModel {
-    GebeyaGeneralViewModel thisViewModel;
+   public GebeyaGeneralViewModel thisViewModel;
     public MutableLiveData<MoodsCountPojo> generalMoods;
-    public Application application;
+    public  Application application;
     public Retrofit retrofit;
 
     public GebeyaGeneralViewModel(@NonNull Application application) {
@@ -34,8 +34,7 @@ public class GebeyaGeneralViewModel extends AndroidViewModel {
 
 
     public void getGenerealMood(){
-
-        getGeneralMoodService().getGeneralMood().enqueue(new Callback<MoodsCountPojo>() {
+        getInstance().getGeneralMoodService().getGeneralMood().enqueue(new Callback<MoodsCountPojo>() {
             @Override
             public void onResponse(Call<MoodsCountPojo> call, Response<MoodsCountPojo> response) {
                 generalMoods.setValue(response.body());
@@ -46,5 +45,9 @@ public class GebeyaGeneralViewModel extends AndroidViewModel {
                 Log.e("General mood Failed:", t.toString() );
             }
         });
+    }
+
+    public MutableLiveData<MoodsCountPojo> getGeneralMoods(){
+        return generalMoods;
     }
 }

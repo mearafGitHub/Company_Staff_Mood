@@ -1,10 +1,11 @@
 package com.example.gebeya_mood.Mood;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class MoodPojo implements Serializable
+
+public class Mood implements Serializable
 {
 
     @SerializedName("Happy")
@@ -32,7 +33,7 @@ public class MoodPojo implements Serializable
         this.happy = happy;
     }
 
-    public MoodPojo withHappy(Integer happy) {
+    public Mood withHappy(Integer happy) {
         this.happy = happy;
         return this;
     }
@@ -45,7 +46,7 @@ public class MoodPojo implements Serializable
         this.content = content;
     }
 
-    public MoodPojo withContent(Integer content) {
+    public Mood withContent(Integer content) {
         this.content = content;
         return this;
     }
@@ -58,7 +59,7 @@ public class MoodPojo implements Serializable
         this.neutral = neutral;
     }
 
-    public MoodPojo withNeutral(Integer neutral) {
+    public Mood withNeutral(Integer neutral) {
         this.neutral = neutral;
         return this;
     }
@@ -71,7 +72,7 @@ public class MoodPojo implements Serializable
         this.sad = sad;
     }
 
-    public MoodPojo withSad(Integer sad) {
+    public Mood withSad(Integer sad) {
         this.sad = sad;
         return this;
     }
@@ -84,7 +85,7 @@ public class MoodPojo implements Serializable
         this.angry = angry;
     }
 
-    public MoodPojo withAngry(Integer angry) {
+    public Mood withAngry(Integer angry) {
         this.angry = angry;
         return this;
     }

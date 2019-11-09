@@ -15,6 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.gebeya_mood.Admin.AdminActivity;
+import com.example.gebeya_mood.Mood.Mood;
+import com.example.gebeya_mood.Mood.MoodTranfromer;
+import com.example.gebeya_mood.Mood.MoodsCountPojo;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.TeamMood.TeamMood;
 import com.example.gebeya_mood.TeamMood.TeamMoodAdapter;
@@ -26,18 +29,20 @@ import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.UserMood.UserMoodsActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class GebeyaAllTeamMoodsActivity extends BaseActivity {
-    private RecyclerView teamMoodRecyclerView;
+    @BindView(R.id.generalRecyclerView)
+    public RecyclerView teamMoodRecyclerView;
     private TeamMoodAdapter teamMoodsAdapter;
-    public TeamMoodViewModel teamMoodViewModel;
+    public GebeyaGeneralViewModel gebeyaGeneralViewModel;
     private List<TeamMood> teamMoods;
     private Context context;
-    public TeamMoodDao teamMoodDao;
+    Mood generalMoods;
 
     @BindView(R.id.mood_filter_byDate)
     public Spinner filterByDate;
@@ -49,9 +54,11 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gebeya_all_team_mood);
         ButterKnife.bind(this);
-        teamMoodViewModel=new ViewModelProvider
+        teamMoods = new ArrayList<>();
+        teamMoodRecyclerView = findViewById(R.id.generalRecyclerView);
+        gebeyaGeneralViewModel=new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
-                .create(TeamMoodViewModel.class);
+                .create(GebeyaGeneralViewModel.class);
         filterByDate = findViewById(R.id.mood_filter_byDate);
 
         ArrayAdapter<CharSequence> byDateAdapter = ArrayAdapter.createFromResource(
@@ -62,26 +69,17 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
         filterByDate.setAdapter(byDateAdapter);
 
         try{
-            teamMoodViewModel.getAllTeamMood().observe(this, new Observer<List<TeamMoodPojo>>() {
+            gebeyaGeneralViewModel.getGeneralMoods().observe(this, new Observer<MoodsCountPojo>() {
                 @Override
-                public void onChanged(List<TeamMoodPojo> teamMoodPojos) {
-                    List<TeamMood> teamMoods = TeamMoodTransformer.toTeamModelList(teamMoodPojos);
-                    teamMoodDao.addMoods(teamMoods);
+                public void onChanged(MoodsCountPojo moodsCount) {
+                    generalMoods = MoodTranfromer.toMood(moodsCount);
                 }
             });
 
         } catch(Exception e){
             e.printStackTrace();
         }
-        //initRecycler();
-    }
-
-    private void initRecycler() {
-        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        teamMoodRecyclerView.setLayoutManager(linearLayoutManager);
-        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
-        teamMoodRecyclerView.setAdapter(teamMoodsAdapter);
+        initRecycler();
     }
 
     @Override
@@ -110,7 +108,13 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
 
+    private void initRecycler() {
+        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
+        teamMoodRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
+        teamMoodRecyclerView.setAdapter(teamMoodsAdapter);
     }
 
 }
