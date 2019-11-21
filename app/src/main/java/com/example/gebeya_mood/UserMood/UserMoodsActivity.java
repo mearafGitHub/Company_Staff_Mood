@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gebeya_mood.Admin.AdminViewAdapter;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.UserMood.UserMoodsAdapter;
 import com.example.gebeya_mood.framework.base.BaseActivity;
@@ -21,23 +22,23 @@ import com.example.gebeya_mood.UserMood.UserMoodGETPojo;
 import com.example.gebeya_mood.UserMood.UserMoodDao;
 import com.example.gebeya_mood.UserMood.UserMoodTransformer;
 import com.example.gebeya_mood.UserMood.UserMoodViewModel;
+import com.example.gebeya_mood.framework.util.Const;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserMoodsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-    public static final int activityNum = 1;
     public RecyclerView userMoodRecycler;
     public UserMoodsAdapter userMoodAdapter;
     public List<UserMood> userMoodItems;
     private Context context;
     private UserMoodDao userMoodDao;
     private UserMoodViewModel userMoodViewModel;
+    private String filterByDate;
 
     @SerializedName("name")
     private TextView userName;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,21 +62,61 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
 
         try{
             userMoodViewModel.getInstance().getAllUsersMoodsRemote();
-            userMoodViewModel.getUserMoodResponse().observe(this, new Observer<List<UserMoodGETPojo>>() {
+            userMoodViewModel.getThisUserMoodResponse().observe(this, new Observer<List<UserMoodGETPojo>>() {
                 @Override
                 public void onChanged(List<UserMoodGETPojo> userMoodPojos) {
-                    List<UserMood> userMoods = UserMoodTransformer.ListDtoToMood(userMoodPojos);
-                    userMoodDao.addMoods(userMoods);
+                    userMoodItems = UserMoodTransformer.ListDtoToMood(userMoodPojos);
+                    userMoodDao.addMoods(userMoodItems);
                 }
             });
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        }catch(Exception e){ e.printStackTrace();}
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String choice = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
+        switch (choice){
+            case "Day":
+                filterByDate = choice;
+                try{
+                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                }catch (Exception e){e.printStackTrace();}
+
+            case "Month":
+                filterByDate = choice;
+                try{
+                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                }catch (Exception e){e.printStackTrace();}
+
+            case "Week" :
+                filterByDate = choice;
+                try{
+                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                }catch (Exception e){e.printStackTrace();}
+
+            case "Year" :
+                filterByDate = choice;
+                try{
+                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                }catch (Exception e){e.printStackTrace();}
+
+            default:
+                try{
+                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                }catch (Exception e){e.printStackTrace();}
+        }
+        Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
+        try{
+            userMoodViewModel.getAllUsersMoodsRemote();
+            userMoodViewModel.getThisUserMoodResponse().observe(this, new Observer<List<UserMoodGETPojo>>() {
+                @Override
+                public void onChanged(List<UserMoodGETPojo> userMoodPojos) {
+                    userMoodItems = UserMoodTransformer.ListDtoToMood(userMoodPojos);
+                    userMoodDao.addMoods(userMoodItems);
+                }
+            });
+        }catch(Exception e){ e.printStackTrace();}
+        initRecycler();
     }
 
     @Override
@@ -83,4 +124,9 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
 
     }
 
+    private void initRecycler (){
+        userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));
+        userMoodAdapter = new UserMoodsAdapter(this, userMoodItems);
+        userMoodRecycler.setAdapter(userMoodAdapter);
+    }
 }

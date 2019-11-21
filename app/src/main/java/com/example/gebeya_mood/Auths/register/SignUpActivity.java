@@ -20,12 +20,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gebeya_mood.Auths.login.LoginActivity;
 import com.example.gebeya_mood.users.UserResponse;
-import com.example.gebeya_mood.MainActivity;
+import com.example.gebeya_mood.AppIntroduction.MainActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 
 import com.example.gebeya_mood.framework.util.Const;
-import com.google.gson.JsonObject;
 
 import java.util.Timer;
 

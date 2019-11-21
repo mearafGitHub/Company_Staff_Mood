@@ -30,8 +30,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
     //implementation 'androidx.biometric:biometric:1.0.0-alpha03'
-    //chart
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //MPAndroid chart
+    implementation 'com.github.PhilJay:MPAndroidChart-Realm:v3.0.3@aar'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     // Joda Time
     implementation "joda-time:joda-time:2.10.4"
@@ -49,7 +51,6 @@ dependencies {
     // google
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
-
 
     // Lottie
     implementation 'com.airbnb.android:lottie:3.1.0'
@@ -69,13 +70,12 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-
     // Butter Knife
     def butterKnifeVersion = "10.2.0"
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
-
+    // glide: image converter
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'com.squareup.picasso:picasso:2.71828'

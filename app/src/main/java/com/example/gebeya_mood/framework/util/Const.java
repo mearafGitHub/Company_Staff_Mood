@@ -12,8 +12,8 @@ public final class Const {
     public static final String PREFS_NAME = "GEBEYA_MOOD_PREFS";
     public static final String DATABASE_NAME = "GebeyaMoodDataBase";
     public static final String SEEN_INTRO = "SEEN_INTRO";
-    public static final String BASE_URL = "http://gebeya-mood.et5el.gebeya.co";
-    public static final String BASE_URL_HEROKU = "http://gebeya-mood.et5el.gebeya.co";
+    public static final String BASE_URL = "http://gebeya-mood.et5el.gebeya.co ";
+    public static final String BASE_URL_HEROKU = "https://stark-peak-15799.herokuapp.com/";
     public static final String SEEN_OAUTH = "SEEN_OAUTH";
     public static final String SEEN_SIGNUP = "SEEN_SIGNUP";
     public static final String SEEN_LOGIN = "SEEN_LOGIN";
@@ -33,6 +33,9 @@ public final class Const {
 
     @NonNull
     public static String USERNAME = "NO_USER";
+
+    @NonNull
+    public static String USER_ID = "USER_ID";
 
     @NonNull
     public static String TEAM = "NO_TEAM";

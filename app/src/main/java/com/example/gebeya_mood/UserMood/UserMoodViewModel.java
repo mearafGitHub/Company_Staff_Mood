@@ -50,7 +50,9 @@ public class UserMoodViewModel extends AndroidViewModel {
         return userMoodList;
     }
 
-    public void getOneUserMooReomote(String userId){
+
+
+    public void getOneUserMooRemote(String userId){
         // TODO:  finish it
              getUserMoodService().getOneUserMoods(userId).enqueue(new Callback<List<UserMoodGETPojo>>() {
             @Override
@@ -131,7 +133,7 @@ public class UserMoodViewModel extends AndroidViewModel {
         return postMoodPojoResponse;
     }
 
-    public MutableLiveData<List<UserMoodGETPojo>> getUserMoodResponse() {
+    public MutableLiveData<List<UserMoodGETPojo>> getThisUserMoodResponse() {
         return getOneUserMoods;
     }
 

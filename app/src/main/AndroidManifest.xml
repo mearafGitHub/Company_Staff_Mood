@@ -36,7 +36,7 @@
             android:name=".UserMood.UserMoodsActivity"
             android:label="@string/title_activity_my_moods" />
         <activity
-            android:name=".GebeyaMoodGeneral.GebeyaAllTeamMoodsActivity"
+            android:name=".GebeyaMoodGeneral.GebeyaGeneralMoodActivity"
             android:label="@string/title_activity_home" />
         <activity
             android:name=".Admin.AdminActivity"
@@ -46,7 +46,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UserMood.MoodPromptActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AppIntroduction.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Auths.register.SignUpActivity"

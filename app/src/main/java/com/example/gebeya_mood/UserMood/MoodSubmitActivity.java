@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.framework.util.Const;
 import com.google.gson.JsonObject;
 
 import butterknife.BindView;
@@ -22,36 +24,34 @@ import butterknife.ButterKnife;
 public class MoodSubmitActivity extends BaseActivity {
 
     @BindView(R.id.money)
-    public LottieAnimationView money;
+    public ImageButton money;
 
     @BindView(R.id.staff)
-    public LottieAnimationView staff;
+    public ImageButton staff;
 
     @BindView(R.id.deal)
-    public LottieAnimationView deal;
+    public ImageButton deal;
 
     @BindView(R.id.helth)
-    public LottieAnimationView health;
+    public ImageButton health;
 
     @BindView(R.id.done)
-    public LottieAnimationView done;
+    public ImageButton done;
+
+    @BindView(R.id.internet)
+    public ImageButton internet;
 
     @BindView(R.id.bubble)
-    public LottieAnimationView bubble;
-/*
-
-    @BindView(R.id.dashBoard)
-    public LottieAnimationView dashBoard;
-*/
+    public ImageButton bubble;
 
     @BindView(R.id.weather)
-    public LottieAnimationView weather;
-
-   /* @BindView(R.id.work)
-    public LottieAnimationView work;*/
+    public ImageButton weather;
 
     @BindView(R.id.goModalButton)
     public Button go;
+
+    @BindView(R.id.meeting)
+    public ImageButton meeting;
 
     @BindView(R.id.skipModalButton)
     public Button skip;
@@ -71,15 +71,16 @@ public class MoodSubmitActivity extends BaseActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         moodValue = intent.getExtras().getString("moodValue");
-        moodReason = "";
+        moodReason = "unsaid";
+        moodValue = "not given";
+        meeting = findViewById(R.id.meeting);
+        internet = findViewById(R.id.internet);
         go = findViewById(R.id.goModalButton);
         skip = findViewById(R.id.skipModalButton);
         go.setEnabled(true);
         skip.setEnabled(true);
-        health = findViewById(R.id.helth);
-       // work = findViewById(R.id.work);
+        health = findViewById(R.id.helth);;
         staff = findViewById(R.id.staff);
-       // dashBoard = findViewById(R.id.dashBoard);
         bubble = findViewById(R.id.bubble);
         done = findViewById(R.id.done);
         money = findViewById(R.id.money);
@@ -92,6 +93,22 @@ public class MoodSubmitActivity extends BaseActivity {
                 .AndroidViewModelFactory(getApplication())
                 .create(UserMoodViewModel.class);
 
+        internet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReason = "internet";
+                Toast.makeText(MoodSubmitActivity.this, " Internet connection ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        meeting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moodReason = "meeting";
+                Toast.makeText(MoodSubmitActivity.this, " Meeting ", Toast.LENGTH_LONG).show();
+            }
+        });
+
         health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +116,6 @@ public class MoodSubmitActivity extends BaseActivity {
                 Toast.makeText(MoodSubmitActivity.this, " Health.. ", Toast.LENGTH_LONG).show();
             }
         });
-
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,18 +128,16 @@ public class MoodSubmitActivity extends BaseActivity {
         money.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodReason = "work";
-                Toast.makeText(MoodSubmitActivity.this, " You got paid! ", Toast.LENGTH_LONG).show();
+                moodReason = "Money";
+                Toast.makeText(MoodSubmitActivity.this, "Money", Toast.LENGTH_LONG).show();
             }
         });
-
-
 
         deal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moodReason = "Deal";
-                Toast.makeText(MoodSubmitActivity.this, " About an important Deal ! ", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodSubmitActivity.this, "Deal", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -131,7 +145,7 @@ public class MoodSubmitActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 moodReason = "Money";
-                Toast.makeText(MoodSubmitActivity.this, "Got Paid", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodSubmitActivity.this, "Money", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -139,7 +153,7 @@ public class MoodSubmitActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 moodReason = "Weather";
-                Toast.makeText(MoodSubmitActivity.this, "Got paid, right?!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MoodSubmitActivity.this, "Weather", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -172,31 +186,40 @@ public class MoodSubmitActivity extends BaseActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JsonObject newUesrMood = new JsonObject();
-                newUesrMood.addProperty("id","id");
-                newUesrMood.addProperty("name", "name");
-                newUesrMood.addProperty("mood", "mood");
-                newUesrMood.addProperty("reason", "unsaid");
-                sendMoodtoApi(newUesrMood);
+                JsonObject newUserMood = new JsonObject();
+                newUserMood.addProperty("id",Const.USER_ID);
+                newUserMood.addProperty("name", Const.USERNAME);
+                newUserMood.addProperty("mood", moodValue);
+                newUserMood.addProperty("reason", moodReason);
+                sendMoodtoApi(newUserMood);
             }
         });
     }
 
     protected void observeData(){
-        userMoodViewModel.postUserMoodResponse().observe(this, new Observer<UserMoodGETPojo>() {
-            @Override
-            public void onChanged(UserMoodGETPojo userMoodGETPojo) {
-                String check = String.valueOf(userMoodGETPojo);
-                Log.i("post mood response", check);
-            }
-        });
+        try {
+            userMoodViewModel.postUserMoodResponse().observe(this, new Observer<UserMoodGETPojo>() {
+                @Override
+                public void onChanged(UserMoodGETPojo userMoodGETPojo) {
+                    String check = String.valueOf(userMoodGETPojo);
+                    Log.i("post mood response", check);
+                    if(check != null) {
+                        Toast.makeText(MoodSubmitActivity.this, "Sent your mood successfully.", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(MoodSubmitActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            });
+        }
+        catch(Exception e){ e.printStackTrace();}
     }
 
-   void sendMoodtoApi(JsonObject newUesrMood){
+   void sendMoodtoApi(JsonObject newUserMood){
             try {
-                userMoodViewModel.postUserMood(newUesrMood);
+                userMoodViewModel.postUserMood(newUserMood);
                 observeData();
-                Toast.makeText(MoodSubmitActivity.this, "Sent mood successfully.", Toast.LENGTH_LONG).show();
             }
             catch(Exception e){
                 e.printStackTrace();

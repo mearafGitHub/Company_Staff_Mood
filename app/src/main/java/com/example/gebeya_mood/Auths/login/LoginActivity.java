@@ -96,9 +96,9 @@ public class LoginActivity extends BaseActivity {
                             Const.TOKEN = "TOKEN";
                             Const.USERNAME = loginUserResponse.getName();
                             Const.TEAM = loginUserResponse.getTeam();
-                            userRole = loginUserResponse.getRole();
+                            userRole = String.valueOf(loginUserResponse.getRole());
                             Const.ROLE = userRole;
-                            Log.e("Result: ", loginUserResponse.getRole());
+                            Log.e("Result: ",userRole );
                             Toast.makeText(LoginActivity.this, "Logged in successfully.",Toast.LENGTH_LONG  ).show();
                             Toast.makeText(LoginActivity.this, loginUserResponse.getName(), Toast.LENGTH_LONG).show();
 

@@ -1,6 +1,6 @@
 package com.example.gebeya_mood.UserMood;
 
-import com.example.gebeya_mood.Mood.MoodPojo;
+import com.example.gebeya_mood.Mood.MoodsCountPojo;
 import com.example.gebeya_mood.UserMood.UserMoodGETPojo;
 import com.google.gson.JsonObject;
 
@@ -32,7 +32,7 @@ public interface UserMoodApiService {
     Call<UserMoodGETPojo> postUserMood(@Body JsonObject userMood);
 
     @GET("moods")
-    Call<List<MoodPojo>> getMoods();
+    Call<List<MoodsCountPojo>> getMoods();
 
     @GET("moods/my-logs{userId}")
     Call <List<UserMoodGETPojo>> getOneUserMoods(@Path("moodId") String moodId);
@@ -40,5 +40,7 @@ public interface UserMoodApiService {
     @GET("moods")
     Call<List<UserMoodGETPojo>> getAllUsersMoods();
 
+    /*@GET
+    Call<List<UserMoodGETPojo>> getUserMoodBydate(@Path(""));*/
 
 }

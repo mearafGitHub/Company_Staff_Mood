@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.Admin.AdminActivity;
-import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaAllTeamMoodsActivity;
+import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaGeneralMoodActivity;
 import com.example.gebeya_mood.UserMood.UserMoodsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,7 +21,7 @@ public static void enableNav(final Context context, BottomNavigationView view){
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home_nav:
-                        Intent intent = new Intent(context, GebeyaAllTeamMoodsActivity.class);
+                        Intent intent = new Intent(context, GebeyaGeneralMoodActivity.class);
                         context.startActivity(intent);
                         return true;
                     case R.id.info_nav:

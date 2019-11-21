@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,13 +22,18 @@ import com.example.gebeya_mood.Mood.MoodsCountPojo;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.TeamMood.TeamMood;
 import com.example.gebeya_mood.TeamMood.TeamMoodAdapter;
-import com.example.gebeya_mood.TeamMood.TeamMoodDao;
-import com.example.gebeya_mood.TeamMood.TeamMoodPojo;
-import com.example.gebeya_mood.TeamMood.TeamMoodTransformer;
-import com.example.gebeya_mood.TeamMood.TeamMoodViewModel;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.UserMood.UserMoodsActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,28 +41,58 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GebeyaAllTeamMoodsActivity extends BaseActivity {
-    @BindView(R.id.generalRecyclerView)
-    public RecyclerView teamMoodRecyclerView;
-    private TeamMoodAdapter teamMoodsAdapter;
+public class GebeyaGeneralMoodActivity extends BaseActivity {
     public GebeyaGeneralViewModel gebeyaGeneralViewModel;
-    private List<TeamMood> teamMoods;
     private Context context;
-    Mood generalMoods;
+    public Mood generalMoods;
+    private int happy, content, neutral, angry, sad;
 
     @BindView(R.id.mood_filter_byDate)
     public Spinner filterByDate;
 
-    String filterValue;
+    @BindView(R.id.general_mood_graph)
+    public LineChart lineChart;
+
+    final ArrayList<String> xAxisLabel = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gebeya_all_team_mood);
         ButterKnife.bind(this);
-        teamMoods = new ArrayList<>();
-        teamMoodRecyclerView = findViewById(R.id.generalRecyclerView);
-        gebeyaGeneralViewModel=new ViewModelProvider
+        lineChart =findViewById(R.id.general_mood_graph);
+        lineChart.setBackgroundColor(Color.WHITE);
+        lineChart.setGridBackgroundColor(Color.WHITE);
+        lineChart.setDrawGridBackground(false);
+        lineChart.setDrawBorders(false );
+        lineChart.getDescription().setEnabled(false);
+        lineChart.setPinchZoom(false);
+        Legend legend = lineChart.getLegend();
+        legend.setEnabled(true);
+        lineChart.scheduleLayoutAnimation();
+        lineChart.animate();
+        YAxis leftAxis = lineChart.getAxisLeft();
+        leftAxis.setDrawZeroLine(false);
+        leftAxis.setDrawAxisLine(false);
+        leftAxis.setDrawGridLines(false);
+
+        xAxisLabel.add("Happy");
+        xAxisLabel.add("Content");
+        xAxisLabel.add("Neutral");
+        xAxisLabel.add("Angry");
+        xAxisLabel.add("Sad");
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setValueFormatter(new IAxisValueFormatter(){
+        @Override
+        public String getFormattedValue(float value, AxisBase axis) {
+            return xAxisLabel.get((int) value);
+        }
+    });
+
+        setChartData(70, 5);
+
+        gebeyaGeneralViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
                 .create(GebeyaGeneralViewModel.class);
         filterByDate = findViewById(R.id.mood_filter_byDate);
@@ -73,13 +109,41 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
                 @Override
                 public void onChanged(MoodsCountPojo moodsCount) {
                     generalMoods = MoodTranfromer.toMood(moodsCount);
+                    happy = generalMoods.getHappy();
+                    content = generalMoods.getContent();
+                    neutral = generalMoods.getNeutral();
+                    angry = generalMoods.getAngry();
+                    sad = generalMoods.getSad();
                 }
             });
 
         } catch(Exception e){
             e.printStackTrace();
         }
-        initRecycler();
+    }
+
+    private void setChartData(int members, float moods){
+    // create random data
+        ArrayList<Entry> yAxis= new ArrayList<>();
+        yAxis.add(new Entry(1, 39));
+        yAxis.add(new Entry(2, 30));
+        yAxis.add(new Entry(3, 12));
+        yAxis.add(new Entry(4, 4));
+        yAxis.add(new Entry(5, 1));
+
+        LineDataSet set2;
+        set2 = new LineDataSet(yAxis,"Gebeya Mood Today");
+        set2.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set2.setColor(Color.GREEN);
+        set2.setDrawCircleHole(false);
+        set2.setDrawCircles(false);
+        set2.setDrawFilled(false);
+
+        LineData lineData = new LineData(set2);
+        lineData.setDrawValues(false);
+        lineData.setValueTextColor(Color.LTGRAY);
+        lineData.notifyDataChanged();
+        lineChart.setData(lineData);
     }
 
     @Override
@@ -94,27 +158,20 @@ public class GebeyaAllTeamMoodsActivity extends BaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.moodsPromptIcon:
-                Intent intentPrompt = new Intent(GebeyaAllTeamMoodsActivity.this, MoodPromptActivity.class);
+                Intent intentPrompt = new Intent(GebeyaGeneralMoodActivity.this, MoodPromptActivity.class);
                 startActivity(intentPrompt);
                 return true;
             case R.id.my_mood_history:
-                Intent intentMoods = new Intent(GebeyaAllTeamMoodsActivity.this, UserMoodsActivity.class);
+                Intent intentMoods = new Intent(GebeyaGeneralMoodActivity.this, UserMoodsActivity.class);
                 startActivity(intentMoods);
                 return true;
             case R.id.adminDataSetIcon:
-                Intent intentAdminView = new Intent(GebeyaAllTeamMoodsActivity.this, AdminActivity.class);
+                Intent intentAdminView = new Intent(GebeyaGeneralMoodActivity.this, AdminActivity.class);
                 startActivity(intentAdminView);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void initRecycler() {
-        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
-        teamMoodRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        teamMoodsAdapter = new TeamMoodAdapter(this, teamMoods);
-        teamMoodRecyclerView.setAdapter(teamMoodsAdapter);
     }
 
 }

@@ -27,16 +27,16 @@ public class GebeyaIntro extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gebeya_intro);
 
-       // prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
-       // boolean seen = prefs.getBoolean(Const.SEEN_INTRO, false);
-       // if (seen) {
+        prefs = getSharedPreferences(Const.PREFS_NAME, MODE_PRIVATE);
+        boolean seen = prefs.getBoolean(Const.SEEN_INTRO, false);
+        if (seen) {
         showViews(null);
-      /*  } else {
+        } else {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean(Const.SEEN_INTRO, true);
             editor.apply();
-            showViews();
-        }*/
+            showViews(null);
+        }
     }
 
     protected void showViews(View view){
@@ -55,7 +55,7 @@ public class GebeyaIntro extends BaseActivity {
         });
     }
    protected void openAuth(View view){
-       Intent intent = new Intent(GebeyaIntro.this, MoodPromptActivity.class);
+       Intent intent = new Intent(GebeyaIntro.this, MainActivity.class);
        startActivity(intent);
        finish();
     }

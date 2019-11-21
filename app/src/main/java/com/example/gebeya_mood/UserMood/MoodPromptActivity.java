@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaAllTeamMoodsActivity;
+import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaGeneralMoodActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.Admin.AdminActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
@@ -131,7 +131,7 @@ public class MoodPromptActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home_nav:
-                        Intent intent = new Intent(MoodPromptActivity.this, GebeyaAllTeamMoodsActivity.class);
+                        Intent intent = new Intent(MoodPromptActivity.this, GebeyaGeneralMoodActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.info_nav:
@@ -159,7 +159,7 @@ public class MoodPromptActivity extends BaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.listIcon:
-                Intent intent = new Intent(MoodPromptActivity.this, GebeyaAllTeamMoodsActivity.class);
+                Intent intent = new Intent(MoodPromptActivity.this, GebeyaGeneralMoodActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.my_mood_history:
