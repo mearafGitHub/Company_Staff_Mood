@@ -35,7 +35,9 @@ public final class Const {
     public static String USERNAME = "NO_USER";
 
     @NonNull
-    public static String USER_ID = "USER_ID";
+    public static String USER_ID = "NO_USER_ID";
+    @NonNull
+    public static String USER_EMAIL = "NO_USER_EMAIL";
 
     @NonNull
     public static String TEAM = "NO_TEAM";

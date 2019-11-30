@@ -153,13 +153,12 @@ public class SignUpActivity extends BaseActivity implements AdapterView.OnItemSe
                 try {
                     checker = String.valueOf(createUserResponse);
                     if (checker != null) {
-                        String role = createUserResponse.getRole();
+                        String role = createUserResponse.getType();
                         Const.ROLE = role;
                         Const.USERNAME = createUserResponse.getName();
-                        Const.TEAM = createUserResponse.getTeam();
+                        Const.TEAM = createUserResponse.getType();
                         Toast.makeText(SignUpActivity.this, "Sign up successful! Welcome" + createUserResponse.getName(), Toast.LENGTH_LONG).show();
-                        Intent intentOne = new Intent(SignUpActivity.this, MainActivity.class);
-                        startActivity(intentOne);
+                        openLogin(null);
                     } else {
                         Toast.makeText(SignUpActivity.this, "Sorry, something went wrong.", Toast.LENGTH_LONG).show();
                     }

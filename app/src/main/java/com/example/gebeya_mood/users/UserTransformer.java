@@ -8,7 +8,7 @@ public class UserTransformer {
     public static User DtoToUser(UserResponse userDto){
         User user = new User();
         user.userId = userDto.getId();
-        user.teamname = userDto.getTeam();
+        user.teamname = userDto.getType();
         user.username = userDto.getName();
         user.gender = userDto.getSex();
         user.role = userDto.getSex();

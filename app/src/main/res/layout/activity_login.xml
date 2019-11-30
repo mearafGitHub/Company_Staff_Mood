@@ -6,9 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="72dp"
     tools:context=".Auths.login.LoginActivity"
     android:background="@drawable/ic_undraw_code_typing_7jnv"
     android:orientation="vertical"
@@ -21,8 +19,6 @@
     android:gravity="center_horizontal"
     android:layout_gravity="center_horizontal"
     android:background="#994b0082"
-    android:layout_marginHorizontal="12dp"
-    android:layout_marginVertical="59dp"
     >
 
     <ImageView
@@ -72,7 +68,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
-
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
@@ -117,7 +112,6 @@
         app:layout_constraintVertical_bias="0.3"
         android:outlineAmbientShadowColor="#FFA500"
         />
-
 
 </LinearLayout>
 </LinearLayout>

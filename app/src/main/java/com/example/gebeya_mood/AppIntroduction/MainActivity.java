@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.gebeya_mood.Auths.register.SignUpActivity;
 import com.example.gebeya_mood.R;
+import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

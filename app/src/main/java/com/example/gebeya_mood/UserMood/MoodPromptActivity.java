@@ -19,6 +19,7 @@ import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaGeneralMoodActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.Admin.AdminActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.framework.util.Temporary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
@@ -73,7 +74,7 @@ public class MoodPromptActivity extends BaseActivity {
         happy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodValue = "Happy";
+                Temporary.USERMOOD = "Happy";
                 Toast.makeText(MoodPromptActivity.this, " Glad you're happy.. ", Toast.LENGTH_LONG).show();
                 openSubmit(null, moodValue );
             }
@@ -82,7 +83,7 @@ public class MoodPromptActivity extends BaseActivity {
         sad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodValue = "Sad";
+                Temporary.USERMOOD  = "Sad";
                 Toast.makeText(MoodPromptActivity.this, " Sorry you're sad. What happened? ", Toast.LENGTH_LONG).show();
                 openSubmit(null, moodValue );
             }
@@ -91,7 +92,7 @@ public class MoodPromptActivity extends BaseActivity {
         content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodValue = "Content";
+                Temporary.USERMOOD = "Content";
                 Toast.makeText(MoodPromptActivity.this, " Content, it is! ", Toast.LENGTH_LONG).show();
                 openSubmit(null, moodValue );
             }
@@ -100,7 +101,7 @@ public class MoodPromptActivity extends BaseActivity {
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodValue = "Angry";
+                Temporary.USERMOOD  = "Angry";
                 Toast.makeText(MoodPromptActivity.this, " Angry? Oh, what happened? ", Toast.LENGTH_LONG).show();
                 openSubmit(null, moodValue );
             }
@@ -109,7 +110,7 @@ public class MoodPromptActivity extends BaseActivity {
         neutral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodValue = "Neutral";
+                Temporary.USERMOOD = "Neutral";
                 Toast.makeText(MoodPromptActivity.this, " Ok, you're neutral about something. ", Toast.LENGTH_LONG).show();
                 openSubmit(null, moodValue );
             }
@@ -173,7 +174,7 @@ public class MoodPromptActivity extends BaseActivity {
 
     protected void openSubmit(View v, String moodValue){
         Intent intent = new Intent(this, MoodSubmitActivity.class);
-        intent.putExtra("moodValue", moodValue);
+       // intent.putExtra("moodValue", moodValue);
         startActivity(intent);
     }
 

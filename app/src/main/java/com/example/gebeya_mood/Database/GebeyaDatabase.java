@@ -1,4 +1,4 @@
-package com.example.gebeya_mood.repo;
+package com.example.gebeya_mood.Database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

@@ -16,6 +16,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.framework.base.BaseActivity;
 import com.example.gebeya_mood.framework.util.Const;
+import com.example.gebeya_mood.framework.util.Temporary;
 import com.google.gson.JsonObject;
 
 import butterknife.BindView;
@@ -70,9 +71,9 @@ public class MoodSubmitActivity extends BaseActivity {
         setContentView(R.layout.activity_mood_submit);
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        moodValue = intent.getExtras().getString("moodValue");
+       // moodValue = intent.getExtras().getString("moodValue");
         moodReason = "unsaid";
-        moodValue = "not given";
+        //moodValue = "not given";
         meeting = findViewById(R.id.meeting);
         internet = findViewById(R.id.internet);
         go = findViewById(R.id.goModalButton);
@@ -87,7 +88,7 @@ public class MoodSubmitActivity extends BaseActivity {
         weather = findViewById(R.id.weather);
         deal = findViewById(R.id.deal);
         moodText = findViewById(R.id.moodText);
-        moodText.setText(moodValue);
+        moodText.setText(Temporary.USERMOOD );
 
         userMoodViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())

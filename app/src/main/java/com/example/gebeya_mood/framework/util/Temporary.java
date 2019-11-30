@@ -2,7 +2,7 @@ package com.example.gebeya_mood.framework.util;
 
 import androidx.annotation.NonNull;
 
-public class Temporary {
+public final class Temporary {
     public static String TEAMNAMEOFDETAIL = "TEAMNAME";
     public static String TEAMNAMEDEPICTGRAPH = "TEAMNAMEDEPICTGRAPH";
     public static String GENERALTEAMMOOD = "GENERALTEAMMOOD";
@@ -19,6 +19,8 @@ public class Temporary {
 
     @NonNull
     public static String TEAM = "NO_TEAM";
+
+    public static String USERMOOD = "NO_GIVEN";
 
 
 }

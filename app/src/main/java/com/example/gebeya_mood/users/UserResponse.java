@@ -21,13 +21,9 @@ public class UserResponse implements Serializable
     @SerializedName("sex")
     @Expose
     private String sex;
-    @SerializedName("team")
+    @SerializedName("type")
     @Expose
-    private String team;
-
-    @Expose
-    private String role;
-
+    private String type;
     @SerializedName("date_created")
     @Expose
     private String dateCreated;
@@ -78,14 +74,6 @@ public class UserResponse implements Serializable
         return this;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -112,16 +100,16 @@ public class UserResponse implements Serializable
         return this;
     }
 
-    public String getTeam() {
-        return team;
+    public String getType() {
+        return type;
     }
 
-    public void setTeam(String type) {
-        this.team = type;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public UserResponse withType(String type) {
-        this.team = type;
+        this.type = type;
         return this;
     }
 

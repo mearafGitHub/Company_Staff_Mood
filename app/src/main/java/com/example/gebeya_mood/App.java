@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.room.Room;
 
 import com.example.gebeya_mood.framework.util.Const;
-import com.example.gebeya_mood.repo.GebeyaDatabase;
+import com.example.gebeya_mood.Database.GebeyaDatabase;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,7 +17,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         retrofit=new Retrofit.Builder()
-                .baseUrl(Const.BASE_URL)
+                .baseUrl(Const.BASE_URL_HEROKU)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

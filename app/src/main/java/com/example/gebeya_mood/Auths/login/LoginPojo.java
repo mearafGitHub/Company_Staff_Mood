@@ -6,8 +6,7 @@ import com.example.gebeya_mood.users.UserResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginPojo implements Serializable
-{
+public class LoginPojo implements Serializable {
 
     @SerializedName("message")
     @Expose
