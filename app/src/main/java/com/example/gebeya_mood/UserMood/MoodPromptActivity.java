@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -19,6 +20,7 @@ import com.example.gebeya_mood.GebeyaMoodGeneral.GebeyaGeneralMoodActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.Admin.AdminActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.framework.util.Const;
 import com.example.gebeya_mood.framework.util.Temporary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -41,31 +43,35 @@ public class MoodPromptActivity extends BaseActivity {
     @BindView(R.id.angry)
     public LottieAnimationView angry;
 
+    @BindView(R.id.promptTitle)
+    public TextView promptTitle;
+
   @BindView(R.id.neutral)
    public LottieAnimationView neutral;
    protected Button go, skip;
    protected ImageButton cancel;
    protected Dialog why;
    protected String moodValue;
-   protected String moodReson;
+   protected String moodReason;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood_prompt);
         ButterKnife.bind(this);
+        promptTitle = findViewById(R.id.promptTitle);
         moodValue = "";
         happy = findViewById(R.id.happy);
         sad = findViewById(R.id.sad);
         angry = findViewById(R.id.angry);
         neutral = findViewById(R.id.neutral);
         content = findViewById(R.id.content);
-        stickBottomNav();
         happy.setEnabled(true);
         sad.setEnabled(true);
         angry.setEnabled(true);
         neutral.setEnabled(true);
         content.setEnabled(true);
+        promptTitle.append("user name");
 
         userMoodViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
@@ -124,30 +130,7 @@ public class MoodPromptActivity extends BaseActivity {
         return super.getLifecycle();
     }
 
-    public void stickBottomNav(){
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.home_nav:
-                        Intent intent = new Intent(MoodPromptActivity.this, GebeyaGeneralMoodActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.info_nav:
-                        Intent intentI = new Intent(MoodPromptActivity.this, AdminActivity.class);
-                        startActivity(intentI);
-                        break;
-                    case R.id.my_moods_nav:
-                        Intent intentM = new Intent(MoodPromptActivity.this, UserMoodsActivity.class);
-                        startActivity(intentM);
-                        break;
-                }
-                return false;
-            }
-        });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

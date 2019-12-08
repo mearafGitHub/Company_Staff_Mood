@@ -77,7 +77,7 @@ public class UserMoodViewModel extends AndroidViewModel {
         return allUsersMoodList;
     }
 
-    public  List<UserMood> getAllUsersMoodsRemote(){
+    public List<UserMood> getAllUsersMoodsRemote(){
         getUserMoodService().getAllUsersMoods().enqueue(new Callback<List<UserMoodGETPojo>>() {
             @Override
             public void onResponse(Call<List<UserMoodGETPojo>> call, Response<List<UserMoodGETPojo>> response) {
@@ -105,8 +105,6 @@ public class UserMoodViewModel extends AndroidViewModel {
         }
         return userMoodViewModel;
     }
-
-
 
     //  POST REQUEST
     public void postUserMood(JsonObject newUserMood){

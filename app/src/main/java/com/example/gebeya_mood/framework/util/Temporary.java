@@ -12,6 +12,10 @@ public final class Temporary {
     public static String TOKEN = "NO_TOKEN";
 
     @NonNull
+    public static String USERID = "NO_USERID";
+
+
+    @NonNull
     public static String ROLE = "NO_ROLE";
 
     @NonNull

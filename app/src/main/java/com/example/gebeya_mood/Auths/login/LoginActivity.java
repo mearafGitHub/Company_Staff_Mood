@@ -96,15 +96,15 @@ public class LoginActivity extends BaseActivity {
                             Const.TOKEN = "TOKEN";
                             Const.USERNAME = loginUserResponse.getName();
                             Const.TEAM = loginUserResponse.getType();
-                            userRole = String.valueOf(loginUserResponse.getType());
-                            Const.ROLE = userRole;
-                            Log.e("Result: ",userRole );
-                            Toast.makeText(LoginActivity.this, "Logged in successfully.",Toast.LENGTH_LONG  ).show();
-                            Toast.makeText(LoginActivity.this, loginUserResponse.getName(), Toast.LENGTH_LONG).show();
-
-                            if(userRole.equals("admin")){
+                            Const.ROLE = loginUserResponse.getRole();
+                            Log.d("Login activity Result ", loginUserResponse.getName());
+                            if(loginUserResponse.getRole().equals("admin")){
                                 openAdmin(null);
-                            }else{openPrompt(null);}
+                                Toast.makeText(LoginActivity.this, "Logged in successfully.",Toast.LENGTH_LONG  ).show();
+                            }else{
+                                openPrompt(null);
+                                Toast.makeText(LoginActivity.this, "Logged in successfully.",Toast.LENGTH_LONG  ).show();
+                            }
                         }
                         else {
                              Toast.makeText(LoginActivity.this, "Sorry, something went wrong.", Toast.LENGTH_LONG).show();

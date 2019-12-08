@@ -50,7 +50,7 @@ public class MyMoodsViewModel extends AndroidViewModel {
             public void onResponse(Call<List<UserMoodGETPojo>> call, Response<List<UserMoodGETPojo>> response) {
                 try{
                     getOneUserMoods.setValue(response.body());
-                    //TODO: USER TRANSFORMRER AND CHANGE THE MUTABLE.. MTD TO RETURN MODEL CALSS TYPE LIST OBJECT
+
                 }catch(Exception e){
                     e.printStackTrace();
                 }
@@ -63,7 +63,7 @@ public class MyMoodsViewModel extends AndroidViewModel {
         });
     }
 
-    public MutableLiveData<List<UserMoodGETPojo>> getthisUserMoods(){
+    public MutableLiveData<List<UserMoodGETPojo>> getThisUserMoods(){
         return getOneUserMoods;
     }
 }

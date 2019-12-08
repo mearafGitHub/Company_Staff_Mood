@@ -25,6 +25,7 @@ import com.example.gebeya_mood.TeamMood.TeamMoodAdapter;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.UserMood.UserMoodsActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
+import com.example.gebeya_mood.framework.util.Const;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -148,9 +149,13 @@ public class GebeyaGeneralMoodActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mood_promt_menu, menu);
-        getMenuInflater().inflate(R.menu.my_moods_menu, menu);
-        getMenuInflater().inflate(R.menu.admin_data_set, menu);
+        if(Const.ROLE.equals("admin")){
+            getMenuInflater().inflate(R.menu.admin_data_set, menu);
+        }
+        else{
+            getMenuInflater().inflate(R.menu.mood_promt_menu, menu);
+            getMenuInflater().inflate(R.menu.my_moods_menu, menu);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 

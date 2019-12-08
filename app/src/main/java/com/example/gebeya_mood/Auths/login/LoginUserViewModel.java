@@ -56,7 +56,10 @@ public class LoginUserViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 loginRespones.setValue(response.body());
-                Log.e("Login Response", String.valueOf(response.body()));
+                try {
+                    Log.e("Login view model", String.valueOf(response.body()));
+                    Log.d("Login view model", String.valueOf(response.body()));
+                } catch (Exception e) {e.printStackTrace();}
             }
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {

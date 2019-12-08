@@ -26,7 +26,7 @@ public final class Const {
     public static String GENERALGEBEYAMOOD = "GENERALGEBEYAMOOD";
 
     @NonNull
-    public static String TOKEN = "NO_TOKEN";
+    public static String TOKEN = "false";
 
     @NonNull
     public static String ROLE = "NO_ROLE";

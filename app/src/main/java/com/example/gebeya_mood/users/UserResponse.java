@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 public class UserResponse implements Serializable
 {
 
+    @SerializedName("role")
+    @Expose
+    private String role;
     @SerializedName("_id")
     @Expose
     private String id;
@@ -34,6 +37,14 @@ public class UserResponse implements Serializable
     @Expose
     private Integer v;
     private final static long serialVersionUID = -7875470732545985887L;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getId() {
         return id;

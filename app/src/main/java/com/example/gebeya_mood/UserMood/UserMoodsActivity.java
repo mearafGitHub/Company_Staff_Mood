@@ -23,6 +23,7 @@ import com.example.gebeya_mood.UserMood.UserMoodDao;
 import com.example.gebeya_mood.UserMood.UserMoodTransformer;
 import com.example.gebeya_mood.UserMood.UserMoodViewModel;
 import com.example.gebeya_mood.framework.util.Const;
+import com.example.gebeya_mood.framework.util.Temporary;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -34,16 +35,20 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
     public List<UserMood> userMoodItems;
     private Context context;
     private UserMoodDao userMoodDao;
-    private UserMoodViewModel userMoodViewModel;
+    private MyMoodsViewModel myMoodViewModel;
     private String filterByDate;
 
     @SerializedName("name")
     private TextView userName;
 
+    private String userId;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_moods);
+
+        userId = Temporary.USERID;
         userMoodRecycler = findViewById(R.id.userMoodRecycler);
         userMoodItems = new ArrayList<>();
         Spinner filterMood = findViewById(R.id.mood_filter);
@@ -61,8 +66,22 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
         userMoodRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         try{
-            userMoodViewModel.getInstance().getAllUsersMoodsRemote();
-            userMoodViewModel.getThisUserMoodResponse().observe(this, new Observer<List<UserMoodGETPojo>>() {
+            myMoodViewModel.getOneUserMoodsReomote(userId);
+            myMoodViewModel.getThisUserMoods().observe(this, new Observer<List<UserMoodGETPojo>>() {
+                @Override
+                public void onChanged(List<UserMoodGETPojo> userMoodPojos) {
+                    userMoodItems = UserMoodTransformer.ListDtoToMood(userMoodPojos);
+                    userMoodDao.addMoods(userMoodItems);
+                }
+            });
+        }catch(Exception e){ e.printStackTrace();}
+
+    }
+
+    void moods( String key){
+        try{
+            myMoodViewModel.getOneUserMoodsReomote(key);
+            myMoodViewModel.getThisUserMoods().observe(this, new Observer<List<UserMoodGETPojo>>() {
                 @Override
                 public void onChanged(List<UserMoodGETPojo> userMoodPojos) {
                     userMoodItems = UserMoodTransformer.ListDtoToMood(userMoodPojos);
@@ -71,51 +90,41 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
             });
         }catch(Exception e){ e.printStackTrace();}
     }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String choice = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
-        switch (choice){
+        moods(choice);
+       /* switch (choice){
             case "Day":
                 filterByDate = choice;
-                try{
-                    userMoodViewModel.getOneUserMooRemote(filterByDate);
-                }catch (Exception e){e.printStackTrace();}
+                moods(filterByDate);
 
             case "Month":
                 filterByDate = choice;
                 try{
-                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
                 }catch (Exception e){e.printStackTrace();}
 
             case "Week" :
                 filterByDate = choice;
                 try{
-                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
                 }catch (Exception e){e.printStackTrace();}
 
             case "Year" :
                 filterByDate = choice;
                 try{
-                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
                 }catch (Exception e){e.printStackTrace();}
 
             default:
                 try{
-                    userMoodViewModel.getOneUserMooRemote(filterByDate);
+                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
                 }catch (Exception e){e.printStackTrace();}
-        }
+        }*/
         Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
-        try{
-            userMoodViewModel.getAllUsersMoodsRemote();
-            userMoodViewModel.getThisUserMoodResponse().observe(this, new Observer<List<UserMoodGETPojo>>() {
-                @Override
-                public void onChanged(List<UserMoodGETPojo> userMoodPojos) {
-                    userMoodItems = UserMoodTransformer.ListDtoToMood(userMoodPojos);
-                    userMoodDao.addMoods(userMoodItems);
-                }
-            });
-        }catch(Exception e){ e.printStackTrace();}
         initRecycler();
     }
 

@@ -55,7 +55,7 @@ public class GebeyaIntro extends BaseActivity {
         });
     }
    protected void openAuth(View view){
-       Intent intent = new Intent(GebeyaIntro.this, MainActivity.class);
+       Intent intent = new Intent(GebeyaIntro.this, MoodPromptActivity.class);
        startActivity(intent);
        finish();
     }

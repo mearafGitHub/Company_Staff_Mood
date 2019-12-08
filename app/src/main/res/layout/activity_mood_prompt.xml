@@ -37,7 +37,7 @@
             android:layout_marginBottom="10dp"
             android:shadowColor="@color/colorPrimaryFront"
             android:textColor="@color/colorPrimary"
-            android:text="Hey!"
+            android:text="Hey! "
             />
 
         <TextView
@@ -119,25 +119,6 @@
 
         </LinearLayout>
 
-
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="196dp"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:background="@color/colorPrimaryFront"
-            app:menu="@menu/bottom_nav"
-            android:layout_gravity="bottom"
-            android:id="@+id/bottom_nav"
-            android:backgroundTint="@color/colorPrimaryFront"
-            android:elevation="21dp"
-            >
-
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
     </LinearLayout>
 
 
