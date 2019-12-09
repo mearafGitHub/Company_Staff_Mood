@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.TeamMood.TeamMood;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminViewAdapter extends RecyclerView.Adapter<AdminViewHolder> {
@@ -64,7 +65,7 @@ public class AdminViewAdapter extends RecyclerView.Adapter<AdminViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 20;
+        return teamMoods.size();
     }
 
 

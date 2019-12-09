@@ -85,7 +85,8 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
                     listSize = teamMoodPojo.size();
                 }
             });
-        }catch (Exception e){ e.printStackTrace();}
+        }
+        catch (Exception e){ e.printStackTrace();}
         initRecycler();
     }
 
@@ -176,8 +177,8 @@ public class AdminActivity extends BaseActivity implements AdapterView.OnItemSel
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.adminLisIcon:
-                //put the clicked item team name in the constants class
                 Const.TEAMNAMEOFDETAIL = filterByTeam;
+                Const.TEAMID = "current-team-id-here";
                 Intent intentDetail= new Intent(AdminActivity.this, TeamDetailActivity.class);
                 startActivity(intentDetail);
                 break;

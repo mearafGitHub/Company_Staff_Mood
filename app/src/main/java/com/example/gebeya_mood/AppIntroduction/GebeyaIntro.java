@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.gebeya_mood.Admin.AdminActivity;
+import com.example.gebeya_mood.Auths.register.SignUpActivity;
 import com.example.gebeya_mood.R;
 import com.example.gebeya_mood.UserMood.MoodPromptActivity;
 import com.example.gebeya_mood.framework.base.BaseActivity;
@@ -31,7 +33,8 @@ public class GebeyaIntro extends BaseActivity {
         boolean seen = prefs.getBoolean(Const.SEEN_INTRO, false);
         if (seen) {
         showViews(null);
-        } else {
+        }
+        else {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean(Const.SEEN_INTRO, true);
             editor.apply();
@@ -55,7 +58,7 @@ public class GebeyaIntro extends BaseActivity {
         });
     }
    protected void openAuth(View view){
-       Intent intent = new Intent(GebeyaIntro.this, MoodPromptActivity.class);
+       Intent intent = new Intent(GebeyaIntro.this, AdminActivity.class);
        startActivity(intent);
        finish();
     }

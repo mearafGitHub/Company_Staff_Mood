@@ -96,35 +96,6 @@ public class UserMoodsActivity extends BaseActivity implements AdapterView.OnIte
         String choice = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
         moods(choice);
-       /* switch (choice){
-            case "Day":
-                filterByDate = choice;
-                moods(filterByDate);
-
-            case "Month":
-                filterByDate = choice;
-                try{
-                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
-                }catch (Exception e){e.printStackTrace();}
-
-            case "Week" :
-                filterByDate = choice;
-                try{
-                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
-                }catch (Exception e){e.printStackTrace();}
-
-            case "Year" :
-                filterByDate = choice;
-                try{
-                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
-                }catch (Exception e){e.printStackTrace();}
-
-            default:
-                try{
-                    myMoodViewModel.getOneUserMoodsReomote(filterByDate);
-                }catch (Exception e){e.printStackTrace();}
-        }*/
-        Toast.makeText(parent.getContext(), choice, Toast.LENGTH_LONG).show();
         initRecycler();
     }
 
