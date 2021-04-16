@@ -1,44 +1,34 @@
-"# GEBEYA MOODE APP" 
+COMPANY MOODE APP
 
-DOING -> DONE:
-    [x]  M-V-VM architecture
-    [X]  Models and View Design
-    [X]  API connection test with POJO
-    [X]  Working with DTO and DAO for API Communication
-    [x]  fetching and sending to actual gebeya-mood API
 
- [X] 1. list cards in recycler view
-       [x] the userMoods on the gebeya userMood home screen
-       [x] the userPojoHelper userMood history (userMood log)
-       [x] the admin userPojoHelper userMood review screen
-       [x] userMood prompt screen
+This app is initially developed for Gebeya Inc.
+Developed in MVVM architecture
+Has emojies and animations
+    
+Activities model views work with DTO and DAO for API Communication
+    fetching and sending to actual gebeya-mood API
 
- [x] 2. display dynamic values in inflated layout
- 	    [x] list view
- 	    [x] filter views
- 	    [x]  filter data according to userPojoHelper's choise
- 	    [x]  receive data from api
+ List cards in recycler view
+       the userMoods on the gebeya userMood home screen
+       the userPojoHelper userMood history (userMood log)
+       the admin userPojoHelper userMood review screen
+       userMood prompt screen
 
- [x] 3. display modal with text input
- 	    [x] userPojoHelper prompt to insert userMoods and/or reasons
- 	    [x] userPojoHelper input post to api
+ display dynamic values in inflated layout
+ 	    list view
+ 	    filter views
+ 	    filter data according to userPojoHelper's choise
+ 	    receive data from api
 
- [x] 4. send userPojoHelper's moods to api
-      [x] login db
-      [x] sign up
+ displays modal with text input
+ 	     prompt to insert userMoods and/or reasons
+ 	     input post to api
 
- [x] 5. Receive api response and display in screens
-      [x] home screen fetch from api interface and methods
-      [x] my userMood screen fetch from api interface and methods
-      [x] admin view
-      [x]  actual data send/receive
+ authentication api
+      login db
+      sign up
+      Oauth
 
- [..]  6. Smooth transition between activities
- [X]  7. App introduction screens
- [..] 8. Admin Views
-      [x] List of userMood reports with details of the staffs
-      [x ] actual data send/receive
-
- [..] 9. Finger print authentication
-
- [X] 10. M-V-VM architecture
+Sends request to the api and Receive response and display data in screens    
+ 
+Finger print authentication (working on)
