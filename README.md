@@ -1,14 +1,15 @@
 COMPANY MOODE APP is an Android app developed in MVVM architecture.
-This app is initially developed for Gebeya Inc.
+This app was initially developed for Gebeya Inc.
 
 Below are the technical features of the app.
 
 # Has emojies and animations
     
 # Activities model views work with DTO and DAO for API Communication
-    fetching and sending to actual gebeya-mood API
+    Uses Life cycle observer in the model views when fetching and sending to actual gebeya-mood API 
+    
 
-# List cards in recycler view
+# List user moods in RecyclerView
        the userMoods on the gebeya userMood home screen
        the userPojoHelper userMood history (userMood log)
        the admin userPojoHelper userMood review screen
